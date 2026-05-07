@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DSE Admin — Panel de Administración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px}
+:root{
+  --gold:#C4962A; --gold-l:#F0D98A; --gold-d:#8A6918;
+  --nv:#0C1B2E;   --nv2:#152844;   --nv3:#1E3A5F;
+  --w:#F7F5F0;    --ww:#FFFFFF;    --b:#0A0A0A;
+  --bg2:#F2EFE9;  --sl:#E8E3DC;    --sm:#D4CDC5;  --sd:#7A7068;
+  --ok:#2D7D4F;   --er:#C0392B;    --warn:#C07A2B;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Outfit',sans-serif;
+  --r:16px; --rsm:10px; --rpill:100px;
+  --sh:0 4px 20px rgba(12,27,46,.08),0 1px 4px rgba(12,27,46,.04);
+  --shh:0 20px 60px rgba(12,27,46,.18),0 6px 18px rgba(12,27,46,.08);
+  --sh-gold:0 8px 32px rgba(196,150,42,.28);
+  --sidebar:268px;
+}
+body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b);line-height:1.6;overflow-x:hidden}
+
+/* focus ring */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:var(--rsm)}
+
+/* ── LOGIN ──────────────────────────────────── */
+#login-screen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--nv) 0%,var(--nv3) 55%,var(--nv2) 100%);
+  position:relative;overflow:hidden;
+}
+#login-screen::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(196,150,42,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(196,150,42,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+#login-screen::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(196,150,42,.08) 0%,transparent 70%);
+}
+.login-box{
+  background:var(--ww);border-radius:24px;
+  padding:3rem 3rem 2.5rem;width:100%;max-width:430px;
+  box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(196,150,42,.12);
+  position:relative;z-index:1;
+}
+.login-logo{display:flex;justify-content:center;margin-bottom:2.4rem}
+.login-logo img{height:90px;width:auto;border-radius:14px;object-fit:contain;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.login-title{font-family:var(--serif);font-size:1.6rem;color:var(--nv);text-align:center;margin-bottom:.35rem;font-weight:500}
+.login-hint{font-size:.75rem;font-weight:200;color:var(--sd);text-align:center;margin-bottom:2rem;letter-spacing:.02em}
+.lfield{display:flex;flex-direction:column;gap:5px;margin-bottom:1.2rem}
+.lfield label{font-size:.6rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--sd)}
+.lfield input{
+  border:1.5px solid var(--sm);border-radius:var(--rsm);
+  padding:.78rem 1rem;font-family:var(--sans);font-size:.88rem;font-weight:300;
+  color:var(--b);background:var(--ww);outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.lfield input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,150,42,.12)}
+.lfield input::placeholder{color:var(--sm)}
+.login-btn{
+  width:100%;padding:.9rem;background:var(--gold);color:var(--nv);border:none;
+  border-radius:var(--rsm);font-family:var(--sans);font-size:.78rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
+  transition:background .2s,transform .15s,box-shadow .2s;margin-top:.5rem;
+  box-shadow:var(--sh-gold);
+}
+.login-btn:hover{background:var(--gold-d);color:var(--ww);transform:translateY(-2px);box-shadow:0 12px 32px rgba(196,150,42,.38)}
+.login-btn:active{transform:translateY(0) scale(.98)}
+.login-err{display:none;background:#fde8e6;border:1px solid rgba(192,57,43,.25);border-radius:var(--rsm);padding:.7rem 1rem;font-size:.78rem;color:var(--er);margin-top:.8rem;text-align:center}
+.login-err.show{display:block}
+.login-footer{text-align:center;margin-top:1.6rem;font-size:.68rem;font-weight:200;color:var(--sd)}
+.login-footer b{color:var(--nv);font-weight:400}
+
+/* ── ADMIN SHELL ─────────────────────────────── */
+#admin-shell{display:none;min-height:100vh}
+#admin-shell.active{display:flex}
+
+/* SIDEBAR */
+.sidebar{
+  width:var(--sidebar);flex-shrink:0;
+  background:var(--nv);
+  display:flex;flex-direction:column;
+  position:fixed;top:0;left:0;bottom:0;z-index:100;
+  overflow-y:auto;
+  box-shadow:4px 0 24px rgba(12,27,46,.25);
+}
+.sb-logo{
+  padding:1.6rem 1.4rem 1.3rem;
+  border-bottom:1px solid rgba(196,150,42,.15);
+}
+.sb-logo img{height:48px;width:auto;border-radius:8px;object-fit:contain;}
+.sb-badge{margin-top:.65rem;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(196,150,42,.55);font-weight:300}
+.sb-nav{padding:1rem 0;flex:1}
+.sb-section{
+  padding:.45rem 1.4rem .25rem;
+  font-size:.5rem;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(196,150,42,.4);font-weight:300;
+}
+.sb-link{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.68rem 1.4rem;margin:.08rem .65rem;border-radius:var(--rsm);
+  text-decoration:none;font-size:.8rem;font-weight:300;
+  color:rgba(247,245,240,.6);transition:all .2s;cursor:pointer;
+  border:none;background:none;width:calc(100% - 1.3rem);text-align:left;
+}
+.sb-link:hover{background:rgba(255,255,255,.07);color:var(--ww)}
+.sb-link:active{transform:scale(.97)}
+.sb-link.active{
+  background:rgba(196,150,42,.15);
+  color:var(--gold-l);
+  border:1px solid rgba(196,150,42,.2);
+  font-weight:400;
+}
+.sb-link.active .sb-icon{opacity:1;color:var(--gold)}
+.sb-icon{font-size:.95rem;opacity:.55;width:20px;text-align:center;transition:opacity .2s}
+.sb-count{
+  margin-left:auto;
+  background:rgba(196,150,42,.25);color:var(--gold-l);
+  font-size:.58rem;font-weight:500;padding:.1rem .5rem;border-radius:var(--rpill);
+}
+.sb-count.alert{background:var(--er);color:#fff}
+.sb-divider{height:1px;background:rgba(196,150,42,.1);margin:.5rem 1.4rem}
+.sb-user{padding:1rem 1.4rem;border-top:1px solid rgba(196,150,42,.12)}
+.sb-user-info{display:flex;align-items:center;gap:.75rem;margin-bottom:.8rem}
+.sb-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(196,150,42,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:var(--gold);flex-shrink:0;
+  border:1px solid rgba(196,150,42,.3);
+}
+.sb-user-name{font-size:.8rem;font-weight:300;color:var(--ww)}
+.sb-user-role{font-size:.62rem;font-weight:200;color:rgba(196,150,42,.6)}
+.logout-btn{
+  width:100%;padding:.55rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(196,150,42,.15);
+  border-radius:var(--rsm);font-family:var(--sans);
+  font-size:.68rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(247,245,240,.45);cursor:pointer;transition:all .2s;
+}
+.logout-btn:hover{background:rgba(192,57,43,.15);border-color:rgba(192,57,43,.35);color:#e88080}
+.logout-btn:active{transform:scale(.97)}
+
+/* MAIN CONTENT */
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{
+  background:var(--ww);border-bottom:1px solid var(--sl);
+  padding:0 2rem;height:64px;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:50;
+  box-shadow:0 2px 16px rgba(12,27,46,.07);
+}
+.topbar-title{font-family:var(--serif);font-size:1.35rem;color:var(--nv);font-weight:500}
+.topbar-right{display:flex;align-items:center;gap:.8rem}
+.topbar-btn{
+  padding:.5rem 1.2rem;border-radius:var(--rsm);font-family:var(--sans);
+  font-size:.72rem;font-weight:400;letter-spacing:.1em;cursor:pointer;
+  transition:all .2s;border:none;
+}
+.topbar-btn:active{transform:scale(.96)}
+.btn-primary{background:var(--gold);color:var(--nv);font-weight:500;box-shadow:0 2px 10px rgba(196,150,42,.2)}
+.btn-primary:hover{background:var(--gold-d);color:var(--ww);box-shadow:var(--sh-gold);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--nv);border:1.5px solid var(--sm)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:rgba(196,150,42,.04)}
+.btn-danger{background:transparent;color:var(--er);border:1px solid rgba(192,57,43,.3)}
+.btn-danger:hover{background:rgba(192,57,43,.08)}
+.btn-sm{padding:.35rem .9rem;font-size:.65rem}
+.content{padding:2rem;flex:1}
+
+/* STATS ROW */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem}
+.stat-card{
+  background:var(--ww);border-radius:var(--r);padding:1.5rem 1.4rem;
+  box-shadow:var(--sh);border:1px solid rgba(212,205,197,.5);
+  transition:transform .25s,box-shadow .25s;
+}
+.stat-card:hover{transform:translateY(-5px);box-shadow:var(--shh)}
+.stat-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+.stat-label{font-size:.6rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--sd)}
+.stat-icon{width:38px;height:38px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.si-nv{background:rgba(12,27,46,.08);color:var(--nv)}
+.si-ok{background:rgba(45,125,79,.1);color:var(--ok)}
+.si-gold{background:rgba(196,150,42,.12);color:var(--gold-d)}
+.si-warn{background:rgba(192,122,43,.12);color:var(--warn)}
+.stat-val{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--nv);line-height:1;margin-bottom:.3rem}
+.stat-sub{font-size:.68rem;font-weight:200;color:var(--sd)}
+.stat-sub b{color:var(--ok);font-weight:400}
+
+/* PANELS */
+.panels{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem;margin-bottom:2rem}
+.panel{background:var(--ww);border-radius:var(--r);box-shadow:var(--sh);border:1px solid rgba(212,205,197,.5);overflow:hidden}
+.panel-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--sl);display:flex;align-items:center;justify-content:space-between}
+.panel-title{font-family:var(--serif);font-size:1.1rem;color:var(--nv);font-weight:500}
+.panel-body{padding:0}
+
+/* TABLES */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-size:.58rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--sd);padding:.8rem 1.2rem;text-align:left;border-bottom:1px solid var(--sl);background:rgba(242,239,233,.6)}
+.tbl td{padding:.9rem 1.2rem;font-size:.8rem;font-weight:300;color:var(--b);border-bottom:1px solid var(--sl)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(242,239,233,.5)}
+.tbl-img-ph{width:40px;height:40px;border-radius:var(--rsm);background:linear-gradient(135deg,var(--sl),var(--sm));display:inline-block;flex-shrink:0}
+.pill{display:inline-block;padding:.18rem .65rem;border-radius:var(--rpill);font-size:.6rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase}
+.pill-arr{background:rgba(12,27,46,.1);color:var(--nv)}
+.pill-ven{background:rgba(196,150,42,.15);color:var(--gold-d)}
+.pill-neg{background:rgba(12,27,46,.08);color:var(--nv3)}
+.pill-ok{background:rgba(45,125,79,.12);color:var(--ok)}
+.pill-warn{background:rgba(192,122,43,.12);color:var(--warn)}
+.pill-er{background:rgba(192,57,43,.1);color:var(--er)}
+.tbl-actions{display:flex;gap:.4rem}
+.ico-btn{
+  width:30px;height:30px;border-radius:var(--rsm);
+  border:1.5px solid var(--sl);background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;transition:all .2s;color:var(--sd);
+}
+.ico-btn:hover{border-color:var(--gold);color:var(--gold-d);background:rgba(196,150,42,.07)}
+.ico-btn:active{transform:scale(.9)}
+.ico-btn.del:hover{border-color:var(--er);color:var(--er);background:rgba(192,57,43,.07)}
+
+/* ACTIVITY LIST */
+.act-list{padding:.4rem 0}
+.act-item{display:flex;align-items:flex-start;gap:.9rem;padding:.85rem 1.5rem;border-bottom:1px solid var(--sl)}
+.act-item:last-child{border-bottom:none}
+.act-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:.45rem}
+.act-dot.nv{background:var(--nv)}
+.act-dot.ok{background:var(--ok)}
+.act-dot.gold{background:var(--gold)}
+.act-dot.warn{background:var(--warn)}
+.act-text{font-size:.78rem;font-weight:300;color:var(--b);line-height:1.5}
+.act-time{font-size:.65rem;font-weight:200;color:var(--sd);margin-top:.2rem}
+
+/* SECTION VIEWS */
+.view{display:none}
+.view.active{display:block}
+.view-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.view-title{font-family:var(--serif);font-size:1.9rem;color:var(--nv);font-weight:500}
+.view-sub{font-size:.8rem;font-weight:200;color:var(--sd);margin-top:.2rem}
+.search-bar{display:flex;gap:.8rem;margin-bottom:1.5rem;align-items:center}
+.search-bar input,.search-bar select{
+  border:1.5px solid var(--sm);border-radius:var(--rsm);
+  padding:.65rem 1rem;font-family:var(--sans);font-size:.82rem;font-weight:300;
+  outline:none;transition:border-color .2s,box-shadow .2s;background:var(--ww);color:var(--b);
+}
+.search-bar input{flex:1}
+.search-bar input:focus,.search-bar select:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,150,42,.1);
+}
+.search-bar select{cursor:pointer}
+.full-panel{background:var(--ww);border-radius:var(--r);box-shadow:var(--sh);border:1px solid rgba(212,205,197,.5);overflow:hidden}
+
+/* MODAL */
+.modal-bg{
+  display:none;position:fixed;inset:0;
+  background:rgba(12,27,46,.55);z-index:200;
+  align-items:center;justify-content:center;padding:1rem;
+  backdrop-filter:blur(6px);
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:var(--ww);border-radius:20px;width:100%;max-width:640px;
+  max-height:90vh;overflow-y:auto;
+  box-shadow:0 40px 100px rgba(0,0,0,.4),0 0 0 1px rgba(196,150,42,.1);
+}
+.modal-head{
+  padding:1.5rem 2rem;border-bottom:1px solid var(--sl);
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;background:var(--ww);z-index:1;
+}
+.modal-title{font-family:var(--serif);font-size:1.35rem;color:var(--nv);font-weight:500}
+.modal-close{
+  width:32px;height:32px;border-radius:50%;
+  border:1.5px solid var(--sl);background:none;cursor:pointer;
+  font-size:1rem;color:var(--sd);transition:all .2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-close:hover{border-color:var(--er);color:var(--er);background:rgba(192,57,43,.06)}
+.modal-close:active{transform:scale(.9)}
+.modal-body{padding:1.5rem 2rem}
+.modal-footer{padding:1rem 2rem 1.5rem;border-top:1px solid var(--sl);display:flex;justify-content:flex-end;gap:.8rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.f-group{display:flex;flex-direction:column;gap:5px}
+.f-group.full{grid-column:1/-1}
+.f-group label{font-size:.58rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--sd)}
+.f-group input,.f-group select,.f-group textarea{
+  border:1.5px solid var(--sm);border-radius:var(--rsm);
+  padding:.65rem .9rem;font-family:var(--sans);font-size:.84rem;font-weight:300;
+  color:var(--b);outline:none;transition:border-color .2s,box-shadow .2s;background:var(--ww);
+}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,150,42,.1);
+}
+.f-group textarea{resize:vertical;min-height:80px}
+.toggle-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.toggle-chip{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.4rem .9rem;border:1.5px solid var(--sm);border-radius:var(--rpill);
+  cursor:pointer;font-size:.74rem;font-weight:300;color:var(--sd);
+  transition:all .2s;user-select:none;
+}
+.toggle-chip input{display:none}
+.toggle-chip:hover{border-color:var(--gold);color:var(--gold-d)}
+.toggle-chip:has(input:checked){background:var(--nv);border-color:var(--nv);color:var(--gold-l);font-weight:400}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:4rem 2rem}
+.empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.3}
+.empty p{font-family:var(--serif);font-size:1.3rem;color:var(--gold);margin-bottom:.4rem}
+.empty small{font-size:.78rem;font-weight:200;color:var(--sd)}
+
+/* TOAST */
+#toast{
+  position:fixed;bottom:2rem;right:2rem;
+  background:var(--nv);color:var(--ww);
+  padding:.85rem 1.6rem;border-radius:var(--rsm);
+  font-size:.8rem;font-weight:300;z-index:300;
+  opacity:0;transform:translateY(12px);
+  transition:all .35s;pointer-events:none;
+  box-shadow:0 12px 32px rgba(12,27,46,.4);
+  border-left:3px solid var(--gold);
+}
+#toast.show{opacity:1;transform:translateY(0)}
+#toast.ok{background:var(--ok);border-left-color:#72e0a0}
+#toast.err{background:var(--er);border-left-color:#f0a8a8}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  :root{--sidebar:0px}
+  .sidebar{transform:translateX(-260px);transition:transform .3s;width:260px}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .panels{grid-template-columns:1fr}
+  .topbar-title{font-size:1rem}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .f-group.full{grid-column:1}
+}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ─────────────────────────────────── -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="logo-dse.png" alt="DSE Inmobiliaria S.A.S."/>
+    </div>
+    <h2 class="login-title">Panel de Administración</h2>
+    <p class="login-hint">Acceso exclusivo para administradores DSE</p>
+    <div class="lfield">
+      <label>Usuario</label>
+      <input type="text" id="l-user" placeholder="admin" autocomplete="username"/>
+    </div>
+    <div class="lfield">
+      <label>Contraseña</label>
+      <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Ingresar al panel</button>
+    <div class="login-err" id="l-err">Usuario o contraseña incorrectos</div>
+    <p class="login-footer">Demo: <b>admin</b> · <b>dse2025</b></p>
+  </div>
+</div>
+
+<!-- ── ADMIN SHELL ─────────────────────────────── -->
+<div id="admin-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-logo">
+      <img src="logo-dse.png" alt="DSE Inmobiliaria S.A.S."/>
+      <div class="sb-badge">Panel de administración</div>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="sb-section">Principal</div>
+      <button class="sb-link active" onclick="showView('dashboard',this)">
+        <span class="sb-icon">📊</span> Dashboard
+      </button>
+
+      <div class="sb-section" style="margin-top:.8rem">Portafolio</div>
+      <button class="sb-link" onclick="showView('propiedades',this)">
+        <span class="sb-icon">🏠</span> Propiedades
+        <span class="sb-count" id="cnt-prop">12</span>
+      </button>
+      <button class="sb-link" onclick="showView('negocios',this)">
+        <span class="sb-icon">💼</span> Negocios en Marcha
+        <span class="sb-count" id="cnt-neg">6</span>
+      </button>
+
+      <div class="sb-divider"></div>
+      <div class="sb-section">Comunicaciones</div>
+      <button class="sb-link" onclick="showView('mensajes',this)">
+        <span class="sb-icon">✉</span> Mensajes
+        <span class="sb-count alert" id="cnt-msg">3</span>
+      </button>
+
+      <div class="sb-divider"></div>
+      <div class="sb-section">Sistema</div>
+      <button class="sb-link" onclick="showView('config',this)">
+        <span class="sb-icon">⚙</span> Configuración
+      </button>
+      <a class="sb-link" href="index.html" target="_blank">
+        <span class="sb-icon">↗</span> Ver sitio web
+      </a>
+    </nav>
+
+    <div class="sb-user">
+      <div class="sb-user-info">
+        <div class="sb-avatar">A</div>
+        <div>
+          <div class="sb-user-name">Administrador</div>
+          <div class="sb-user-role">DSE S.A.S. · Colombia</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="doLogout()">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <span class="topbar-title" id="topbar-title">Dashboard</span>
+      <div class="topbar-right">
+        <button class="topbar-btn btn-ghost" onclick="showView('propiedades',null)">+ Nueva propiedad</button>
+        <button class="topbar-btn btn-primary" onclick="openModal('prop-modal')">Publicar ahora</button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="view active" id="v-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Propiedades activas</span>
+              <div class="stat-icon si-nv">🏠</div>
+            </div>
+            <div class="stat-val">12</div>
+            <div class="stat-sub"><b>+2</b> este mes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">En arriendo</span>
+              <div class="stat-icon si-ok">📋</div>
+            </div>
+            <div class="stat-val">7</div>
+            <div class="stat-sub"><b>5</b> ocupadas actualmente</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Negocios listados</span>
+              <div class="stat-icon si-gold">💼</div>
+            </div>
+            <div class="stat-val">6</div>
+            <div class="stat-sub"><b>1</b> en negociación</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Mensajes nuevos</span>
+              <div class="stat-icon si-warn">✉</div>
+            </div>
+            <div class="stat-val">3</div>
+            <div class="stat-sub">Sin responder</div>
+          </div>
+        </div>
+
+        <div class="panels">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Propiedades recientes</span>
+              <button class="topbar-btn btn-ghost btn-sm" onclick="showView('propiedades',null)">Ver todas</button>
+            </div>
+            <div class="panel-body">
+              <table class="tbl">
+                <thead><tr>
+                  <th>Inmueble</th><th>Tipo</th><th>Precio</th><th>Estado</th>
+                </tr></thead>
+                <tbody id="dash-prop-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Actividad reciente</span>
+            </div>
+            <div class="act-list">
+              <div class="act-item"><div class="act-dot nv"></div><div><div class="act-text">Nueva propiedad publicada en Ciudad Jardín</div><div class="act-time">Hace 2 horas</div></div></div>
+              <div class="act-item"><div class="act-dot ok"></div><div><div class="act-text">Contrato de arriendo firmado — Apto Granada</div><div class="act-time">Hace 5 horas</div></div></div>
+              <div class="act-item"><div class="act-dot warn"></div><div><div class="act-text">Mensaje recibido: consulta sobre negocio en Medellín</div><div class="act-time">Hace 1 día</div></div></div>
+              <div class="act-item"><div class="act-dot gold"></div><div><div class="act-text">Avalúo completado — Casa Pance estrato 6</div><div class="act-time">Hace 2 días</div></div></div>
+              <div class="act-item"><div class="act-dot ok"></div><div><div class="act-text">Venta cerrada — Apartamento Unicentro $380M</div><div class="act-time">Hace 3 días</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROPIEDADES ── -->
+      <div class="view" id="v-propiedades">
+        <div class="view-header">
+          <div>
+            <div class="view-title">Propiedades</div>
+            <div class="view-sub">Gestión del portafolio inmobiliario</div>
+          </div>
+          <button class="topbar-btn btn-primary" onclick="openModal('prop-modal')">+ Agregar propiedad</button>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar por nombre, barrio…" oninput="filterTable(this.value,'prop-tbody')"/>
+          <select onchange="filterOp(this.value)">
+            <option value="">Todas las operaciones</option>
+            <option value="Arriendo">Arriendo</option>
+            <option value="Venta">Venta</option>
+          </select>
+          <select>
+            <option value="">Todos los estados</option>
+            <option>Activo</option><option>Inactivo</option><option>Negociación</option>
+          </select>
+        </div>
+        <div class="full-panel">
+          <table class="tbl">
+            <thead><tr>
+              <th></th><th>Nombre / Barrio</th><th>Tipo</th><th>Operación</th>
+              <th>Precio</th><th>Estrato</th><th>Estado</th><th>Acciones</th>
+            </tr></thead>
+            <tbody id="prop-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── NEGOCIOS ── -->
+      <div class="view" id="v-negocios">
+        <div class="view-header">
+          <div>
+            <div class="view-title">Negocios en Marcha</div>
+            <div class="view-sub">Oportunidades de inversión en operación</div>
+          </div>
+          <button class="topbar-btn btn-primary" onclick="openModal('neg-modal')">+ Agregar negocio</button>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar por nombre, ciudad…" oninput="filterTable(this.value,'neg-tbody')"/>
+          <select>
+            <option>Todas las categorías</option>
+            <option>Gastronomía</option><option>Alimentos &amp; Bebidas</option>
+            <option>Salud</option><option>Belleza &amp; Bienestar</option>
+            <option>Retail &amp; Moda</option><option>Insumos &amp; Construcción</option>
+          </select>
+        </div>
+        <div class="full-panel">
+          <table class="tbl">
+            <thead><tr>
+              <th>Categoría</th><th>Negocio</th><th>Ciudad</th>
+              <th>Precio venta</th><th>Facturación/mes</th><th>Antigüedad</th><th>Estado</th><th>Acciones</th>
+            </tr></thead>
+            <tbody id="neg-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── MENSAJES ── -->
+      <div class="view" id="v-mensajes">
+        <div class="view-header">
+          <div>
+            <div class="view-title">Mensajes</div>
+            <div class="view-sub">Solicitudes recibidas desde el formulario de contacto</div>
+          </div>
+        </div>
+        <div class="full-panel">
+          <table class="tbl">
+            <thead><tr>
+              <th>Remitente</th><th>Servicio de interés</th><th>Mensaje</th><th>Fecha</th><th>Estado</th><th>Acción</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><b style="font-weight:400">Carlos Mejía</b><br><small style="color:var(--sd)">cmejia@gmail.com · 315 234 5678</small></td>
+                <td>Arrendamiento</td>
+                <td style="max-width:200px;font-size:.75rem;color:var(--sd)">Busco apartamento en Granada estrato 5…</td>
+                <td style="font-size:.72rem;color:var(--sd)">Hoy 09:14</td>
+                <td><span class="pill pill-er">Nuevo</span></td>
+                <td><div class="tbl-actions">
+                  <button class="ico-btn" title="Responder">↩</button>
+                  <button class="ico-btn" title="Marcar leído">✓</button>
+                </div></td>
+              </tr>
+              <tr>
+                <td><b style="font-weight:400">María Torres</b><br><small style="color:var(--sd)">mtorres@empresa.co · 311 987 6543</small></td>
+                <td>Avalúo comercial</td>
+                <td style="max-width:200px;font-size:.75rem;color:var(--sd)">Necesito avalúo para inmueble en El Caney…</td>
+                <td style="font-size:.72rem;color:var(--sd)">Ayer 16:40</td>
+                <td><span class="pill pill-er">Nuevo</span></td>
+                <td><div class="tbl-actions">
+                  <button class="ico-btn">↩</button>
+                  <button class="ico-btn">✓</button>
+                </div></td>
+              </tr>
+              <tr>
+                <td><b style="font-weight:400">Andrés Castillo</b><br><small style="color:var(--sd)">acastillo@hotmail.com · 300 112 2334</small></td>
+                <td>Venta de negocio en marcha</td>
+                <td style="max-width:200px;font-size:.75rem;color:var(--sd)">Tengo interés en la ferretería de Bucaramanga…</td>
+                <td style="font-size:.72rem;color:var(--sd)">Hace 2 días</td>
+                <td><span class="pill pill-er">Nuevo</span></td>
+                <td><div class="tbl-actions">
+                  <button class="ico-btn">↩</button>
+                  <button class="ico-btn">✓</button>
+                </div></td>
+              </tr>
+              <tr>
+                <td><b style="font-weight:400">Laura Restrepo</b><br><small style="color:var(--sd)">lrestrepo@gmail.com · 317 445 6677</small></td>
+                <td>Venta de inmueble</td>
+                <td style="max-width:200px;font-size:.75rem;color:var(--sd)">¿El apartamento de Chipichape tiene parqueadero?</td>
+                <td style="font-size:.72rem;color:var(--sd)">Hace 4 días</td>
+                <td><span class="pill pill-ok">Respondido</span></td>
+                <td><div class="tbl-actions">
+                  <button class="ico-btn">↩</button>
+                  <button class="ico-btn del">✕</button>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── CONFIGURACIÓN ── -->
+      <div class="view" id="v-config">
+        <div class="view-header">
+          <div class="view-title">Configuración</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Datos de la empresa</span>
+              <button class="topbar-btn btn-primary btn-sm" onclick="toast('Cambios guardados','ok')">Guardar</button>
+            </div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem">
+              <div class="f-group"><label>Nombre legal</label><input value="Inmobiliaria DSE S.A.S."/></div>
+              <div class="f-group"><label>Correo electrónico</label><input value="dsesas@gmail.com"/></div>
+              <div class="f-group"><label>Teléfono / WhatsApp</label><input value="321 746 7970"/></div>
+              <div class="f-group"><label>Dirección</label><input value="Carrera 4 No. 12-41 Oficina 503, Cali"/></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><span class="panel-title">Seguridad</span></div>
+            <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.1rem">
+              <div class="f-group"><label>Contraseña actual</label><input type="password" placeholder="••••••••"/></div>
+              <div class="f-group"><label>Nueva contraseña</label><input type="password" placeholder="••••••••"/></div>
+              <div class="f-group"><label>Confirmar contraseña</label><input type="password" placeholder="••••••••"/></div>
+              <button class="topbar-btn btn-primary" onclick="toast('Contraseña actualizada','ok')" style="align-self:flex-start">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /admin-shell -->
+
+<!-- ── MODAL: NUEVA PROPIEDAD ── -->
+<div class="modal-bg" id="prop-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-title">Nueva propiedad</span>
+      <button class="modal-close" onclick="closeModal('prop-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="f-group full"><label>Nombre / Descripción</label><input placeholder="Apartamento ejecutivo en Ciudad Jardín"/></div>
+        <div class="f-group"><label>Barrio</label><input placeholder="Ciudad Jardín"/></div>
+        <div class="f-group"><label>Sector</label>
+          <select><option>Sur</option><option>Norte</option><option>Centro</option><option>Oriente</option><option>Oeste</option></select>
+        </div>
+        <div class="f-group"><label>Tipo de inmueble</label>
+          <select><option>Apartamento</option><option>Casa</option><option>Local</option><option>Oficina</option></select>
+        </div>
+        <div class="f-group"><label>Operación</label>
+          <select><option>Arriendo</option><option>Venta</option></select>
+        </div>
+        <div class="f-group"><label>Precio (COP)</label><input type="number" placeholder="2800000"/></div>
+        <div class="f-group"><label>Estrato</label>
+          <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+        </div>
+        <div class="f-group"><label>Habitaciones</label><input type="number" placeholder="3" min="0"/></div>
+        <div class="f-group"><label>Baños</label><input type="number" placeholder="2" min="1"/></div>
+        <div class="f-group"><label>Área (m²)</label><input type="number" placeholder="95"/></div>
+        <div class="f-group full"><label>Características</label>
+          <div class="toggle-row">
+            <label class="toggle-chip"><input type="checkbox"/> Parqueadero</label>
+            <label class="toggle-chip"><input type="checkbox"/> Amoblado</label>
+            <label class="toggle-chip"><input type="checkbox"/> Acepta mascotas</label>
+            <label class="toggle-chip"><input type="checkbox"/> Piscina</label>
+            <label class="toggle-chip"><input type="checkbox"/> Gimnasio</label>
+            <label class="toggle-chip"><input type="checkbox"/> Vigilancia 24h</label>
+          </div>
+        </div>
+        <div class="f-group full"><label>Descripción adicional</label><textarea placeholder="Detalles del inmueble, vista, acabados, condiciones…"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="topbar-btn btn-ghost" onclick="closeModal('prop-modal')">Cancelar</button>
+      <button class="topbar-btn btn-primary" onclick="saveModal('prop-modal','Propiedad publicada exitosamente')">Publicar propiedad</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: NUEVO NEGOCIO ── -->
+<div class="modal-bg" id="neg-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-title">Nuevo negocio en marcha</span>
+      <button class="modal-close" onclick="closeModal('neg-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="f-group full"><label>Nombre del negocio</label><input placeholder="Restaurante familiar La Cosecha"/></div>
+        <div class="f-group"><label>Categoría</label>
+          <select>
+            <option>Gastronomía</option><option>Alimentos &amp; Bebidas</option>
+            <option>Salud</option><option>Belleza &amp; Bienestar</option>
+            <option>Retail &amp; Moda</option><option>Insumos &amp; Construcción</option>
+            <option>Educación</option><option>Tecnología</option>
+          </select>
+        </div>
+        <div class="f-group"><label>Ciudad</label><input placeholder="Cali"/></div>
+        <div class="f-group"><label>Zona / Barrio</label><input placeholder="Granada · Norte"/></div>
+        <div class="f-group"><label>Precio de venta (COP)</label><input type="number" placeholder="85000000"/></div>
+        <div class="f-group"><label>Facturación mensual (COP)</label><input type="number" placeholder="12000000"/></div>
+        <div class="f-group"><label>Años en operación</label><input type="number" placeholder="4" min="0"/></div>
+        <div class="f-group"><label>Área operativa (m²)</label><input type="number" placeholder="120"/></div>
+        <div class="f-group full"><label>Descripción del negocio</label><textarea placeholder="Descripción, activos incluidos, razón de venta, oportunidad de inversión…"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="topbar-btn btn-ghost" onclick="closeModal('neg-modal')">Cancelar</button>
+      <button class="topbar-btn btn-primary" onclick="saveModal('neg-modal','Negocio publicado exitosamente')">Publicar negocio</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+/* ── DATA ── */
+const PROPS=[
+  {nom:'Apartamento ejecutivo',barrio:'Ciudad Jardín',cat:'Apartamento',op:'Arriendo',precio:2800000,est:6,estado:'Activo'},
+  {nom:'Casa familiar amplia',barrio:'El Ingenio',cat:'Casa',op:'Venta',precio:680000000,est:5,estado:'Activo'},
+  {nom:'Oficina corporativa',barrio:'San Fernando',cat:'Oficina',op:'Arriendo',precio:3500000,est:5,estado:'Activo'},
+  {nom:'Casa con jardín privado',barrio:'Pance',cat:'Casa',op:'Venta',precio:1200000000,est:6,estado:'Negociación'},
+  {nom:'Apartamento moderno',barrio:'Granada',cat:'Apartamento',op:'Arriendo',precio:2200000,est:5,estado:'Activo'},
+  {nom:'Local comercial',barrio:'Centro',cat:'Local',op:'Arriendo',precio:1800000,est:3,estado:'Activo'},
+  {nom:'Apartamento piso alto',barrio:'Unicentro',cat:'Apartamento',op:'Venta',precio:380000000,est:5,estado:'Activo'},
+  {nom:'Apartamento amoblado',barrio:'Santa Teresita',cat:'Apartamento',op:'Arriendo',precio:1900000,est:5,estado:'Activo'},
+  {nom:'Casa con piscina',barrio:'El Caney',cat:'Casa',op:'Venta',precio:420000000,est:4,estado:'Activo'},
+  {nom:'Apartamento nuevo',barrio:'Chipichape',cat:'Apartamento',op:'Venta',precio:295000000,est:5,estado:'Inactivo'},
+  {nom:'Casa con patio',barrio:'Villacolombia',cat:'Casa',op:'Arriendo',precio:1500000,est:3,estado:'Activo'},
+  {nom:'Apartamento estrenar',barrio:'Calipso',cat:'Apartamento',op:'Venta',precio:185000000,est:4,estado:'Activo'}
+];
+const NEGS=[
+  {cat:'Gastronomía',nom:'Restaurante familiar tradicional',ciudad:'Cali',zona:'Ciudad Jardín',precio:85000000,fact:12000000,anos:4,estado:'Activo'},
+  {cat:'Alimentos & Bebidas',nom:'Panadería & Café artesanal',ciudad:'Medellín',zona:'El Poblado',precio:45000000,fact:8000000,anos:3,estado:'Activo'},
+  {cat:'Belleza & Bienestar',nom:'Centro de Estética & Spa',ciudad:'Cali',zona:'Chipichape',precio:38000000,fact:6500000,anos:2,estado:'Activo'},
+  {cat:'Salud',nom:'Consultorio Odontológico',ciudad:'Bogotá',zona:'Chapinero',precio:120000000,fact:18000000,anos:6,estado:'Negociación'},
+  {cat:'Retail & Moda',nom:'Boutique de moda femenina',ciudad:'Barranquilla',zona:'El Prado',precio:55000000,fact:9000000,anos:3,estado:'Activo'},
+  {cat:'Insumos & Construcción',nom:'Ferretería & Materiales',ciudad:'Bucaramanga',zona:'Centro',precio:95000000,fact:15000000,anos:7,estado:'Activo'}
+];
+
+function num(v){return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+function fmtP(p,op){
+  if(op==='Arriendo')return`$${num(p)}<small>/mes</small>`;
+  const m=Math.round(p/1000000);
+  return m>=1000?`$${(m/1000).toFixed(1).replace('.',',')} B`:`$${num(m)} M`;
+}
+function estadoPill(e){
+  const map={Activo:'ok',Inactivo:'er',Negociación:'warn'};
+  return`<span class="pill pill-${map[e]||'ok'}">${e}</span>`;
+}
+
+/* ── RENDER TABLES ── */
+function renderProps(){
+  const tb=document.getElementById('prop-tbody');
+  const dash=document.getElementById('dash-prop-tbody');
+  const rows=PROPS.map((p,i)=>`<tr>
+    <td><div class="tbl-img-ph"></div></td>
+    <td><b style="font-weight:400;font-size:.85rem">${p.nom}</b><br><small style="color:var(--sd)">${p.barrio} · Est. ${p.est}</small></td>
+    <td style="color:var(--sd)">${p.cat}</td>
+    <td><span class="pill ${p.op==='Arriendo'?'pill-arr':'pill-ven'}">${p.op}</span></td>
+    <td style="font-weight:400">${fmtP(p.precio,p.op)}</td>
+    <td style="color:var(--sd)">${p.est}</td>
+    <td>${estadoPill(p.estado)}</td>
+    <td><div class="tbl-actions">
+      <button class="ico-btn" title="Editar" onclick="toast('Editar: ${p.nom}')">✏</button>
+      <button class="ico-btn del" title="Eliminar" onclick="delRow(this,'prop')">✕</button>
+    </div></td>
+  </tr>`).join('');
+  if(tb) tb.innerHTML=rows;
+  if(dash) dash.innerHTML=PROPS.slice(0,5).map(p=>`<tr>
+    <td><div class="tbl-img-ph" style="width:32px;height:32px"></div></td>
+    <td><b style="font-weight:400">${p.nom}</b><br><small style="color:var(--sd);font-size:.68rem">${p.barrio}</small></td>
+    <td><span class="pill ${p.op==='Arriendo'?'pill-arr':'pill-ven'}">${p.op}</span></td>
+    <td style="font-weight:400;font-size:.8rem">${fmtP(p.precio,p.op)}</td>
+    <td>${estadoPill(p.estado)}</td>
+  </tr>`).join('');
+}
+
+function renderNegs(){
+  const tb=document.getElementById('neg-tbody');
+  if(!tb)return;
+  tb.innerHTML=NEGS.map(n=>`<tr>
+    <td><span style="font-size:.7rem;color:var(--sd)">${n.cat}</span></td>
+    <td><b style="font-weight:400">${n.nom}</b><br><small style="color:var(--sd)">${n.zona}</small></td>
+    <td>${n.ciudad}</td>
+    <td style="font-weight:400">$${num(Math.round(n.precio/1000000))} M</td>
+    <td style="color:var(--sd)">$${num(n.fact)} /mes</td>
+    <td style="color:var(--sd)">${n.anos} años</td>
+    <td>${estadoPill(n.estado)}</td>
+    <td><div class="tbl-actions">
+      <button class="ico-btn" onclick="toast('Editar negocio')">✏</button>
+      <button class="ico-btn del" onclick="delRow(this,'neg')">✕</button>
+    </div></td>
+  </tr>`).join('');
+}
+
+/* ── NAVIGATION ── */
+function showView(id,btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('v-'+id).classList.add('active');
+  document.querySelectorAll('.sb-link').forEach(l=>l.classList.remove('active'));
+  if(btn){
+    btn.classList.add('active');
+  }else{
+    document.querySelectorAll('.sb-link').forEach(l=>{
+      if(l.getAttribute('onclick')&&l.getAttribute('onclick').includes("'"+id+"'"))
+        l.classList.add('active');
+    });
+  }
+  const titles={dashboard:'Dashboard',propiedades:'Propiedades',negocios:'Negocios en Marcha',mensajes:'Mensajes',config:'Configuración'};
+  document.getElementById('topbar-title').textContent=titles[id]||id;
+}
+
+/* ── MODAL ── */
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function saveModal(id,msg){closeModal(id);toast(msg,'ok')}
+document.querySelectorAll('.modal-bg').forEach(m=>
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')})
+);
+
+/* ── LOGIN ── */
+function doLogin(){
+  const u=document.getElementById('l-user').value.trim();
+  const p=document.getElementById('l-pass').value;
+  const err=document.getElementById('l-err');
+  if((u==='admin'||u==='admin@dsesas.com')&&p==='dse2025'){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('admin-shell').classList.add('active');
+    renderProps();
+    renderNegs();
+  }else{
+    err.classList.add('show');
+    setTimeout(()=>err.classList.remove('show'),3000);
+  }
+}
+document.getElementById('l-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+document.getElementById('l-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('l-pass').focus()});
+
+function doLogout(){
+  document.getElementById('admin-shell').classList.remove('active');
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('l-pass').value='';
+}
+
+/* ── TABLE FILTER ── */
+function filterTable(q,tbId){
+  const tb=document.getElementById(tbId);
+  if(!tb)return;
+  tb.querySelectorAll('tr').forEach(r=>{
+    r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
+  });
+}
+
+/* ── FILTER OPERATION ── */
+function filterOp(val){
+  document.querySelectorAll('#prop-tbody tr').forEach(r=>{
+    if(!val){r.style.display='';return}
+    r.style.display=r.textContent.includes(val)?'':'none';
+  });
+}
+
+/* ── DELETE ROW ── */
+function delRow(btn,type){
+  if(confirm('¿Confirmar eliminación de este registro?')){
+    btn.closest('tr').remove();
+    const c=document.getElementById('cnt-'+(type==='prop'?'prop':'neg'));
+    if(c)c.textContent=parseInt(c.textContent)-1;
+    toast('Registro eliminado','ok');
+  }
+}
+
+/* ── TOAST ── */
+function toast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className=type;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+</script>
+</body>
+</html>

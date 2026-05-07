@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Read(//c/Users/LUIS FERNANDO/.claude/**)",
+      "Bash(curl -s -X GET https://primary-production-be6ac.up.railway.app/api/v1/credentials -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w' -H 'Content-Type: application/json')",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s https://primary-production-be6ac.up.railway.app/api/v1/credentials -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(node -e ' *)",
+      "Bash(curl -s https://primary-production-be6ac.up.railway.app/api/v1/workflows -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(curl -s https://primary-production-be6ac.up.railway.app/api/v1/workflows/FD9R8RCfxi1G0AYp -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(jq --version)",
+      "Bash(node /tmp/create_kortesitos.js)",
+      "Bash(node create_kortesitos.js)",
+      "Bash(curl -s -X POST https://primary-production-be6ac.up.railway.app/api/v1/workflows/__TRACKED_VAR__/activate -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w' -H 'Content-Type: application/json')",
+      "Bash(curl -s --max-time 10 \"https://primary-production-be6ac.up.railway.app/api/v1/workflows\" -H \"X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w\")",
+      "Bash(curl -s https://primary-production-be6ac.up.railway.app/api/v1/workflows/WLbNPtKK0UkxfinI -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(node fix_gcal.js)",
+      "Bash(node -e \"const c=[];process.stdin.on\\('data',d=>c.push\\(d\\)\\);process.stdin.on\\('end',\\(\\)=>{const r=JSON.parse\\(c.join\\(''\\)\\);console.log\\('Cal activate:',r.active?'✅ ACTIVO':'❌ '+r.message?.slice\\(0,150\\)\\);}\\);\")",
+      "Bash(node -e \"const c=[];process.stdin.on\\('data',d=>c.push\\(d\\)\\);process.stdin.on\\('end',\\(\\)=>{const r=JSON.parse\\(c.join\\(''\\)\\);console.log\\('Rem activate:',r.active?'✅ ACTIVO':'❌ '+r.message?.slice\\(0,150\\)\\);}\\);\")",
+      "Bash(curl -s 'https://primary-production-be6ac.up.railway.app/api/v1/executions?workflowId=6b0QdYNoUa4VIoVc&limit=5' -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(curl -s 'https://primary-production-be6ac.up.railway.app/api/v1/executions/10?includeData=true' -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(curl -s https://primary-production-be6ac.up.railway.app/api/v1/workflows/6b0QdYNoUa4VIoVc -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(node fix_bot.js)",
+      "Bash(node fix_bot_local.js)",
+      "Bash(curl -s 'https://primary-production-be6ac.up.railway.app/api/v1/executions?workflowId=6b0QdYNoUa4VIoVc&limit=3&includeData=true' -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(curl -s '__TRACKED_VAR__/executions?workflowId=6b0QdYNoUa4VIoVc&limit=5' -H 'X-N8N-API-KEY: __TRACKED_VAR__')",
+      "Bash(curl -s 'https://primary-production-be6ac.up.railway.app/api/v1/executions/86?includeData=true' -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "Bash(curl -s 'https://primary-production-be6ac.up.railway.app/api/v1/executions/89?includeData=true' -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
+      "mcp__mcp-registry__search_mcp_registry",
+      "mcp__bb6ff251-4c42-404b-b541-5488917b689a__create_event",
+      "PowerShell(Get-Item \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse.png\", \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse-alt.png\", \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse-dark.png\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})"
+    ]
+  }
+}

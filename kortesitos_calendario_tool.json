@@ -1,0 +1,138 @@
+{
+  "name": "Kortesitos Kids - Herramienta Calendario",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b1c2d3e4-0001-0001-0001-000000000001",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [-400, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "loose"},
+          "conditions": [
+            {
+              "id": "check-accion",
+              "leftValue": "={{ $json.accion }}",
+              "rightValue": "verificar",
+              "operator": {"type": "string", "operation": "equals"}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1c2d3e4-0002-0002-0002-000000000002",
+      "name": "Verificar o Crear?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-180, 300]
+    },
+    {
+      "parameters": {
+        "calendar": { "__rl": true, "value": "primary", "mode": "id" },
+        "timeMin": "={{ $json.fecha_hora }}",
+        "timeMax": "={{ DateTime.fromISO($json.fecha_hora).plus({hours: 2}).toISO() }}",
+        "options": {}
+      },
+      "id": "b1c2d3e4-0003-0003-0003-000000000003",
+      "name": "Consultar Calendario",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [40, 180],
+      "parameters": {
+        "resource": "event",
+        "operation": "getAll",
+        "calendar": { "__rl": true, "value": "primary", "mode": "id" },
+        "timeMin": "={{ $json.fecha_hora }}",
+        "timeMax": "={{ DateTime.fromISO($json.fecha_hora).plus({hours: 2}).toISO() }}",
+        "options": {
+          "singleEvents": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const eventos = $input.all();\nif (eventos.length === 0 || (eventos.length === 1 && !eventos[0].json.id)) {\n  return [{ json: { disponible: true, mensaje: 'Hay disponibilidad en ese horario.' } }];\n} else {\n  return [{ json: { disponible: false, mensaje: 'Ese horario ya está ocupado. Por favor elige otro.' } }];\n}"
+      },
+      "id": "b1c2d3e4-0004-0004-0004-000000000004",
+      "name": "Evaluar Disponibilidad",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 180]
+    },
+    {
+      "parameters": {
+        "resource": "event",
+        "operation": "create",
+        "calendar": { "__rl": true, "value": "primary", "mode": "id" },
+        "start": "={{ $json.fecha_inicio }}",
+        "end": "={{ $json.fecha_fin }}",
+        "additionalFields": {
+          "summary": "={{ $json.servicio }} - {{ $json.nombre_cliente }}",
+          "description": "=Cliente: {{ $json.nombre_cliente }}\nServicio: {{ $json.servicio }}\nTelegram Chat ID: {{ $json.chat_id }}\nAtendido: NO",
+          "location": "Cra 80 #10A-10 Local 21, Cali"
+        }
+      },
+      "id": "b1c2d3e4-0005-0005-0005-000000000005",
+      "name": "Crear Evento Calendario",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [40, 420]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "res-crear",
+              "name": "resultado",
+              "value": "=Cita creada exitosamente para {{ $json.summary }} el {{ DateTime.fromISO($json.start.dateTime).setLocale('es').toFormat(\"dd 'de' MMMM 'a las' h:mm a\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b1c2d3e4-0006-0006-0006-000000000006",
+      "name": "Confirmar Creacion",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [260, 420]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [{ "node": "Verificar o Crear?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Verificar o Crear?": {
+      "main": [
+        [{ "node": "Consultar Calendario", "type": "main", "index": 0 }],
+        [{ "node": "Crear Evento Calendario", "type": "main", "index": 0 }]
+      ]
+    },
+    "Consultar Calendario": {
+      "main": [
+        [{ "node": "Evaluar Disponibilidad", "type": "main", "index": 0 }]
+      ]
+    },
+    "Crear Evento Calendario": {
+      "main": [
+        [{ "node": "Confirmar Creacion", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

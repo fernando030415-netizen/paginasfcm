@@ -1,0 +1,21 @@
+{
+  "extraKnownMarketplaces": {
+    "n8n-skills": {
+      "source": {
+        "source": "github",
+        "repo": "czlonkowski/n8n-skills"
+      },
+      "autoUpdate": true
+    },
+    "n8n-mcp": {
+      "source": {
+        "source": "github",
+        "repo": "czlonkowski/n8n-mcp"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "n8n-mcp-skills@n8n-skills": true
+  }
+}
