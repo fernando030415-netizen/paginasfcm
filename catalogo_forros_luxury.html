@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo Forros Luxury Colombia</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      width: 794px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0a0a0a;
+      padding: 36px 40px 28px;
+      border-bottom: 3px solid #c9a84c;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand { font-size: 30px; font-weight: 900; letter-spacing: 4px; }
+    .brand span { color: #c9a84c; }
+    .brand-sub { font-size: 10px; letter-spacing: 6px; color: #666; margin-top: 5px; }
+    .header-right { text-align: right; }
+    .header-right .tag {
+      background: #c9a84c; color: #000;
+      font-size: 9px; font-weight: 900;
+      padding: 5px 14px; letter-spacing: 2px;
+      display: inline-block; margin-bottom: 6px;
+    }
+    .header-right .info { font-size: 10px; color: #666; letter-spacing: 1px; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: linear-gradient(90deg, #c9a84c, #e8c96d, #c9a84c);
+      padding: 9px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .strip p { font-size: 10px; font-weight: 800; color: #000; letter-spacing: 1.5px; }
+
+    /* ── HERO FOTO (imagen grande) ── */
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      background: #111;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
+      display: flex; align-items: center; padding: 0 50px;
+    }
+    .hero-text .eyebrow {
+      font-size: 10px; letter-spacing: 5px; color: #c9a84c;
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .hero-text h1 {
+      font-size: 36px; font-weight: 900; line-height: 1.1;
+      letter-spacing: 2px; margin-bottom: 14px;
+    }
+    .hero-text h1 span { color: #c9a84c; }
+    .hero-text p { font-size: 12px; color: #ccc; max-width: 300px; line-height: 1.7; }
+
+    /* ── GALERÍA 3 FOTOS ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      padding: 3px 0;
+    }
+    .gallery-item {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: #111;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      display: block;
+    }
+    .gallery-item .label {
+      position: absolute; bottom: 10px; left: 12px;
+      font-size: 9px; font-weight: 800; letter-spacing: 2px;
+      color: #fff; background: rgba(0,0,0,0.6); padding: 4px 10px;
+    }
+    .gallery-item .label span { color: #c9a84c; }
+
+    /* placeholder para fotos */
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: #1a1a1a; color: #444;
+      font-size: 11px; letter-spacing: 2px; gap: 10px;
+    }
+    .photo-placeholder .icon { font-size: 36px; }
+
+    /* ── PRODUCTO CARD ── */
+    .product-section {
+      padding: 0 40px;
+      margin-top: 30px;
+    }
+    .section-label {
+      font-size: 10px; letter-spacing: 4px; color: #c9a84c;
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .product-main {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* foto del producto */
+    .product-photo {
+      height: 260px;
+      overflow: hidden;
+      background: #1a1a1a;
+      position: relative;
+    }
+    .product-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+    }
+    .product-photo .badge-new {
+      position: absolute; top: 14px; left: 14px;
+      background: #e63946; color: #fff;
+      font-size: 9px; font-weight: 900; padding: 5px 12px; letter-spacing: 2px;
+    }
+
+    .product-detail { padding: 28px 26px; display: flex; flex-direction: column; justify-content: center; }
+    .product-ref { font-size: 9px; letter-spacing: 3px; color: #666; margin-bottom: 6px; }
+    .product-name { font-size: 22px; font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; }
+    .product-name span { color: #c9a84c; }
+    .product-desc { font-size: 11px; color: #999; line-height: 1.8; margin-bottom: 16px; }
+
+    .specs { display: flex; flex-direction: column; gap: 6px; }
+    .spec { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #ccc; }
+    .spec .dot { width: 6px; height: 6px; background: #c9a84c; flex-shrink: 0; }
+
+    /* ── VARIANTE COLOR ── */
+    .color-variants {
+      margin-top: 28px;
+      padding: 0 40px;
+    }
+    .color-strip {
+      display: flex; gap: 3px;
+    }
+    .color-card {
+      flex: 1; background: #111;
+      border: 1px solid #1e1e1e;
+      padding: 18px 16px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .color-card.active { border-color: #c9a84c; }
+    .color-swatch {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 50%; border: 2px solid #333;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .color-card .name { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .color-card .status { font-size: 9px; color: #888; margin-top: 3px; letter-spacing: 1px; }
+    .color-card.active .name { color: #c9a84c; }
+
+    /* ── PRECIO ── */
+    .price-block {
+      margin: 28px 40px 0;
+      background: #111;
+      border: 1px solid #c9a84c;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .price-left {
+      padding: 28px 30px;
+      border-right: 1px solid #1e1e1e;
+    }
+    .price-left .eyebrow { font-size: 9px; letter-spacing: 3px; color: #888; margin-bottom: 12px; }
+    .price-left .before { font-size: 16px; color: #444; text-decoration: line-through; }
+    .price-left .now { font-size: 46px; font-weight: 900; color: #c9a84c; line-height: 1; }
+    .price-left .now small { font-size: 22px; }
+    .price-left .urgency {
+      margin-top: 14px; display: inline-block;
+      background: #e63946; color: #fff;
+      font-size: 9px; font-weight: 800; padding: 5px 12px; letter-spacing: 2px;
+    }
+    .price-right { padding: 28px 26px; }
+    .price-right .includes-title { font-size: 9px; letter-spacing: 3px; color: #888; margin-bottom: 14px; }
+    .includes-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .includes-list li { font-size: 12px; color: #ccc; display: flex; align-items: center; gap: 12px; }
+    .includes-list li .ico { font-size: 18px; min-width: 24px; }
+
+    /* ── INSTALADO EN VIVO ── */
+    .live-section { margin: 28px 40px 0; }
+    .live-title { font-size: 10px; letter-spacing: 4px; color: #c9a84c; font-weight: 700; margin-bottom: 12px; }
+    .live-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 3px; }
+    .live-grid .live-img { height: 220px; overflow: hidden; background: #111; }
+    .live-grid .live-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .live-grid .side { display: flex; flex-direction: column; gap: 3px; }
+    .live-grid .side .live-img { height: calc(50% - 1.5px); }
+
+    /* ── CTA ── */
+    .cta {
+      margin: 28px 40px 0;
+      background: linear-gradient(135deg, #120f00, #1e1800);
+      border: 1px solid #c9a84c;
+      padding: 34px; text-align: center;
+    }
+    .cta h2 { font-size: 20px; font-weight: 900; letter-spacing: 2px; }
+    .cta h2 span { color: #c9a84c; }
+    .cta p { font-size: 11px; color: #888; margin: 10px 0 22px; }
+    .cta-btn {
+      display: inline-block;
+      background: #c9a84c; color: #000;
+      font-size: 12px; font-weight: 900; letter-spacing: 3px;
+      padding: 15px 40px; text-decoration: none;
+    }
+    .cta-link { margin-top: 12px; font-size: 10px; color: #666; letter-spacing: 1px; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin: 28px 0 0;
+      padding: 20px 40px;
+      background: #050505; border-top: 1px solid #1a1a1a;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer .fl { font-size: 12px; font-weight: 900; letter-spacing: 3px; color: #c9a84c; }
+    .footer .tagline { font-size: 9px; color: #444; margin-top: 4px; letter-spacing: 1px; }
+    .footer .contact { text-align: right; font-size: 10px; color: #555; line-height: 1.9; }
+    .footer .contact strong { color: #c9a84c; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand">FORROS <span>LUXURY</span></div>
+      <div class="brand-sub">COLOMBIA · A&S</div>
+    </div>
+    <div class="header-right">
+      <div class="tag">30+ MODELOS CUBIERTOS</div>
+      <div class="info">Fabricados a la medida · Envío gratis</div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <p>📐 &nbsp;100% A LA MEDIDA</p>
+    <p>✦</p>
+    <p>💎 &nbsp;MATERIAL PREMIUM</p>
+    <p>✦</p>
+    <p>🚚 &nbsp;ENVÍO GRATIS</p>
+    <p>✦</p>
+    <p>💵 &nbsp;PAGO CONTRA ENTREGA</p>
+  </div>
+
+  <!-- HERO — foto 3 (vista trasera completa, más impactante) -->
+  <div class="hero-img-wrap">
+    <img src="foto3.jpg" alt="Forros Luxury instalados">
+    <!-- Si no carga: muestra el overlay igual -->
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <div class="eyebrow">COLECCIÓN 2025</div>
+        <h1>NEGRO<br><span>+ ROJO</span></h1>
+        <p>Forros a la medida con diseño deportivo chevron. Protección total para delanteros y traseros.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERÍA 3 ÁNGULOS -->
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="foto1.jpg" alt="Vista delantera">
+      <div class="label">ASIENTOS <span>DELANTEROS</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="foto2.jpg" alt="Vista lateral trasera">
+      <div class="label">ASIENTO <span>TRASERO</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="foto3.jpg" alt="Vista trasera completa">
+      <div class="label">JUEGO <span>COMPLETO</span></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO -->
+  <div class="product-section">
+    <div class="section-label">ESPECIFICACIONES DEL PRODUCTO</div>
+    <div class="product-main">
+      <div class="product-photo">
+        <img src="foto1.jpg" alt="Negro Rojo 001">
+        <div class="badge-new">DISPONIBLE</div>
+      </div>
+      <div class="product-detail">
+        <div class="product-ref">REF. NR-001 · EDICIÓN DEPORTIVA</div>
+        <div class="product-name">NEGRO <span>+ ROJO</span></div>
+        <div class="product-desc">
+          Diseño bicolor deportivo con patrón chevron en relieve cosido.
+          Combina tela premium en negro con paneles laterales en rojo
+          vivo — transforma el interior de tu vehículo al instante.
+        </div>
+        <div class="specs">
+          <div class="spec"><div class="dot"></div>Juego completo: 5 piezas</div>
+          <div class="spec"><div class="dot"></div>Delanteros + trasero completo + cabeceros</div>
+          <div class="spec"><div class="dot"></div>Material: tela premium + cuero eco lateral</div>
+          <div class="spec"><div class="dot"></div>Patrón chevron cosido en relieve</div>
+          <div class="spec"><div class="dot"></div>Compatible con todo tipo de vehículo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLORES -->
+  <div class="color-variants">
+    <div class="color-strip">
+      <div class="color-card active">
+        <div class="color-swatch" style="background: radial-gradient(circle at 40% 40%, #333 50%, #cc0000 50%);">
+        </div>
+        <div>
+          <div class="name">NEGRO + ROJO</div>
+          <div class="status">✓ DISPONIBLE</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: radial-gradient(circle at 40% 40%, #333 50%, #1a3a6e 50%);">
+        </div>
+        <div>
+          <div class="name">NEGRO + AZUL</div>
+          <div class="status">CONSULTAR</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: radial-gradient(circle at 40% 40%, #333 50%, #8b5e00 50%);">
+        </div>
+        <div>
+          <div class="name">NEGRO + CAFÉ</div>
+          <div class="status">CONSULTAR</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #222; border-color: #c9a84c;">
+          <span style="font-size:14px;">🎨</span>
+        </div>
+        <div>
+          <div class="name">PERSONALIZADO</div>
+          <div class="status">BAJO PEDIDO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRECIO -->
+  <div class="price-block">
+    <div class="price-left">
+      <div class="eyebrow">PRECIO ESPECIAL ESTE MES</div>
+      <div class="before">Antes: $325.900</div>
+      <div class="now"><small>$</small>279.900</div>
+      <div class="urgency">⏰ PRECIO POR TIEMPO LIMITADO</div>
+    </div>
+    <div class="price-right">
+      <div class="includes-title">INCLUYE</div>
+      <ul class="includes-list">
+        <li><span class="ico">🚚</span> Envío gratis a todo Colombia</li>
+        <li><span class="ico">💵</span> Pago contra entrega</li>
+        <li><span class="ico">🎁</span> Ambientador tipo nuevo</li>
+        <li><span class="ico">🪡</span> Juego completo 5 piezas</li>
+        <li><span class="ico">📐</span> 100% a la medida de tu carro</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>¿TE GUSTÓ? <span>LO ENVIAMOS HOY.</span></h2>
+    <p>Cuéntanos tu modelo de vehículo y coordinamos el envío gratis a tu puerta.</p>
+    <a class="cta-btn" href="https://wa.me/5731222880765">HACER MI PEDIDO →</a>
+    <div class="cta-link">📱 wa.me/5731222880765 &nbsp;·&nbsp; Pago contra entrega</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="fl">FORROS LUXURY · A&S</div>
+      <div class="tagline">Premium accesible · Hecho para tu carro</div>
+    </div>
+    <div class="contact">
+      <strong>WhatsApp pedidos</strong><br>
+      wa.me/5731222880765<br>
+      Lunes a Sábado
+    </div>
+  </div>
+
+  <!--
+  ══════════════════════════════════════════
+  INSTRUCCIONES PARA AGREGAR TUS FOTOS:
+  ══════════════════════════════════════════
+  1. Guarda las 3 fotos en la misma carpeta que este archivo HTML
+  2. Renómbralas exactamente así:
+       foto1.jpg  →  foto del interior delantero (asientos frontales)
+       foto2.jpg  →  foto lateral trasera
+       foto3.jpg  →  foto trasera completa (desde atrás)
+  3. Abre el HTML en Chrome → Ctrl+P → Guardar como PDF
+  4. ¡Listo para enviar por WhatsApp!
+  ══════════════════════════════════════════
+  -->
+
+</body>
+</html>
