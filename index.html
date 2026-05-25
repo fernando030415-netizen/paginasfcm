@@ -300,6 +300,54 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .rc-step-title{font-family:var(--serif);font-size:1.12rem;font-weight:500;color:#fff;margin-bottom:.5rem}
 .rc-step-desc{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75}
 
+/* ── SECCIÓN PROPIEDADES (fondo blanco) ────────────────────── */
+#propiedades{background:var(--w);padding:5rem 5rem;border-top:1px solid var(--sm)}
+#propiedades .sec-label{color:var(--gold-d)}
+#propiedades .sec-title{color:var(--nv)}
+#propiedades .portfolio-wrap{background:transparent;border:none;padding:0;margin-top:2rem}
+/* Tabs */
+#propiedades .mkt-tabs{border-bottom-color:var(--sm)}
+#propiedades .tab{color:var(--sd)}
+#propiedades .tab:hover{color:var(--nv)}
+#propiedades .tab.on{color:var(--nv);border-bottom-color:var(--gold)}
+/* Sort */
+#propiedades .sort-wrap select{background:var(--ww);border-color:var(--sm);color:var(--b)}
+#propiedades .sort-wrap select option{background:var(--ww);color:var(--b)}
+/* Filtros */
+#propiedades .sg{background:var(--ww);border-color:var(--sm)}
+#propiedades .sf{border-right-color:var(--sm)}
+#propiedades .sf label{color:var(--gold-d)}
+#propiedades .sf select{color:var(--b)}
+#propiedades .sf select option{background:var(--ww);color:var(--b)}
+#propiedades .sbtn{background:var(--nv);color:#fff}
+#propiedades .sbtn:hover{background:var(--gold);color:var(--nv)}
+/* Chips */
+#propiedades .chip-lbl{color:var(--gold-d)}
+#propiedades .chip{background:transparent;border-color:rgba(12,27,46,.15);color:var(--sd)}
+#propiedades .chip:hover{border-color:var(--gold-d);color:var(--nv);background:rgba(196,150,42,.08)}
+#propiedades .chip.on{background:var(--nv);color:#fff;border-color:var(--nv)}
+#propiedades .chip-div{background:var(--sm)}
+#propiedades .clr-btn{border-color:var(--sm);color:var(--sd)}
+#propiedades .clr-btn:hover{border-color:var(--gold);color:var(--gold-d)}
+/* Barra resultado */
+#propiedades .res-bar{border-bottom-color:var(--sm)}
+#propiedades .res-count{color:var(--sd)}
+#propiedades .res-count strong{color:var(--nv)}
+/* Tarjetas */
+#propiedades .pcard{background:var(--ww);border-color:rgba(221,213,200,.7);box-shadow:0 4px 16px rgba(12,27,46,.06)}
+#propiedades .pcard:hover{box-shadow:0 20px 55px rgba(12,27,46,.14);border-color:rgba(196,150,42,.4)}
+#propiedades .pprice{color:var(--gold-d)}
+#propiedades .pprice span{color:var(--sd)}
+#propiedades .pname{color:var(--nv)}
+#propiedades .ploc{color:var(--sd)}
+#propiedades .spec-item{background:var(--bg2);border-color:rgba(221,213,200,.6)}
+#propiedades .spec-item-val{color:var(--nv)}
+#propiedades .spec-item-lbl{color:var(--sd)}
+#propiedades .no-res p{color:var(--gold-d)}
+#propiedades .no-res small{color:var(--sd)}
+@media(max-width:960px){#propiedades{padding:5rem 2rem}}
+@media(max-width:600px){#propiedades{padding:3.5rem 1.25rem}}
+
 /* ── SERVICIOS ────────────────────────────────────────────────── */
 #servicios{background:var(--b)}
 #servicios .sec-label{color:var(--gold)}
@@ -422,6 +470,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   <a class="logo" href="#hero"><img class="logo-img" src="logo-dse.png" alt="DSE Inmobiliaria S.A.S."/></a>
   <ul class="nav-links">
     <li><a href="#categorias">Categorías</a></li>
+    <li><a href="#propiedades">Propiedades</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -431,6 +480,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
 </nav>
 <div class="mob-menu" id="mobmenu">
   <a href="#categorias" class="mml">Categorías</a>
+  <a href="#propiedades" class="mml">Propiedades</a>
   <a href="#servicios" class="mml">Servicios</a>
   <a href="#nosotros" class="mml">Nosotros</a>
   <a href="#contacto" class="mml">Contacto</a>
@@ -534,95 +584,9 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
       </div>
     </div>
 
-    <!-- PORTAFOLIO (oculto hasta seleccionar tipo) -->
-    <div class="portfolio-wrap" id="portfolio-wrap" style="display:none">
-      <div class="mkt-header">
-        <div>
-          <div id="portfolio-subtitulo" style="font-size:.66rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Todas las propiedades</div>
-          <div style="font-family:var(--serif);font-size:1.6rem;color:#fff;font-weight:400">Propiedades <span style="color:var(--gold)">disponibles</span></div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.8rem">
-          <div class="mkt-tabs" id="tabs">
-            <button class="tab on" data-t="todos">Todos</button>
-            <button class="tab" data-t="arriendo">Arriendo</button>
-            <button class="tab" data-t="venta">Venta</button>
-          </div>
-          <div class="sort-wrap"><select id="srt"><option value="rec">Más recientes</option><option value="pa">Menor precio</option><option value="pd">Mayor precio</option><option value="ad">Mayor área</option></select></div>
-        </div>
-      </div>
-
-      <div class="sg">
-        <div class="sf"><label>Ciudad</label>
-          <select id="scity">
-            <option value="">Todas</option>
-            <option value="cali">Cali</option>
-            <option value="medellin">Medellín</option>
-            <option value="bogota">Bogotá</option>
-            <option value="barranquilla">Barranquilla</option>
-          </select>
-        </div>
-        <div class="sf"><label>Zona</label>
-          <select id="szona">
-            <option value="">Todas</option>
-            <option value="norte">Norte</option>
-            <option value="sur">Sur</option>
-            <option value="oriente">Oriente</option>
-            <option value="occidente">Occidente</option>
-          </select>
-        </div>
-        <div class="sf"><label>Tipo</label>
-          <select id="stipo">
-            <option value="">Todos</option>
-            <option value="apartamento">Apartamento</option>
-            <option value="casa">Casa</option>
-            <option value="local">Local</option>
-            <option value="oficina">Oficina</option>
-            <option value="cabana">Cabaña</option>
-            <option value="finca">Finca</option>
-            <option value="parqueadero">Parqueadero</option>
-          </select>
-        </div>
-        <div class="sf"><label>Precio (COP)</label>
-          <select id="sprec">
-            <option value="">Cualquier precio</option>
-            <optgroup label="— Arriendo mensual —">
-              <option value="arr_0_800">Hasta $800.000</option>
-              <option value="arr_800_1500">$800.000 – $1.500.000</option>
-              <option value="arr_1500_2500">$1.500.000 – $2.500.000</option>
-              <option value="arr_2500p">Más de $2.500.000</option>
-            </optgroup>
-            <optgroup label="— Venta —">
-              <option value="ven_0_200">Hasta $200 M</option>
-              <option value="ven_200_500">$200 M – $500 M</option>
-              <option value="ven_500_1000">$500 M – $1.000 M</option>
-              <option value="ven_1000p">Más de $1.000 M</option>
-            </optgroup>
-          </select>
-        </div>
-        <button class="sbtn" id="sbtn">Buscar</button>
-      </div>
-
-      <div class="chips">
-        <span class="chip-lbl">Filtros</span>
-        <span class="chip-lbl" style="color:rgba(255,255,255,.4);font-size:.56rem">Hab.</span>
-        <button class="chip" data-g="hab" data-v="1">1+</button><button class="chip" data-g="hab" data-v="2">2+</button><button class="chip" data-g="hab" data-v="3">3+</button><button class="chip" data-g="hab" data-v="4">4+</button>
-        <div class="chip-div"></div>
-        <span class="chip-lbl" style="color:rgba(255,255,255,.4);font-size:.56rem">Baños</span>
-        <button class="chip" data-g="ban" data-v="1">1+</button><button class="chip" data-g="ban" data-v="2">2+</button><button class="chip" data-g="ban" data-v="3">3+</button>
-        <div class="chip-div"></div>
-        <span class="chip-lbl" style="color:rgba(255,255,255,.4);font-size:.56rem">Estrato</span>
-        <button class="chip" data-g="est" data-v="3">3</button><button class="chip" data-g="est" data-v="4">4</button><button class="chip" data-g="est" data-v="5">5</button><button class="chip" data-g="est" data-v="6">6</button>
-        <div class="chip-div"></div>
-        <button class="chip" data-g="toggle" data-v="parq">Parqueadero</button>
-        <button class="chip" data-g="toggle" data-v="masc">Mascotas</button>
-        <button class="chip" data-g="toggle" data-v="amob">Amoblado</button>
-        <button class="clr-btn" id="clr">Limpiar</button>
-      </div>
-
-      <div class="res-bar">
-        <p class="res-count"><strong id="cnt">0</strong> propiedades encontradas</p>
-      </div>
-      <div class="pgrid" id="pgrid"></div>
+    <!-- Ver propiedades → sección #propiedades más abajo -->
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="#propiedades" class="ley-cta">Ver todas las propiedades <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></a>
     </div>
   </div>
 
@@ -1001,6 +965,102 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   </div>
 </section>
 
+<!-- PROPIEDADES -->
+<section id="propiedades">
+  <div class="sec-label reveal">Portafolio inmobiliario</div>
+  <h2 class="sec-title reveal" style="margin-bottom:2.5rem">Propiedades <span>disponibles</span></h2>
+
+  <div class="portfolio-wrap" id="portfolio-wrap">
+    <div class="mkt-header">
+      <div>
+        <div id="portfolio-subtitulo" style="font-size:.66rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.3rem">Todas las propiedades</div>
+        <div style="font-family:var(--serif);font-size:1.6rem;color:var(--nv);font-weight:400">Resultados de <span style="color:var(--gold-d)">búsqueda</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.8rem">
+        <div class="mkt-tabs" id="tabs">
+          <button class="tab on" data-t="todos">Todos</button>
+          <button class="tab" data-t="arriendo">Arriendo</button>
+          <button class="tab" data-t="venta">Venta</button>
+        </div>
+        <div class="sort-wrap"><select id="srt"><option value="rec">Más recientes</option><option value="pa">Menor precio</option><option value="pd">Mayor precio</option><option value="ad">Mayor área</option></select></div>
+      </div>
+    </div>
+
+    <div class="sg">
+      <div class="sf"><label>Ciudad</label>
+        <select id="scity">
+          <option value="">Todas</option>
+          <option value="cali">Cali</option>
+          <option value="medellin">Medellín</option>
+          <option value="bogota">Bogotá</option>
+          <option value="barranquilla">Barranquilla</option>
+        </select>
+      </div>
+      <div class="sf"><label>Zona</label>
+        <select id="szona">
+          <option value="">Todas</option>
+          <option value="norte">Norte</option>
+          <option value="sur">Sur</option>
+          <option value="oriente">Oriente</option>
+          <option value="occidente">Occidente</option>
+        </select>
+      </div>
+      <div class="sf"><label>Tipo</label>
+        <select id="stipo">
+          <option value="">Todos</option>
+          <option value="apartamento">Apartamento</option>
+          <option value="casa">Casa</option>
+          <option value="local">Local</option>
+          <option value="oficina">Oficina</option>
+          <option value="cabana">Cabaña</option>
+          <option value="finca">Finca</option>
+          <option value="parqueadero">Parqueadero</option>
+        </select>
+      </div>
+      <div class="sf"><label>Precio (COP)</label>
+        <select id="sprec">
+          <option value="">Cualquier precio</option>
+          <optgroup label="— Arriendo mensual —">
+            <option value="arr_0_800">Hasta $800.000</option>
+            <option value="arr_800_1500">$800.000 – $1.500.000</option>
+            <option value="arr_1500_2500">$1.500.000 – $2.500.000</option>
+            <option value="arr_2500p">Más de $2.500.000</option>
+          </optgroup>
+          <optgroup label="— Venta —">
+            <option value="ven_0_200">Hasta $200 M</option>
+            <option value="ven_200_500">$200 M – $500 M</option>
+            <option value="ven_500_1000">$500 M – $1.000 M</option>
+            <option value="ven_1000p">Más de $1.000 M</option>
+          </optgroup>
+        </select>
+      </div>
+      <button class="sbtn" id="sbtn">Buscar</button>
+    </div>
+
+    <div class="chips">
+      <span class="chip-lbl">Filtros</span>
+      <span class="chip-lbl" style="font-size:.56rem">Hab.</span>
+      <button class="chip" data-g="hab" data-v="1">1+</button><button class="chip" data-g="hab" data-v="2">2+</button><button class="chip" data-g="hab" data-v="3">3+</button><button class="chip" data-g="hab" data-v="4">4+</button>
+      <div class="chip-div"></div>
+      <span class="chip-lbl" style="font-size:.56rem">Baños</span>
+      <button class="chip" data-g="ban" data-v="1">1+</button><button class="chip" data-g="ban" data-v="2">2+</button><button class="chip" data-g="ban" data-v="3">3+</button>
+      <div class="chip-div"></div>
+      <span class="chip-lbl" style="font-size:.56rem">Estrato</span>
+      <button class="chip" data-g="est" data-v="3">3</button><button class="chip" data-g="est" data-v="4">4</button><button class="chip" data-g="est" data-v="5">5</button><button class="chip" data-g="est" data-v="6">6</button>
+      <div class="chip-div"></div>
+      <button class="chip" data-g="toggle" data-v="parq">Parqueadero</button>
+      <button class="chip" data-g="toggle" data-v="masc">Mascotas</button>
+      <button class="chip" data-g="toggle" data-v="amob">Amoblado</button>
+      <button class="clr-btn" id="clr">Limpiar</button>
+    </div>
+
+    <div class="res-bar">
+      <p class="res-count"><strong id="cnt">0</strong> propiedades encontradas</p>
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+  </div>
+</section>
+
 <!-- SERVICIOS -->
 <section id="servicios" class="sec">
   <div class="sec-label reveal">Lo que hacemos</div>
@@ -1177,12 +1237,10 @@ function render(){
 
 /* Mostrar portafolio desde subcategoría */
 function mostrarPortafolio(tipo){
-  const wrap=document.getElementById('portfolio-wrap');
-  wrap.style.display='block';
-  // Limpiar filtros y mostrar todo
   resetFiltros();
   render();
-  setTimeout(()=>wrap.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  const sec=document.getElementById('propiedades');
+  setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
 function resetFiltros(){
@@ -1295,7 +1353,7 @@ document.getElementById('clr').addEventListener('click',()=>{resetFiltros();rend
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50),{passive:true});
 
 /* SCROLL SPY */
-const spySections=['categorias','servicios','nosotros','contacto'];
+const spySections=['categorias','propiedades','servicios','nosotros','contacto'];
 const navLinks=document.querySelectorAll('.nav-links a:not(.nav-admin)');
 window.addEventListener('scroll',()=>{
   let cur='';
@@ -1339,6 +1397,9 @@ function fsubmit(e){
   b.textContent='✓ Abriendo WhatsApp…';b.style.background='#2D7D4F';b.style.boxShadow='0 8px 28px rgba(45,125,79,.35)';
   setTimeout(()=>{b.textContent='Enviar mensaje';b.style.background='';b.style.boxShadow='';f.reset()},3500);
 }
+
+/* Render inicial */
+render();
 
 /* OBSERVER */
 const obs=new IntersectionObserver(entries=>{
