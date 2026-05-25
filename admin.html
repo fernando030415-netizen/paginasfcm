@@ -393,11 +393,18 @@ body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b
       <div class="sb-section" style="margin-top:.8rem">Portafolio</div>
       <button class="sb-link" onclick="showView('propiedades',this)">
         <span class="sb-icon">🏠</span> Propiedades
-        <span class="sb-count" id="cnt-prop">12</span>
+        <span class="sb-count" id="cnt-prop">15</span>
       </button>
       <button class="sb-link" onclick="showView('negocios',this)">
         <span class="sb-icon">💼</span> Negocios en Marcha
         <span class="sb-count" id="cnt-neg">6</span>
+      </button>
+      <button class="sb-link" onclick="showView('rentas',this)">
+        <span class="sb-icon">🔑</span> Rentas Cortas
+        <span class="sb-count" id="cnt-rc">6</span>
+      </button>
+      <button class="sb-link" onclick="showView('ph',this)">
+        <span class="sb-icon">🏢</span> Prop. Horizontal
       </button>
 
       <div class="sb-divider"></div>
@@ -449,8 +456,8 @@ body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b
               <span class="stat-label">Propiedades activas</span>
               <div class="stat-icon si-nv">🏠</div>
             </div>
-            <div class="stat-val">12</div>
-            <div class="stat-sub"><b>+2</b> este mes</div>
+            <div class="stat-val">15</div>
+            <div class="stat-sub"><b>+3</b> este mes</div>
           </div>
           <div class="stat-card">
             <div class="stat-top">
@@ -632,6 +639,65 @@ body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b
         </div>
       </div>
 
+      <!-- ── RENTAS CORTAS ── -->
+      <div class="view" id="v-rentas">
+        <div class="view-header">
+          <div>
+            <div class="view-title">Rentas Cortas</div>
+            <div class="view-sub">Propiedades de alquiler vacacional y estadías cortas</div>
+          </div>
+          <button class="topbar-btn btn-primary" onclick="openModal('rc-modal')">+ Agregar propiedad</button>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar por destino, nombre…" oninput="filterTable(this.value,'rc-tbody')"/>
+          <select>
+            <option value="">Todos los destinos</option>
+            <option>Cali</option><option>Lago Calima</option><option>Melgar</option><option>Santa Marta</option><option>Cartagena</option><option>Palmira</option>
+          </select>
+          <select>
+            <option value="">Todos los estados</option>
+            <option>Disponible</option><option>Reservado</option><option>Inactivo</option>
+          </select>
+        </div>
+        <div class="full-panel">
+          <table class="tbl">
+            <thead><tr>
+              <th>Nombre / Destino</th><th>Huéspedes</th><th>Precio/noche</th><th>Hab.</th><th>Amenidades</th><th>Estado</th><th>Acciones</th>
+            </tr></thead>
+            <tbody id="rc-tbody">
+              <tr><td><b style="font-weight:400">Cabaña privada en Lago Calima</b><br><small style="color:var(--sd)">Lago Calima, Valle del Cauca</small></td><td>6</td><td style="font-weight:400">$250.000</td><td>3</td><td style="font-size:.72rem;color:var(--sd)">🌊 Lago · 🔥 BBQ · 📶 WiFi</td><td><span class="pill pill-ok">Disponible</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'rc')">✕</button></div></td></tr>
+              <tr><td><b style="font-weight:400">Apartamento amoblado — Granada</b><br><small style="color:var(--sd)">Granada, Cali</small></td><td>4</td><td style="font-weight:400">$130.000</td><td>2</td><td style="font-size:.72rem;color:var(--sd)">❄️ A/C · 📶 WiFi · 🚗 Parq.</td><td><span class="pill pill-ok">Disponible</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'rc')">✕</button></div></td></tr>
+              <tr><td><b style="font-weight:400">Casa vacacional con piscina — Melgar</b><br><small style="color:var(--sd)">Melgar, Tolima</small></td><td>10</td><td style="font-weight:400">$380.000</td><td>4</td><td style="font-size:.72rem;color:var(--sd)">🏊 Piscina · 🔥 BBQ · 📶 WiFi</td><td><span class="pill pill-ok">Disponible</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'rc')">✕</button></div></td></tr>
+              <tr><td><b style="font-weight:400">Penthouse frente al mar — Santa Marta</b><br><small style="color:var(--sd)">El Rodadero, Santa Marta</small></td><td>5</td><td style="font-weight:400">$290.000</td><td>2</td><td style="font-size:.72rem;color:var(--sd)">🌊 Vista mar · ❄️ A/C · 📶 WiFi</td><td><span class="pill pill-ok">Disponible</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'rc')">✕</button></div></td></tr>
+              <tr><td><b style="font-weight:400">Finca recreacional — Palmira</b><br><small style="color:var(--sd)">Palmira, Valle del Cauca</small></td><td>12</td><td style="font-weight:400">$200.000</td><td>4</td><td style="font-size:.72rem;color:var(--sd)">🌿 Naturaleza · 🔥 Fogón</td><td><span class="pill pill-ok">Disponible</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'rc')">✕</button></div></td></tr>
+              <tr><td><b style="font-weight:400">Apartamento en Ciudad Amurallada</b><br><small style="color:var(--sd)">Centro Histórico, Cartagena</small></td><td>6</td><td style="font-weight:400">$340.000</td><td>3</td><td style="font-size:.72rem;color:var(--sd)">🏛️ Patrimonio · ❄️ A/C · 🏊 Piscina</td><td><span class="pill pill-ok">Disponible</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'rc')">✕</button></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── PROPIEDAD HORIZONTAL ── -->
+      <div class="view" id="v-ph">
+        <div class="view-header">
+          <div>
+            <div class="view-title">Propiedad Horizontal</div>
+            <div class="view-sub">Administración Delegada y servicios bajo Ley 675 de 2001</div>
+          </div>
+          <button class="topbar-btn btn-primary" onclick="openModal('ph-modal')">+ Nueva cotización</button>
+        </div>
+        <div class="full-panel">
+          <table class="tbl">
+            <thead><tr>
+              <th>Conjunto / Edificio</th><th>Tipo</th><th>Ciudad</th><th>Unidades</th><th>Presupuesto anual</th><th>Contacto</th><th>Estado</th><th>Acciones</th>
+            </tr></thead>
+            <tbody id="ph-tbody">
+              <tr><td><b style="font-weight:400">Conjunto Residencial El Prado</b></td><td style="color:var(--sd)">Residencial</td><td>Cali</td><td>48</td><td>$120.000.000</td><td style="font-size:.72rem;color:var(--sd)">Carlos Mesa · Administrador<br>315 234 5678</td><td><span class="pill pill-warn">Cotización</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'ph')">✕</button></div></td></tr>
+              <tr><td><b style="font-weight:400">Torre Empresarial Centro</b></td><td style="color:var(--sd)">Comercial</td><td>Cali</td><td>32</td><td>$85.000.000</td><td style="font-size:.72rem;color:var(--sd)">Ana López · Propietaria<br>311 876 5432</td><td><span class="pill pill-ok">Activo</span></td><td><div class="tbl-actions"><button class="ico-btn">✏</button><button class="ico-btn del" onclick="delRow(this,'ph')">✕</button></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- ── CONFIGURACIÓN ── -->
       <div class="view" id="v-config">
         <div class="view-header">
@@ -681,17 +747,19 @@ body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b
           <select><option>Sur</option><option>Norte</option><option>Centro</option><option>Oriente</option><option>Oeste</option></select>
         </div>
         <div class="f-group"><label>Tipo de inmueble</label>
-          <select><option>Apartamento</option><option>Casa</option><option>Local</option><option>Oficina</option></select>
+          <select><option>Apartamento</option><option>Casa</option><option>Local</option><option>Oficina</option><option>Cabaña</option><option>Finca</option><option>Parqueadero</option></select>
         </div>
         <div class="f-group"><label>Operación</label>
           <select><option>Arriendo</option><option>Venta</option></select>
         </div>
         <div class="f-group"><label>Precio (COP)</label><input type="number" placeholder="2800000"/></div>
         <div class="f-group"><label>Estrato</label>
-          <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          <select><option value="0">Sin estrato</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
         </div>
         <div class="f-group"><label>Habitaciones</label><input type="number" placeholder="3" min="0"/></div>
-        <div class="f-group"><label>Baños</label><input type="number" placeholder="2" min="1"/></div>
+        <div class="f-group"><label>Baños</label><input type="number" placeholder="2" min="0"/></div>
+        <div class="f-group"><label>Patios</label><input type="number" placeholder="1" min="0"/></div>
+        <div class="f-group"><label>Garajes</label><input type="number" placeholder="1" min="0"/></div>
         <div class="f-group"><label>Área (m²)</label><input type="number" placeholder="95"/></div>
         <div class="f-group full"><label>Características</label>
           <div class="toggle-row">
@@ -723,7 +791,14 @@ body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b
     <div class="modal-body">
       <div class="form-grid">
         <div class="f-group full"><label>Nombre del negocio</label><input placeholder="Restaurante familiar La Cosecha"/></div>
-        <div class="f-group"><label>Categoría</label>
+        <div class="f-group"><label>Subtipo</label>
+          <select>
+            <option>Sociedad Constituida</option>
+            <option>Establecimiento de Comercio</option>
+            <option>Persona Natural</option>
+          </select>
+        </div>
+        <div class="f-group"><label>Categoría / Sector</label>
           <select>
             <option>Gastronomía</option><option>Alimentos &amp; Bebidas</option>
             <option>Salud</option><option>Belleza &amp; Bienestar</option>
@@ -747,6 +822,83 @@ body{font-family:var(--sans);font-weight:300;background:var(--bg2);color:var(--b
   </div>
 </div>
 
+<!-- ── MODAL: NUEVA RENTA CORTA ── -->
+<div class="modal-bg" id="rc-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-title">Nueva propiedad — Renta Corta</span>
+      <button class="modal-close" onclick="closeModal('rc-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="f-group full"><label>Nombre de la propiedad</label><input placeholder="Cabaña privada en Lago Calima"/></div>
+        <div class="f-group"><label>Destino / Ciudad</label>
+          <select><option>Cali</option><option>Lago Calima</option><option>Melgar</option><option>Santa Marta</option><option>Cartagena</option><option>Palmira</option><option>Otro</option></select>
+        </div>
+        <div class="f-group"><label>Barrio / Sector</label><input placeholder="El Rodadero"/></div>
+        <div class="f-group"><label>Precio por noche (COP)</label><input type="number" placeholder="250000"/></div>
+        <div class="f-group"><label>Precio fin de semana (COP)</label><input type="number" placeholder="300000"/></div>
+        <div class="f-group"><label>Huéspedes máximos</label><input type="number" placeholder="6" min="1"/></div>
+        <div class="f-group"><label>Habitaciones</label><input type="number" placeholder="3" min="1"/></div>
+        <div class="f-group"><label>Baños</label><input type="number" placeholder="2" min="1"/></div>
+        <div class="f-group"><label>Área (m²)</label><input type="number" placeholder="90"/></div>
+        <div class="f-group full"><label>Amenidades</label>
+          <div class="toggle-row">
+            <label class="toggle-chip"><input type="checkbox"/> WiFi</label>
+            <label class="toggle-chip"><input type="checkbox"/> A/C</label>
+            <label class="toggle-chip"><input type="checkbox"/> Piscina</label>
+            <label class="toggle-chip"><input type="checkbox"/> BBQ</label>
+            <label class="toggle-chip"><input type="checkbox"/> Parqueadero</label>
+            <label class="toggle-chip"><input type="checkbox"/> Acepta mascotas</label>
+          </div>
+        </div>
+        <div class="f-group full"><label>Descripción</label><textarea placeholder="Describe la propiedad, vistas, equipamiento, normas de la casa…"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="topbar-btn btn-ghost" onclick="closeModal('rc-modal')">Cancelar</button>
+      <button class="topbar-btn btn-primary" onclick="saveModal('rc-modal','Propiedad de renta corta publicada')">Publicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: COTIZACIÓN PH ── -->
+<div class="modal-bg" id="ph-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-title">Nueva cotización — Administración Delegada</span>
+      <button class="modal-close" onclick="closeModal('ph-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="f-group full"><label>Nombre del conjunto / edificio</label><input placeholder="Conjunto Residencial El Prado"/></div>
+        <div class="f-group"><label>Tipo de copropiedad</label>
+          <select><option>Residencial</option><option>Comercial</option><option>Mixto</option></select>
+        </div>
+        <div class="f-group"><label>Ciudad</label>
+          <select><option>Cali</option><option>Bogotá</option><option>Medellín</option><option>Barranquilla</option><option>Otra</option></select>
+        </div>
+        <div class="f-group"><label>N° de bienes privados</label><input type="number" placeholder="48"/></div>
+        <div class="f-group"><label>Torres / Bloques</label><input type="number" placeholder="3"/></div>
+        <div class="f-group"><label>Pisos por torre</label><input type="number" placeholder="8"/></div>
+        <div class="f-group"><label>Presupuesto anual (COP)</label><input placeholder="$120.000.000"/></div>
+        <div class="f-group"><label>Cuota actual / unidad</label><input placeholder="$180.000"/></div>
+        <div class="f-group"><label>Nombre del contacto</label><input placeholder="Carlos Mesa"/></div>
+        <div class="f-group"><label>Cargo</label>
+          <select><option>Administrador(a)</option><option>Presidente del Consejo</option><option>Propietario</option><option>Otro</option></select>
+        </div>
+        <div class="f-group"><label>Teléfono</label><input type="tel" placeholder="3XX XXX XXXX"/></div>
+        <div class="f-group"><label>Correo</label><input type="email" placeholder="correo@ejemplo.com"/></div>
+        <div class="f-group full"><label>Observaciones</label><textarea placeholder="Situaciones particulares, urgencias, notas internas…"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="topbar-btn btn-ghost" onclick="closeModal('ph-modal')">Cancelar</button>
+      <button class="topbar-btn btn-primary" onclick="saveModal('ph-modal','Cotización PH registrada')">Guardar cotización</button>
+    </div>
+  </div>
+</div>
+
 <!-- TOAST -->
 <div id="toast"></div>
 
@@ -764,7 +916,10 @@ const PROPS=[
   {nom:'Casa con piscina',barrio:'El Caney',cat:'Casa',op:'Venta',precio:420000000,est:4,estado:'Activo'},
   {nom:'Apartamento nuevo',barrio:'Chipichape',cat:'Apartamento',op:'Venta',precio:295000000,est:5,estado:'Inactivo'},
   {nom:'Casa con patio',barrio:'Villacolombia',cat:'Casa',op:'Arriendo',precio:1500000,est:3,estado:'Activo'},
-  {nom:'Apartamento estrenar',barrio:'Calipso',cat:'Apartamento',op:'Venta',precio:185000000,est:4,estado:'Activo'}
+  {nom:'Apartamento estrenar',barrio:'Calipso',cat:'Apartamento',op:'Venta',precio:185000000,est:4,estado:'Activo'},
+  {nom:'Cabaña en Lago Calima',barrio:'Lago Calima',cat:'Cabaña',op:'Arriendo',precio:850000,est:0,estado:'Activo'},
+  {nom:'Finca productiva Rozo',barrio:'Rozo',cat:'Finca',op:'Venta',precio:450000000,est:0,estado:'Activo'},
+  {nom:'Parqueadero cubierto centro',barrio:'Centro',cat:'Parqueadero',op:'Venta',precio:65000000,est:0,estado:'Activo'}
 ];
 const NEGS=[
   {cat:'Gastronomía',nom:'Restaurante familiar tradicional',ciudad:'Cali',zona:'Ciudad Jardín',precio:85000000,fact:12000000,anos:4,estado:'Activo'},
@@ -844,7 +999,7 @@ function showView(id,btn){
         l.classList.add('active');
     });
   }
-  const titles={dashboard:'Dashboard',propiedades:'Propiedades',negocios:'Negocios en Marcha',mensajes:'Mensajes',config:'Configuración'};
+  const titles={dashboard:'Dashboard',propiedades:'Propiedades',negocios:'Negocios en Marcha',rentas:'Rentas Cortas',ph:'Propiedad Horizontal',mensajes:'Mensajes',config:'Configuración'};
   document.getElementById('topbar-title').textContent=titles[id]||id;
 }
 

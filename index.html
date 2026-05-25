@@ -1226,14 +1226,38 @@ function toggleNegForm(id){
   el.style.display=el.classList.contains('open')?'block':'none';
 }
 function enviarNegForm(btn){
-  btn.textContent='✓ Consulta enviada';btn.style.background='#2D7D4F';
+  const form=btn.closest('.neg-inline-form');
+  const inputs=form.querySelectorAll('input,select,textarea');
+  const card=form.closest('.neg-sub-card');
+  const tipo=card.querySelector('.neg-sub-title')?.textContent||'Negocio';
+  let msg=`Hola, me interesa información sobre *${tipo}* en DSE Inmobiliaria.\n`;
+  inputs.forEach(el=>{
+    const lbl=el.closest('.nif-row')?.querySelector('.nif-label')?.textContent;
+    if(lbl&&el.value)msg+=`\n${lbl}: ${el.value}`;
+  });
+  window.open(`https://wa.me/573217467970?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+  btn.textContent='✓ Abriendo WhatsApp…';btn.style.background='#2D7D4F';
   setTimeout(()=>{btn.textContent='Enviar consulta';btn.style.background=''},3500);
 }
 
 /* Administración Delegada */
 function enviarAdm(){
+  const g=id=>document.getElementById(id)?.value||'';
+  const checks=[...document.querySelectorAll('.adm-check input:checked')].map(c=>c.closest('.adm-check').textContent.trim());
+  let msg=`Hola, solicito cotización de *Administración Delegada* para:\n`;
+  msg+=`\nTipo: ${g('adm-tipo')}`;
+  msg+=`\nConjunto/Edificio: ${g('adm-nombre')}`;
+  msg+=`\nCiudad: ${g('adm-ciudad')}`;
+  msg+=`\nN° de bienes privados: ${g('adm-unidades')}`;
+  msg+=`\nTorres/Bloques: ${g('adm-torres')} · Pisos/torre: ${g('adm-pisos')}`;
+  msg+=`\nPresupuesto anual: ${g('adm-presupuesto')}`;
+  msg+=`\nCuota actual/unidad: ${g('adm-cuota')}`;
+  if(checks.length)msg+=`\nAnálisis requerido: ${checks.join(', ')}`;
+  if(g('adm-obs'))msg+=`\nObservaciones: ${g('adm-obs')}`;
+  msg+=`\n\nContacto: ${g('adm-contacto-nombre')} · ${g('adm-cargo')} · ${g('adm-tel')} · ${g('adm-email')}`;
+  window.open(`https://wa.me/573217467970?text=${encodeURIComponent(msg)}`,'_blank','noopener');
   const btn=document.querySelector('.adm-submit');
-  btn.textContent='✓ Solicitud enviada — Lo contactaremos pronto';btn.style.background='#2D7D4F';
+  btn.textContent='✓ Abriendo WhatsApp…';btn.style.background='#2D7D4F';
   setTimeout(()=>{btn.textContent='Solicitar cotización de administración';btn.style.background=''},4000);
 }
 
@@ -1302,9 +1326,18 @@ function consultarRC(){
 /* FORM CONTACTO */
 function fsubmit(e){
   e.preventDefault();
+  const f=e.target;
+  const vals=[...f.querySelectorAll('input,select,textarea')].map(el=>el.value.trim());
+  const [nom,tel,email,srv,msj]=vals;
+  let msg=`Hola, soy *${nom||'un cliente'}* y me interesa información sobre DSE Inmobiliaria.\n`;
+  if(tel)msg+=`\nTeléfono: ${tel}`;
+  if(email)msg+=`\nCorreo: ${email}`;
+  if(srv)msg+=`\nServicio: ${srv}`;
+  if(msj)msg+=`\nMensaje: ${msj}`;
+  window.open(`https://wa.me/573217467970?text=${encodeURIComponent(msg)}`,'_blank','noopener');
   const b=document.getElementById('fsub');
-  b.textContent='✓ Mensaje enviado';b.style.background='#2D7D4F';b.style.boxShadow='0 8px 28px rgba(45,125,79,.35)';
-  setTimeout(()=>{b.textContent='Enviar mensaje';b.style.background='';b.style.boxShadow='';e.target.reset()},3500);
+  b.textContent='✓ Abriendo WhatsApp…';b.style.background='#2D7D4F';b.style.boxShadow='0 8px 28px rgba(45,125,79,.35)';
+  setTimeout(()=>{b.textContent='Enviar mensaje';b.style.background='';b.style.boxShadow='';f.reset()},3500);
 }
 
 /* OBSERVER */
