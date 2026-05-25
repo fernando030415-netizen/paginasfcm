@@ -28,11 +28,11 @@ body{background:var(--w);color:var(--b);font-family:var(--sans);font-weight:300;
 .reveal.vis{opacity:1;transform:none}
 
 /* ── NAV ─────────────────────────────────────────────────────── */
-nav{position:fixed;top:1.1rem;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;height:54px;background:rgba(247,245,240,.82);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border-radius:var(--rpill);border:1px solid rgba(255,255,255,.55);box-shadow:0 4px 28px rgba(12,27,46,.13),0 1px 0 rgba(255,255,255,.55) inset,0 0 0 1px rgba(196,150,42,.1);width:min(calc(100% - 2.4rem),1060px);transition:background .3s,box-shadow .3s}
-nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,46,.2),0 1px 0 rgba(255,255,255,.6) inset,0 0 0 1px rgba(196,150,42,.12)}
+nav{position:fixed;top:1.1rem;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;height:54px;background:rgba(255,254,252,.90);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border-radius:var(--rpill);border:1px solid rgba(255,255,255,.75);box-shadow:0 4px 28px rgba(12,27,46,.13),0 1px 0 rgba(255,255,255,.8) inset,0 0 0 1px rgba(196,150,42,.1);width:min(calc(100% - 2.4rem),1060px);transition:background .3s,box-shadow .3s}
+nav.scrolled{background:rgba(255,254,252,.97);box-shadow:0 8px 40px rgba(12,27,46,.2),0 1px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(196,150,42,.12)}
 .logo{text-decoration:none;display:block;transition:opacity .2s,transform .2s}
 .logo:hover{opacity:.85;transform:scale(.97)}
-.logo-img{height:44px;width:auto;display:block;object-fit:contain;border-radius:8px;filter:grayscale(1) brightness(1.7) contrast(1.05)}
+.logo-img{height:44px;width:auto;display:block;object-fit:contain;border-radius:8px;filter:grayscale(1) brightness(2.8) contrast(0.55) saturate(0)}
 .nav-links{display:flex;align-items:center;gap:1.6rem;list-style:none}
 .nav-links a{text-decoration:none;font-size:.74rem;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--b);transition:color .2s;position:relative;padding:.2rem 0}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s;border-radius:2px}
@@ -75,6 +75,7 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
   border:1px solid rgba(196,150,42,.35);
   backdrop-filter:blur(8px);
 }
+.hero-brand{white-space:nowrap}
 .hero-brand span{color:var(--gold-l)}
 .hero-h1{font-family:var(--serif);font-size:clamp(3rem,6.5vw,6rem);font-weight:400;color:#fff;line-height:1.04;margin-bottom:1.3rem;opacity:0;animation:fU .9s ease .5s forwards;text-shadow:0 2px 28px rgba(0,0,0,.75),0 6px 55px rgba(0,0,0,.45)}
 .hero-h1 em{font-style:italic;color:var(--gold);text-shadow:0 2px 20px rgba(196,150,42,.5)}
@@ -106,7 +107,7 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:0}
 .cat-card{
   position:relative;border-radius:20px;overflow:hidden;cursor:pointer;
-  aspect-ratio:1/1;
+  aspect-ratio:4/5;
   border:2px solid rgba(255,255,255,.14);
   transition:transform .35s ease,box-shadow .35s,border-color .3s;
 }
@@ -119,7 +120,7 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 /* número decorativo en esquina superior */
 .cat-card-num{position:absolute;top:1rem;right:1.1rem;z-index:2;font-size:.6rem;font-weight:700;letter-spacing:.22em;color:rgba(196,150,42,.55);text-transform:uppercase}
 .cat-card-body{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.5rem 1.6rem 1.6rem}
-.cat-card-icon{font-size:2rem;margin-bottom:.55rem;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+.cat-card-icon{font-size:1.35rem;margin-bottom:.45rem;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
 /* línea dorada decorativa */
 .cat-card-line{width:28px;height:2px;background:var(--gold);border-radius:2px;margin-bottom:.65rem;transition:width .3s ease}
 .cat-card:hover .cat-card-line{width:44px}
@@ -194,7 +195,7 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .pprice span{font-family:var(--sans);font-size:.7rem;font-weight:300;color:var(--sd)}
 .pname{font-size:.9rem;font-weight:600;color:var(--nv);margin-bottom:.18rem}
 .ploc{font-size:.76rem;font-weight:300;color:var(--sd);margin-bottom:.7rem}
-.pspecs-row{font-size:.76rem;font-weight:300;color:var(--sd);margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--sl)}
+.pspecs-row{font-size:.76rem;font-weight:300;color:var(--sd);margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--sm)}
 .pcard-btn{display:block;width:100%;padding:.52rem;background:transparent;border:1.5px solid rgba(196,150,42,.3);border-radius:var(--rsm);font-family:var(--sans);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);cursor:pointer;transition:all .22s;text-align:center}
 .pcard-btn:hover{background:var(--gold);color:var(--nv);border-color:var(--gold)}
 .no-res{grid-column:1/-1;text-align:center;padding:4rem 0}
@@ -229,7 +230,7 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .pm-name{font-family:var(--serif);font-size:1.22rem;font-weight:500;color:var(--nv);margin-top:.2rem}
 .pm-loc{font-size:.79rem;font-weight:300;color:var(--sd);margin-top:.15rem;display:flex;align-items:center;gap:.4rem}
 .pm-loc::before{content:'';width:12px;height:1.5px;background:var(--gold);flex-shrink:0;display:inline-block}
-.pm-divider{height:1px;background:var(--sl)}
+.pm-divider{height:1px;background:var(--sm)}
 .pm-sec-title{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.75rem}
 /* Specs */
 .pm-specs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:.5rem}
@@ -513,8 +514,8 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .fsubmit:hover{background:var(--gold-d);color:#fff;transform:translateY(-2px)}
 
 /* ── FOOTER ───────────────────────────────────────────────────── */
-footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;border-top:1px solid rgba(196,150,42,.15)}
-.footer-logo{height:48px;width:auto;border-radius:8px;object-fit:contain;opacity:.88;transition:opacity .2s;filter:grayscale(1) brightness(1.7) contrast(1.05)}
+footer{background:linear-gradient(135deg,var(--nv2) 0%,var(--nv) 100%);padding:2.2rem 5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;border-top:1px solid rgba(196,150,42,.2)}
+.footer-logo{height:48px;width:auto;border-radius:8px;object-fit:contain;opacity:.92;transition:opacity .2s,filter .2s;filter:grayscale(1) brightness(2.8) contrast(0.55) saturate(0)}
 .footer-logo:hover{opacity:1}
 .fcopy{font-size:.7rem;font-weight:200;color:rgba(255,255,255,.3);letter-spacing:.08em}
 .fcontact{font-size:.72rem;font-weight:200;color:rgba(255,255,255,.42);text-align:right;line-height:2.1}
@@ -582,6 +583,17 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   .rc-grid{grid-template-columns:1fr}
   .rc-steps{flex-direction:column;gap:1.2rem}
 }
+
+/* ── STATS STRIP ─────────────────────────────────────────────── */
+.stats-strip{background:var(--ww);border-bottom:1px solid var(--sm);padding:0}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:1060px;margin:0 auto}
+.stat-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;border-right:1px solid var(--sm);position:relative}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:600;color:var(--nv);line-height:1;margin-bottom:.3rem;transition:color .3s}
+.stat-num span{color:var(--gold)}
+.stat-lbl{font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sd)}
+.stat-item:hover .stat-num{color:var(--gold-d)}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}.stat-item{border-bottom:1px solid var(--sm)}.stat-item:nth-child(2){border-right:none}.stat-item:nth-child(3){border-bottom:none}.stat-item:nth-child(4){border-right:none;border-bottom:none}}
 </style>
 </head>
 <body>
@@ -624,6 +636,28 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   </div>
   <div class="hero-scroll"><span>Descubrir</span><div class="hero-scroll-line"></div></div>
 </section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" id="st-anos">0<span>+</span></div>
+      <div class="stat-lbl">Años de experiencia</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" id="st-props">0<span>+</span></div>
+      <div class="stat-lbl">Propiedades gestionadas</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" id="st-clientes">0<span>+</span></div>
+      <div class="stat-lbl">Clientes satisfechos</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" id="st-ciudades">0<span></span></div>
+      <div class="stat-lbl">Ciudades en Colombia</div>
+    </div>
+  </div>
+</div>
 
 <!-- CATEGORÍAS -->
 <section id="categorias">
@@ -1877,6 +1911,31 @@ function fsubmit(e){
   b.textContent='✓ Abriendo WhatsApp…';b.style.background='#2D7D4F';b.style.boxShadow='0 8px 28px rgba(45,125,79,.35)';
   setTimeout(()=>{b.textContent=orig;b.style.background='';b.style.boxShadow='';f.reset()},3500);
 }
+
+/* STATS COUNTER */
+function animCount(el,target,suffix,dur){
+  let start=null;
+  const step=ts=>{
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.innerHTML=Math.round(ease*target)+'<span>'+suffix+'</span>';
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const statsObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    animCount(document.getElementById('st-anos'),15,'+',1400);
+    animCount(document.getElementById('st-props'),850,'+',1600);
+    animCount(document.getElementById('st-clientes'),420,'+',1500);
+    animCount(document.getElementById('st-ciudades'),8,'',1200);
+    statsObs.disconnect();
+  });
+},{threshold:.2});
+const stripEl=document.querySelector('.stats-strip');
+if(stripEl)statsObs.observe(stripEl);
 
 /* Render inicial */
 render();
