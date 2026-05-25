@@ -107,20 +107,28 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .cat-card{
   position:relative;border-radius:20px;overflow:hidden;cursor:pointer;
   aspect-ratio:1/1;
-  border:2px solid rgba(255,255,255,.18);
+  border:2px solid rgba(255,255,255,.14);
   transition:transform .35s ease,box-shadow .35s,border-color .3s;
 }
-.cat-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.75);box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 32px rgba(255,255,255,.18),0 28px 60px rgba(0,0,0,.5)}
-.cat-card.active{border-color:#fff;box-shadow:0 0 0 2px #fff,0 0 40px rgba(255,255,255,.22),0 20px 50px rgba(0,0,0,.4)}
-.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.cat-card:hover img{transform:scale(1.05)}
-.cat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(12,27,46,.9) 0%,rgba(12,27,46,.4) 50%,rgba(12,27,46,.15) 100%)}
-.cat-card-body{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.6rem 1.8rem}
-.cat-card-icon{font-size:1.8rem;margin-bottom:.5rem}
-.cat-card-title{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:#fff;margin-bottom:.3rem;text-shadow:0 2px 12px rgba(0,0,0,.5)}
-.cat-card-desc{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.6}
-.cat-card-arrow{display:inline-flex;align-items:center;gap:.4rem;margin-top:.8rem;font-size:.64rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);transition:gap .2s}
-.cat-card:hover .cat-card-arrow{gap:.7rem}
+.cat-card:hover{transform:translateY(-7px);border-color:rgba(196,150,42,.7);box-shadow:0 0 0 1px rgba(196,150,42,.3),0 0 36px rgba(196,150,42,.15),0 32px 64px rgba(0,0,0,.55)}
+.cat-card.active{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),0 0 40px rgba(196,150,42,.2),0 20px 50px rgba(0,0,0,.4)}
+.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;filter:brightness(.85)}
+.cat-card:hover img{transform:scale(1.06);filter:brightness(.75)}
+/* gradiente doble: oscuro en base para texto + sutil en top para número */
+.cat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,14,28,.97) 0%,rgba(6,14,28,.72) 42%,rgba(6,14,28,.18) 75%,transparent 100%)}
+/* número decorativo en esquina superior */
+.cat-card-num{position:absolute;top:1rem;right:1.1rem;z-index:2;font-size:.6rem;font-weight:700;letter-spacing:.22em;color:rgba(196,150,42,.55);text-transform:uppercase}
+.cat-card-body{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.5rem 1.6rem 1.6rem}
+.cat-card-icon{font-size:2rem;margin-bottom:.55rem;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+/* línea dorada decorativa */
+.cat-card-line{width:28px;height:2px;background:var(--gold);border-radius:2px;margin-bottom:.65rem;transition:width .3s ease}
+.cat-card:hover .cat-card-line{width:44px}
+.cat-card-title{font-family:var(--serif);font-size:1.55rem;font-weight:500;color:#fff;margin-bottom:.4rem;text-shadow:0 2px 14px rgba(0,0,0,.7);line-height:1.2}
+.cat-card-desc{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.72);line-height:1.65;letter-spacing:.01em}
+/* pill CTA que aparece en hover */
+.cat-card-cta{display:inline-flex;align-items:center;gap:.45rem;margin-top:.95rem;padding:.38rem .9rem;background:rgba(196,150,42,.18);border:1px solid rgba(196,150,42,.45);border-radius:var(--rpill);font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s,background .2s}
+.cat-card:hover .cat-card-cta{opacity:1;transform:translateY(0)}
+.cat-card.active .cat-card-cta{opacity:1;transform:translateY(0);background:rgba(196,150,42,.28)}
 
 /* Paneles dinámicos */
 .cat-panel{display:none;margin-top:3rem;padding-top:3rem;border-top:1px solid rgba(196,150,42,.2)}
@@ -474,21 +482,35 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 #contacto{background:var(--w)}
 #contacto .sec-label{color:var(--gold-d)}
 #contacto .sec-title{color:var(--nv)}
-.cgrid{display:grid;grid-template-columns:1fr 1.35fr;gap:5rem;align-items:start}
-.iitem{margin-bottom:1.8rem}
-.ilbl{font-size:.58rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.35rem}
-.ival{font-family:var(--serif);font-size:1.02rem;color:var(--nv);line-height:1.6}
-.ival a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--sm);padding-bottom:1px;transition:border-color .2s,color .2s}
-.ival a:hover{border-color:var(--gold);color:var(--gold-d)}
-.form-card{background:var(--ww);border-radius:20px;padding:2.4rem 2.4rem 2rem;box-shadow:0 8px 48px rgba(12,27,46,.1),0 0 0 1.5px rgba(221,213,200,.7);border:1px solid rgba(255,255,255,.8)}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-bottom:1.3rem}
+/* ── CONTACTO ─────────────────────────────────────────────────── */
+.ctc-inner{max-width:780px;margin:0 auto}
+.ctc-channels{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem}
+.ctc-ch{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:1.4rem 1rem;background:var(--ww);border:1.5px solid rgba(221,213,200,.7);border-radius:18px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(12,27,46,.06)}
+.ctc-ch:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(12,27,46,.12);border-color:rgba(196,150,42,.4)}
+.ctc-ch.wa{border-color:rgba(37,211,102,.25)}
+.ctc-ch.wa:hover{border-color:#25D366;box-shadow:0 12px 36px rgba(37,211,102,.15)}
+.ctc-ch-ic{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.ctc-ch.wa .ctc-ch-ic{background:#e7fdf0}
+.ctc-ch.em .ctc-ch-ic{background:#f0ebff}
+.ctc-ch.ph .ctc-ch-ic{background:#fff3e0}
+.ctc-ch-lbl{font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sd)}
+.ctc-ch-val{font-family:var(--serif);font-size:.98rem;color:var(--nv);text-align:center;line-height:1.3}
+.ctc-divider{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.2rem}
+.ctc-divider::before,.ctc-divider::after{content:'';flex:1;height:1px;background:var(--sm)}
+.ctc-divider span{font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sd);white-space:nowrap}
+/* Formulario */
+.ctc-form{background:var(--ww);border-radius:20px;padding:2.2rem;box-shadow:0 8px 40px rgba(12,27,46,.08);border:1.5px solid rgba(221,213,200,.65)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
 .ff{display:flex;flex-direction:column;gap:6px}
 .ff.full{grid-column:1/-1}
-.ff label{font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d)}
+.ff label{font-size:.56rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d)}
 .ff input,.ff select,.ff textarea{border:1.5px solid var(--sm);border-radius:var(--rsm);background:var(--w);padding:.68rem .95rem;font-family:var(--sans);font-size:.88rem;font-weight:300;color:var(--b);outline:none;transition:border-color .25s,box-shadow .25s;width:100%;resize:none}
 .ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--gold);background:var(--ww);box-shadow:0 0 0 3px rgba(196,150,42,.1)}
 .ff input::placeholder,.ff textarea::placeholder{color:var(--sm)}
-.fsubmit{margin-top:1.8rem;padding:.9rem 2.6rem;background:var(--gold);color:var(--nv);border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s;box-shadow:var(--sh-gold)}
+.ctc-form-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.6rem;gap:1rem;flex-wrap:wrap}
+.ctc-office{font-size:.75rem;font-weight:300;color:var(--sd);line-height:1.6}
+.ctc-office strong{display:block;font-weight:600;color:var(--b);font-size:.78rem;margin-bottom:.15rem}
+.fsubmit{padding:.82rem 2.2rem;background:var(--gold);color:var(--nv);border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s;box-shadow:var(--sh-gold);white-space:nowrap}
 .fsubmit:hover{background:var(--gold-d);color:#fff;transform:translateY(-2px)}
 
 /* ── FOOTER ───────────────────────────────────────────────────── */
@@ -522,7 +544,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   .pgrid{grid-template-columns:repeat(2,1fr)}
   .sgrid{grid-template-columns:repeat(2,1fr)}
   .pgrid4{grid-template-columns:repeat(2,1fr)}
-  .cgrid{grid-template-columns:1fr;gap:2.5rem}
+  .ctc-channels{grid-template-columns:1fr}
   .neg-sub-grid{grid-template-columns:1fr}
   .pillars-grid{grid-template-columns:1fr}
   .adm-grid{grid-template-columns:1fr 1fr}
@@ -612,42 +634,55 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   </div>
 
   <div class="cat-grid reveal">
+
     <div class="cat-card" data-cat="inmuebles">
-      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=450&fit=crop&q=80" alt="Inmuebles" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=800&fit=crop&q=80" alt="Inmuebles" loading="lazy"/>
+      <div class="cat-card-num">01 / 04</div>
       <div class="cat-card-body">
         <div class="cat-card-icon">🏠</div>
+        <div class="cat-card-line"></div>
         <div class="cat-card-title">Inmuebles</div>
-        <div class="cat-card-desc">Casas, apartamentos, locales, cabañas, fincas y parqueaderos</div>
-        <div class="cat-card-arrow">Ver portafolio <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="cat-card-desc">Casas · Apartamentos · Locales<br>Cabañas · Fincas · Parqueaderos</div>
+        <div class="cat-card-cta">Ver portafolio →</div>
       </div>
     </div>
+
     <div class="cat-card" data-cat="negocios">
-      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=450&fit=crop&q=80" alt="Negocios" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=800&fit=crop&q=80" alt="Negocios" loading="lazy"/>
+      <div class="cat-card-num">02 / 04</div>
       <div class="cat-card-body">
         <div class="cat-card-icon">💼</div>
+        <div class="cat-card-line"></div>
         <div class="cat-card-title">Negocios en Marcha</div>
-        <div class="cat-card-desc">Empresas activas, establecimientos y personas naturales</div>
-        <div class="cat-card-arrow">Ver opciones <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="cat-card-desc">Sociedades · Establecimientos<br>Personas naturales · Inversión</div>
+        <div class="cat-card-cta">Ver oportunidades →</div>
       </div>
     </div>
+
     <div class="cat-card" data-cat="ph">
-      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=450&fit=crop&q=80" alt="Propiedad Horizontal" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=800&fit=crop&q=80" alt="Propiedad Horizontal" loading="lazy"/>
+      <div class="cat-card-num">03 / 04</div>
       <div class="cat-card-body">
         <div class="cat-card-icon">🏢</div>
+        <div class="cat-card-line"></div>
         <div class="cat-card-title">Propiedad Horizontal</div>
-        <div class="cat-card-desc">Ley 675 de 2001 y administración delegada de conjuntos</div>
-        <div class="cat-card-arrow">Ver servicios <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="cat-card-desc">Ley 675 de 2001<br>Administración delegada de conjuntos</div>
+        <div class="cat-card-cta">Ver servicios →</div>
       </div>
     </div>
+
     <div class="cat-card" data-cat="rentas">
-      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=450&fit=crop&q=80" alt="Rentas Cortas" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=800&fit=crop&q=80" alt="Rentas Cortas" loading="lazy"/>
+      <div class="cat-card-num">04 / 04</div>
       <div class="cat-card-body">
         <div class="cat-card-icon">🔑</div>
+        <div class="cat-card-line"></div>
         <div class="cat-card-title">Rentas Cortas</div>
-        <div class="cat-card-desc">Arrendamientos vacacionales y estadías cortas</div>
-        <div class="cat-card-arrow">Más información <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        <div class="cat-card-desc">Arrendamientos vacacionales<br>Estadías cortas · Temporadas</div>
+        <div class="cat-card-cta">Más información →</div>
       </div>
     </div>
+
   </div>
 
   <!-- PANEL: INMUEBLES -->
@@ -813,7 +848,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
           <div class="pillar-body">Mecanismos para resolver problemas sin acudir a juzgados:<ul><li><strong>Comité de Convivencia:</strong> Órgano conciliador elegido por la Asamblea</li><li><strong>Sanciones:</strong> Multas, publicación de morosos, restricción de zonas comunes — siempre con debido proceso</li><li>Aplica a conflictos de ruidos, mascotas, parqueaderos, humedades y más</li></ul></div>
         </div>
       </div>
-      <button class="ley-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Solicitar asesoría en Ley 675 <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button class="ley-cta" onclick="window.open('https://wa.me/573217467970?text='+encodeURIComponent('Hola, quisiera solicitar una *asesoría sobre Ley 675 de 2001* (Propiedad Horizontal) con DSE Inmobiliaria. ¿Cuándo tienen disponibilidad?'),'_blank','noopener')">Solicitar asesoría en Ley 675 <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
 
     <!-- ADMINISTRACIÓN DELEGADA -->
@@ -1190,29 +1225,65 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
 <section id="contacto" class="sec">
   <div class="sec-label reveal">Hablemos</div>
   <h2 class="sec-title reveal">Contáct<span>enos</span></h2>
-  <div class="cgrid">
-    <div class="reveal">
-      <div class="iitem"><div class="ilbl">Correo electrónico</div><div class="ival"><a href="mailto:dsesas@gmail.com">dsesas@gmail.com</a></div></div>
-      <div class="iitem"><div class="ilbl">Teléfono / WhatsApp</div><div class="ival"><a href="tel:+573217467970">321 746 7970</a></div></div>
-      <div class="iitem"><div class="ilbl">Dirección</div><div class="ival">Carrera 4 No. 12-41 Oficina 503<br>Edificio Seguros Bolívar, Cali</div></div>
-      <div class="iitem"><div class="ilbl">Horario de atención</div><div class="ival">Lun–Vie &middot; 8:00 a.m. – 6:00 p.m.<br>Sábados &middot; 9:00 a.m. – 1:00 p.m.</div></div>
+  <div class="ctc-inner">
+
+    <!-- Canales directos -->
+    <div class="ctc-channels reveal">
+      <a class="ctc-ch wa" href="https://wa.me/573217467970?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20de%20DSE%20Inmobiliaria." target="_blank" rel="noopener">
+        <div class="ctc-ch-ic">💬</div>
+        <div class="ctc-ch-lbl">WhatsApp</div>
+        <div class="ctc-ch-val">321 746 7970</div>
+      </a>
+      <a class="ctc-ch em" href="mailto:dsesas@gmail.com">
+        <div class="ctc-ch-ic">✉️</div>
+        <div class="ctc-ch-lbl">Correo</div>
+        <div class="ctc-ch-val">dsesas@gmail.com</div>
+      </a>
+      <a class="ctc-ch ph" href="tel:+573217467970">
+        <div class="ctc-ch-ic">📞</div>
+        <div class="ctc-ch-lbl">Llamar</div>
+        <div class="ctc-ch-val">321 746 7970</div>
+      </a>
     </div>
-    <div class="reveal">
-      <div class="form-card">
-        <form id="cform" onsubmit="fsubmit(event)">
-          <div class="frow"><div class="ff"><label>Nombre</label><input type="text" placeholder="Su nombre completo" required/></div><div class="ff"><label>Teléfono</label><input type="tel" placeholder="3XX XXX XXXX"/></div></div>
-          <div class="frow"><div class="ff full"><label>Correo electrónico</label><input type="email" placeholder="correo@ejemplo.com" required/></div></div>
-          <div class="frow"><div class="ff full"><label>Servicio de interés</label>
+
+    <!-- Separador -->
+    <div class="ctc-divider reveal"><span>o déjenos su mensaje</span></div>
+
+    <!-- Formulario simplificado -->
+    <div class="ctc-form reveal">
+      <form id="cform" onsubmit="fsubmit(event)">
+        <div class="frow">
+          <div class="ff"><label>Nombre</label><input type="text" placeholder="Su nombre completo" required/></div>
+          <div class="ff"><label>Teléfono</label><input type="tel" placeholder="3XX XXX XXXX" required/></div>
+        </div>
+        <div class="frow">
+          <div class="ff full"><label>Servicio de interés</label>
             <select required>
-              <option value="">Seleccione</option>
-              <option>Arrendamiento</option><option>Venta de inmueble</option><option>Negocio en marcha</option><option>Avalúo comercial</option><option>Administración P.H.</option><option>Rentas cortas</option><option>Otro</option>
+              <option value="">Seleccione un servicio</option>
+              <option>Arrendamiento de inmueble</option>
+              <option>Venta de inmueble</option>
+              <option>Negocios en marcha</option>
+              <option>Administración P.H. (Ley 675)</option>
+              <option>Rentas cortas</option>
+              <option>Avalúo comercial</option>
+              <option>Otro</option>
             </select>
-          </div></div>
-          <div class="frow"><div class="ff full"><label>Mensaje</label><textarea rows="4" placeholder="Cuéntenos en qué podemos ayudarle…"></textarea></div></div>
-          <button type="submit" class="fsubmit" id="fsub">Enviar mensaje</button>
-        </form>
-      </div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="ff full"><label>Mensaje</label><textarea rows="3" placeholder="Cuéntenos brevemente en qué podemos ayudarle…"></textarea></div>
+        </div>
+        <div class="ctc-form-footer">
+          <div class="ctc-office">
+            <strong>📍 Oficina DSE</strong>
+            Cra. 4 N° 12-41 Of. 503 · Edif. Seguros Bolívar, Cali<br>
+            Lun–Vie 8am–6pm · Sáb 9am–1pm
+          </div>
+          <button type="submit" class="fsubmit" id="fsub">Enviar por WhatsApp →</button>
+        </div>
+      </form>
     </div>
+
   </div>
 </section>
 
@@ -1796,16 +1867,16 @@ function fsubmit(e){
   e.preventDefault();
   const f=e.target;
   const vals=[...f.querySelectorAll('input,select,textarea')].map(el=>el.value.trim());
-  const [nom,tel,email,srv,msj]=vals;
-  let msg=`Hola, soy *${nom||'un cliente'}* y me interesa información sobre DSE Inmobiliaria.\n`;
-  if(tel)msg+=`\nTeléfono: ${tel}`;
-  if(email)msg+=`\nCorreo: ${email}`;
-  if(srv)msg+=`\nServicio: ${srv}`;
-  if(msj)msg+=`\nMensaje: ${msj}`;
+  const [nom,tel,srv,msj]=vals;
+  let msg=`Hola, soy *${nom||'un cliente'}* y me interesa información de DSE Inmobiliaria.\n`;
+  if(tel)msg+=`\n📞 Teléfono: ${tel}`;
+  if(srv)msg+=`\n🏷 Servicio: ${srv}`;
+  if(msj)msg+=`\n💬 Mensaje: ${msj}`;
   window.open(`https://wa.me/573217467970?text=${encodeURIComponent(msg)}`,'_blank','noopener');
   const b=document.getElementById('fsub');
+  const orig=b.textContent;
   b.textContent='✓ Abriendo WhatsApp…';b.style.background='#2D7D4F';b.style.boxShadow='0 8px 28px rgba(45,125,79,.35)';
-  setTimeout(()=>{b.textContent='Enviar mensaje';b.style.background='';b.style.boxShadow='';f.reset()},3500);
+  setTimeout(()=>{b.textContent=orig;b.style.background='';b.style.boxShadow='';f.reset()},3500);
 }
 
 /* Render inicial */
