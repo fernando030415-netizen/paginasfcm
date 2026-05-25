@@ -275,34 +275,34 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .nif-btn:hover{background:#d4a830}
 
 /* ── MARKETPLACE NEGOCIOS ─────────────────────────────────────── */
-#neg-market-modal{position:fixed;inset:0;z-index:600;background:var(--w);display:none;flex-direction:column;overflow:hidden}
+#neg-market-modal{position:fixed;inset:0;z-index:600;background:#1a2a3e;display:none;flex-direction:column;overflow:hidden}
 #neg-market-modal.open{display:flex;animation:fU .3s ease}
-.nmk-topbar{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2.2rem 1rem;border-bottom:1px solid var(--sm);flex-shrink:0;background:var(--ww)}
-.nmk-logo{font-family:var(--serif);font-size:1.2rem;color:var(--nv);letter-spacing:.04em}
-.nmk-logo span{color:var(--sd);font-weight:300;font-size:.9rem;margin-left:.6rem}
-.nmk-close{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--sm);background:none;color:var(--sd);font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
-.nmk-close:hover{background:var(--bg2);color:var(--nv)}
-.nmk-tabs{display:flex;gap:.5rem;padding:.9rem 2.2rem;border-bottom:1px solid var(--sm);flex-shrink:0;flex-wrap:wrap;background:var(--ww)}
-.nmk-tab{padding:.45rem 1.2rem;border-radius:var(--rpill);border:1.5px solid var(--sm);background:none;color:var(--sd);font-family:var(--sans);font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .22s}
-.nmk-tab:hover{border-color:rgba(196,150,42,.5);color:var(--nv)}
+.nmk-topbar{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2.2rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0;background:#152236}
+.nmk-logo{font-family:var(--serif);font-size:1.2rem;color:var(--gold-l);letter-spacing:.04em}
+.nmk-logo span{color:rgba(255,255,255,.38);font-weight:300;font-size:.9rem;margin-left:.6rem}
+.nmk-close{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.18);background:none;color:rgba(255,255,255,.6);font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nmk-close:hover{background:rgba(255,255,255,.1);color:#fff}
+.nmk-tabs{display:flex;gap:.5rem;padding:.9rem 2.2rem;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;flex-wrap:wrap;background:#152236}
+.nmk-tab{padding:.45rem 1.2rem;border-radius:var(--rpill);border:1.5px solid rgba(255,255,255,.14);background:none;color:rgba(255,255,255,.45);font-family:var(--sans);font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .22s}
+.nmk-tab:hover{border-color:rgba(196,150,42,.5);color:#fff}
 .nmk-tab.on{background:var(--gold);border-color:var(--gold);color:var(--nv);font-weight:700}
-.nmk-body{flex:1;overflow-y:auto;padding:1.8rem 2.2rem 2.4rem;background:var(--w)}
+.nmk-body{flex:1;overflow-y:auto;padding:1.8rem 2.2rem 2.4rem;background:#1a2a3e}
 .nmk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.nmk-card{background:var(--ww);border:1.5px solid var(--sm);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .28s,box-shadow .28s,border-color .22s}
-.nmk-card:hover{transform:translateY(-5px);border-color:rgba(196,150,42,.45);box-shadow:0 16px 44px rgba(12,27,46,.1)}
+.nmk-card{background:#213045;border:1.5px solid rgba(196,150,42,.16);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .28s,box-shadow .28s,border-color .22s}
+.nmk-card:hover{transform:translateY(-5px);border-color:rgba(196,150,42,.5);box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .nmk-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .nmk-body2{padding:1.3rem 1.4rem 1.5rem}
-.nmk-type{font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.5rem}
-.nmk-name{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--nv);margin-bottom:.25rem}
-.nmk-sector{font-size:.75rem;font-weight:300;color:var(--sd);margin-bottom:1rem}
+.nmk-type{font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.nmk-name{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:#fff;margin-bottom:.25rem}
+.nmk-sector{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.42);margin-bottom:1rem}
 .nmk-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.1rem}
-.nmk-metric{background:var(--bg2);border-radius:10px;padding:.55rem .7rem;border:1px solid var(--sm)}
-.nmk-mv{font-size:.9rem;font-weight:700;color:var(--gold-d);display:block}
-.nmk-ml{font-size:.48rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--sd);display:block;margin-top:.1rem}
-.nmk-pitch{font-size:.76rem;font-weight:300;color:var(--sd);line-height:1.7;margin-bottom:1.2rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.nmk-btn{display:block;width:100%;padding:.6rem;background:transparent;border:1.5px solid rgba(196,150,42,.35);border-radius:var(--rsm);font-family:var(--sans);font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);cursor:pointer;transition:all .22s;text-align:center}
+.nmk-metric{background:rgba(0,0,0,.25);border-radius:10px;padding:.55rem .7rem;border:1px solid rgba(196,150,42,.12)}
+.nmk-mv{font-size:.9rem;font-weight:700;color:var(--gold-l);display:block}
+.nmk-ml{font-size:.48rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.1rem}
+.nmk-pitch{font-size:.76rem;font-weight:300;color:rgba(255,255,255,.48);line-height:1.7;margin-bottom:1.2rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.nmk-btn{display:block;width:100%;padding:.6rem;background:transparent;border:1.5px solid rgba(196,150,42,.35);border-radius:var(--rsm);font-family:var(--sans);font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);cursor:pointer;transition:all .22s;text-align:center}
 .nmk-btn:hover{background:var(--gold);color:var(--nv);border-color:var(--gold)}
-.nmk-empty{text-align:center;padding:4rem 2rem;color:var(--sd);font-size:.9rem}
+.nmk-empty{text-align:center;padding:4rem 2rem;color:rgba(255,255,255,.3);font-size:.9rem}
 /* ── DETALLE NEGOCIO ────── */
 #neg-detail-modal{position:fixed;inset:0;z-index:650;background:rgba(8,14,26,.78);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:1rem}
 #neg-detail-modal.open{display:flex;animation:fU .28s ease}
