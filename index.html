@@ -103,14 +103,15 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 #categorias .sec-title{color:#fff}
 #categorias .sec-title span{color:var(--gold)}
 
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:0}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:0}
 .cat-card{
   position:relative;border-radius:20px;overflow:hidden;cursor:pointer;
-  aspect-ratio:16/9;border:2px solid transparent;
+  aspect-ratio:1/1;
+  border:2px solid rgba(255,255,255,.18);
   transition:transform .35s ease,box-shadow .35s,border-color .3s;
 }
-.cat-card:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(0,0,0,.5)}
-.cat-card.active{border-color:var(--gold);box-shadow:0 0 0 4px rgba(196,150,42,.25),0 20px 50px rgba(0,0,0,.4)}
+.cat-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.75);box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 32px rgba(255,255,255,.18),0 28px 60px rgba(0,0,0,.5)}
+.cat-card.active{border-color:#fff;box-shadow:0 0 0 2px #fff,0 0 40px rgba(255,255,255,.22),0 20px 50px rgba(0,0,0,.4)}
 .cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .cat-card:hover img{transform:scale(1.05)}
 .cat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(12,27,46,.9) 0%,rgba(12,27,46,.4) 50%,rgba(12,27,46,.15) 100%)}
@@ -169,35 +170,79 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .res-count{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.6)}
 .res-count strong{font-weight:700;color:#fff}
 
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.pcard{background:rgba(255,255,255,.06);border-radius:var(--r);overflow:hidden;border:1.5px solid rgba(196,150,42,.12);transition:transform .35s,box-shadow .35s,border-color .3s;cursor:pointer}
-.pcard:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.45);border-color:rgba(196,150,42,.4)}
-.pimg{width:100%;aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--nv2)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.pcard{background:var(--ww);border-radius:var(--r);overflow:hidden;border:1.5px solid rgba(221,213,200,.65);transition:transform .32s,box-shadow .32s,border-color .28s;cursor:pointer}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(12,27,46,.1);border-color:rgba(196,150,42,.35)}
+.pimg{width:100%;aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--bg2)}
 .pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.pcard:hover .pimg img{transform:scale(1.07)}
-.pimg-overlay{position:absolute;inset:0;z-index:2;background:rgba(12,27,46,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
-.pcard:hover .pimg-overlay{opacity:1}
-.pimg-overlay-btn{padding:.65rem 1.6rem;background:var(--gold);color:var(--nv);border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transform:translateY(8px);transition:transform .3s}
-.pcard:hover .pimg-overlay-btn{transform:translateY(0)}
-.pbadges{position:absolute;top:.75rem;left:.75rem;display:flex;gap:.35rem;z-index:3}
-.badge{padding:.2rem .62rem;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:var(--rpill)}
-.b-arr{background:var(--nv);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.pcard:hover .pimg img{transform:scale(1.05)}
+.pbadges{position:absolute;top:.65rem;left:.65rem;display:flex;gap:.3rem;z-index:3}
+.badge{padding:.18rem .55rem;font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--rpill)}
+.b-arr{background:var(--nv);color:#fff}
 .b-ven{background:var(--gold);color:var(--nv)}
-.b-typ{background:rgba(255,255,255,.9);color:var(--b)}
-.pbody{padding:1.2rem}
-.pprice{font-family:var(--serif);font-size:1.38rem;font-weight:600;color:var(--gold-l);margin-bottom:.3rem}
-.pprice span{font-family:var(--sans);font-size:.72rem;font-weight:300;color:rgba(255,255,255,.5)}
-.pname{font-size:.95rem;font-weight:600;color:#fff;margin-bottom:.2rem}
-.ploc{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem}
-.ploc::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold);flex-shrink:0}
-.pspecs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
-.spec-item{background:rgba(255,255,255,.06);border-radius:8px;padding:.4rem .5rem;text-align:center;border:1px solid rgba(196,150,42,.1)}
-.spec-item-val{font-size:.82rem;font-weight:600;color:#fff;display:block}
-.spec-item-lbl{font-size:.52rem;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:.1rem}
-.spec-na{opacity:.3}
+.b-typ{background:rgba(255,255,255,.92);color:var(--b)}
+.pbody{padding:1rem 1.15rem 1.1rem}
+.pprice{font-family:var(--serif);font-size:1.32rem;font-weight:600;color:var(--gold-d);margin-bottom:.2rem}
+.pprice span{font-family:var(--sans);font-size:.7rem;font-weight:300;color:var(--sd)}
+.pname{font-size:.9rem;font-weight:600;color:var(--nv);margin-bottom:.18rem}
+.ploc{font-size:.76rem;font-weight:300;color:var(--sd);margin-bottom:.7rem}
+.pspecs-row{font-size:.76rem;font-weight:300;color:var(--sd);margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--sl)}
+.pcard-btn{display:block;width:100%;padding:.52rem;background:transparent;border:1.5px solid rgba(196,150,42,.3);border-radius:var(--rsm);font-family:var(--sans);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);cursor:pointer;transition:all .22s;text-align:center}
+.pcard-btn:hover{background:var(--gold);color:var(--nv);border-color:var(--gold)}
 .no-res{grid-column:1/-1;text-align:center;padding:4rem 0}
-.no-res p{font-family:var(--serif);font-size:1.5rem;color:var(--gold);margin-bottom:.4rem}
-.no-res small{font-size:.78rem;font-weight:200;color:rgba(255,255,255,.4)}
+.no-res p{font-family:var(--serif);font-size:1.5rem;color:var(--gold-d);margin-bottom:.4rem}
+.no-res small{font-size:.78rem;font-weight:200;color:var(--sd)}
+
+/* ── MODAL DETALLE PROPIEDAD ──────────────────────────────────── */
+#prop-detail-modal{position:fixed;inset:0;z-index:500;background:rgba(10,18,32,.68);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:1rem}
+#prop-detail-modal.open{display:flex;animation:fU .3s ease}
+.prop-modal{background:var(--ww);border-radius:24px;overflow:hidden;width:100%;max-width:860px;max-height:94vh;display:flex;flex-direction:column;box-shadow:0 48px 120px rgba(0,0,0,.5);position:relative;overflow-y:auto}
+
+/* Gallery */
+.pm-gallery{position:relative;width:100%;aspect-ratio:16/9;flex-shrink:0;background:var(--nv2);overflow:hidden}
+.pm-main-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
+.pm-main-img.fading{opacity:0}
+.pm-close{position:absolute;top:.85rem;right:.85rem;z-index:20;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.45);border:none;color:#fff;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(6px)}
+.pm-close:hover{background:rgba(0,0,0,.75)}
+.pm-badges-modal{position:absolute;top:.85rem;left:.85rem;display:flex;gap:.3rem;z-index:10}
+.pm-thumbs{position:absolute;bottom:.8rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:10}
+.pm-thumb{width:54px;height:54px;border-radius:8px;overflow:hidden;cursor:pointer;border:2.5px solid rgba(255,255,255,.28);flex-shrink:0;opacity:.65;transition:all .25s;animation:thumbIn .4s ease backwards}
+.pm-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pm-thumb.active{border-color:#fff;opacity:1;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.pm-thumb:hover{opacity:1;border-color:rgba(255,255,255,.75)}
+.pm-thumb:nth-child(1){animation-delay:.05s}.pm-thumb:nth-child(2){animation-delay:.12s}
+.pm-thumb:nth-child(3){animation-delay:.19s}.pm-thumb:nth-child(4){animation-delay:.26s}
+@keyframes thumbIn{from{opacity:0;transform:translateY(10px)}to{}}
+
+/* Body del modal */
+.pm-body{padding:1.8rem 2rem 2.2rem;display:flex;flex-direction:column;gap:1.5rem}
+.pm-price{font-family:var(--serif);font-size:1.85rem;font-weight:500;color:var(--gold-d)}
+.pm-price span{font-family:var(--sans);font-size:.72rem;font-weight:300;color:var(--sd)}
+.pm-name{font-family:var(--serif);font-size:1.22rem;font-weight:500;color:var(--nv);margin-top:.2rem}
+.pm-loc{font-size:.79rem;font-weight:300;color:var(--sd);margin-top:.15rem;display:flex;align-items:center;gap:.4rem}
+.pm-loc::before{content:'';width:12px;height:1.5px;background:var(--gold);flex-shrink:0;display:inline-block}
+.pm-divider{height:1px;background:var(--sl)}
+.pm-sec-title{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.75rem}
+/* Specs */
+.pm-specs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:.5rem}
+.pm-spec-item{background:var(--bg2);border:1px solid rgba(221,213,200,.6);border-radius:10px;padding:.55rem .4rem;text-align:center}
+.pm-spec-val{font-size:.88rem;font-weight:700;color:var(--nv);display:block}
+.pm-spec-lbl{font-size:.49rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--sd);display:block;margin-top:.1rem}
+/* Descripción */
+.pm-desc{font-size:.87rem;font-weight:300;color:var(--b);line-height:1.9}
+/* Condiciones */
+.pm-conds-list{display:flex;flex-direction:column;gap:.45rem}
+.pm-cond-item{display:flex;align-items:flex-start;gap:.65rem;font-size:.83rem;font-weight:300;color:var(--b);line-height:1.55}
+.pm-cond-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.5rem}
+/* Extras info */
+.pm-extras-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.5rem}
+.pm-extra-item{background:var(--bg2);border-radius:10px;padding:.55rem .7rem;border:1px solid rgba(221,213,200,.5)}
+.pm-extra-lbl{display:block;font-size:.5rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.15rem}
+.pm-extra-val{display:block;font-size:.83rem;font-weight:400;color:var(--nv)}
+/* WhatsApp btn */
+.pm-wa-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;padding:1rem 2rem;background:#25D366;color:#fff;border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 8px 28px rgba(37,211,102,.32);width:100%}
+.pm-wa-btn:hover{background:#1ea355;transform:translateY(-2px);box-shadow:0 14px 36px rgba(37,211,102,.4)}
+@media(max-width:640px){.prop-modal{border-radius:16px}.pm-gallery{aspect-ratio:4/3}.pm-thumbs{gap:.35rem}.pm-thumb{width:42px;height:42px}.pm-body{padding:1.2rem 1.2rem 1.6rem;gap:1.2rem}.pm-price{font-size:1.5rem}.pm-specs-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* ── PANEL NEGOCIOS ───────────────────────────────────────────── */
 .neg-sub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -417,7 +462,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   footer{padding:2rem 2rem}
   .nav-links{display:none}
   .hamburger{display:flex}
-  .cat-grid{grid-template-columns:1fr 1fr}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
   .subtype-grid{grid-template-columns:repeat(3,1fr)}
   .pgrid{grid-template-columns:repeat(2,1fr)}
   .sgrid{grid-template-columns:repeat(2,1fr)}
@@ -1122,6 +1167,69 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   <div class="fcontact"><a href="mailto:dsesas@gmail.com">dsesas@gmail.com</a><br><a href="tel:+573217467970">321 746 7970</a></div>
 </footer>
 
+<!-- MODAL DETALLE PROPIEDAD -->
+<div id="prop-detail-modal" onclick="if(event.target===this)closePropModal()">
+  <div class="prop-modal">
+
+    <!-- Galería de imágenes -->
+    <div class="pm-gallery">
+      <img id="pm-main-img" class="pm-main-img" src="" alt=""/>
+      <div class="pm-badges-modal" id="pm-badges-modal"></div>
+      <div class="pm-thumbs" id="pm-thumbs"></div>
+      <button class="pm-close" onclick="closePropModal()">✕</button>
+    </div>
+
+    <!-- Cuerpo scrollable -->
+    <div class="pm-body">
+
+      <!-- Precio + nombre + ubicación -->
+      <div>
+        <div class="pm-price" id="pm-price"></div>
+        <div class="pm-name" id="pm-name"></div>
+        <div class="pm-loc" id="pm-loc"></div>
+      </div>
+
+      <div class="pm-divider"></div>
+
+      <!-- Especificaciones -->
+      <div>
+        <div class="pm-sec-title">Especificaciones del inmueble</div>
+        <div class="pm-specs-grid" id="pm-specs-grid"></div>
+      </div>
+
+      <div class="pm-divider"></div>
+
+      <!-- Descripción -->
+      <div>
+        <div class="pm-sec-title">Descripción</div>
+        <div class="pm-desc" id="pm-desc"></div>
+      </div>
+
+      <div class="pm-divider"></div>
+
+      <!-- Condiciones -->
+      <div>
+        <div class="pm-sec-title">Condiciones del arrendamiento / venta</div>
+        <div class="pm-conds-list" id="pm-conds"></div>
+      </div>
+
+      <div class="pm-divider"></div>
+
+      <!-- Información adicional -->
+      <div>
+        <div class="pm-sec-title">Información adicional</div>
+        <div class="pm-extras-grid" id="pm-extras"></div>
+      </div>
+
+      <!-- WhatsApp -->
+      <button class="pm-wa-btn" id="pm-wa-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar información por WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
 <a class="wa-fab" href="https://wa.me/573217467970?text=Hola%2C%20me%20interesa%20información%20sobre%20propiedades%20DSE." target="_blank" rel="noopener" aria-label="WhatsApp">
   <span class="wa-tooltip">Escríbenos por WhatsApp</span>
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1132,22 +1240,100 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
 document.getElementById('hero-vid').addEventListener('ended',function(){this.pause();this.currentTime=this.duration-0.01});
 
 /* ── DATOS ── */
+/* Galerías por categoría (imágenes adicionales en modal) */
+const GALLERY={
+  apartamento:['photo-1560448204-603b8e8a3bce','photo-1484154218962-a197022b5858','photo-1555041469-a586c61ea9bc'],
+  casa:['photo-1558618666-fcd25c85cd64','photo-1512917774080-9991f1c4c750','photo-1570129477492-45c003edd2be'],
+  oficina:['photo-1497366754892-f29e84a35879','photo-1497366749723-3716fe86f3d8','photo-1497366216548-37526070297c'],
+  local:['photo-1472851294608-062f824d29cc','photo-1604882737274-b3a250c3e9e4','photo-1441986300917-64674bd600d8'],
+  cabana:['photo-1449158743715-0a90ebb6d2d8','photo-1506905925346-21bda4d32df4','photo-1510798831971-661eb04b3739'],
+  finca:['photo-1500382017468-9049fed747ef','photo-1472214103451-9374bd1c798e','photo-1500076656116-558758c991c1'],
+  parqueadero:['photo-1506521781263-d8422e82f27a','photo-1590674899484-d5640e854abe']
+};
+function getGallery(p){
+  const ids=[...(GALLERY[p.cat]||[])];
+  const all=[p.img,...ids.map(id=>`https://images.unsplash.com/${id}?w=900&h=560&fit=crop&q=82`)];
+  return all.slice(0,4);
+}
+
+const CONDS_ARRIENDO=['Contrato de arrendamiento mínimo 12 meses','Depósito equivalente a 1 mes de arriendo','Póliza de arrendamiento o fiador solidario solvente','No se permite subarriendo parcial ni total','Prohibido uso comercial del inmueble (uso residencial)','Visita previa coordinada con asesor DSE · Sujeto a estudio de crédito'];
+const CONDS_VENTA=['Escritura pública ante notaría seleccionada de mutuo acuerdo','Estudio de títulos y tradición del inmueble incluido','Paz y salvo de administración y servicios públicos requerido','Desembolso sujeto a aprobación de crédito hipotecario','Entrega del inmueble dentro de 30 días hábiles post-firma','Sujeto a promesa de compraventa con arras del 10%'];
+
 const P=[
-  {id:1,ciudad:'cali',zona:'sur',tipo:'arriendo',cat:'apartamento',nom:'Apartamento ejecutivo',barrio:'Ciudad Jardín',est:6,precio:2800000,hab:3,ban:2,patio:0,garaje:1,area:95,parq:true,amob:false,masc:true,f:15,img:'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=280&fit=crop&q=80'},
-  {id:2,ciudad:'cali',zona:'sur',tipo:'venta',cat:'casa',nom:'Casa familiar amplia',barrio:'El Ingenio',est:5,precio:680000000,hab:4,ban:3,patio:1,garaje:2,area:280,parq:true,amob:false,masc:false,f:14,img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=280&fit=crop&q=80'},
-  {id:3,ciudad:'cali',zona:'occidente',tipo:'arriendo',cat:'oficina',nom:'Oficina corporativa',barrio:'San Fernando',est:5,precio:3500000,hab:0,ban:2,patio:0,garaje:2,area:120,parq:true,amob:true,masc:false,f:13,img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=280&fit=crop&q=80'},
-  {id:4,ciudad:'cali',zona:'sur',tipo:'venta',cat:'casa',nom:'Casa con jardín privado',barrio:'Pance',est:6,precio:1200000000,hab:5,ban:4,patio:2,garaje:3,area:450,parq:true,amob:false,masc:true,f:12,img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=280&fit=crop&q=80'},
-  {id:5,ciudad:'cali',zona:'norte',tipo:'arriendo',cat:'apartamento',nom:'Apartamento moderno',barrio:'Granada',est:5,precio:2200000,hab:2,ban:1,patio:0,garaje:0,area:75,parq:false,amob:false,masc:false,f:11,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=280&fit=crop&q=80'},
-  {id:6,ciudad:'cali',zona:'oriente',tipo:'arriendo',cat:'local',nom:'Local comercial',barrio:'Centro Histórico',est:3,precio:1800000,hab:0,ban:1,patio:0,garaje:0,area:65,parq:false,amob:false,masc:false,f:10,img:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=280&fit=crop&q=80'},
-  {id:7,ciudad:'cali',zona:'norte',tipo:'venta',cat:'apartamento',nom:'Apartamento en piso alto',barrio:'Unicentro',est:5,precio:380000000,hab:3,ban:2,patio:0,garaje:1,area:110,parq:true,amob:false,masc:false,f:9,img:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=280&fit=crop&q=80'},
-  {id:8,ciudad:'cali',zona:'norte',tipo:'arriendo',cat:'apartamento',nom:'Apartamento amoblado',barrio:'Santa Teresita',est:5,precio:1900000,hab:2,ban:2,patio:0,garaje:0,area:80,parq:false,amob:true,masc:true,f:8,img:'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=400&h=280&fit=crop&q=80'},
-  {id:9,ciudad:'cali',zona:'oriente',tipo:'venta',cat:'casa',nom:'Casa con piscina',barrio:'El Caney',est:4,precio:420000000,hab:4,ban:3,patio:1,garaje:2,area:220,parq:true,amob:false,masc:true,f:7,img:'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&h=280&fit=crop&q=80'},
-  {id:10,ciudad:'cali',zona:'norte',tipo:'venta',cat:'apartamento',nom:'Apartamento nuevo',barrio:'Chipichape',est:5,precio:295000000,hab:2,ban:2,patio:0,garaje:1,area:85,parq:true,amob:false,masc:false,f:6,img:'https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&h=280&fit=crop&q=80'},
-  {id:11,ciudad:'cali',zona:'sur',tipo:'arriendo',cat:'casa',nom:'Casa con patio',barrio:'Villacolombia',est:3,precio:1500000,hab:3,ban:2,patio:1,garaje:1,area:150,parq:true,amob:false,masc:true,f:5,img:'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=280&fit=crop&q=80'},
-  {id:12,ciudad:'cali',zona:'oriente',tipo:'venta',cat:'apartamento',nom:'Apartamento estrenar',barrio:'Calipso',est:4,precio:185000000,hab:2,ban:1,patio:0,garaje:0,area:60,parq:false,amob:false,masc:false,f:4,img:'https://images.unsplash.com/photo-1585128919879-3b6b29936248?w=400&h=280&fit=crop&q=80'},
-  {id:13,ciudad:'cali',zona:'occidente',tipo:'arriendo',cat:'cabana',nom:'Cabaña en Lago Calima',barrio:'Lago Calima',est:0,precio:850000,hab:3,ban:2,patio:1,garaje:1,area:90,parq:true,amob:true,masc:true,f:3,img:'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=400&h=280&fit=crop&q=80'},
-  {id:14,ciudad:'cali',zona:'sur',tipo:'venta',cat:'finca',nom:'Finca productiva Rozo',barrio:'Rozo',est:0,precio:450000000,hab:4,ban:3,patio:2,garaje:2,area:5000,parq:true,amob:false,masc:true,f:2,img:'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=400&h=280&fit=crop&q=80'},
-  {id:15,ciudad:'cali',zona:'oriente',tipo:'venta',cat:'parqueadero',nom:'Parqueadero cubierto centro',barrio:'Centro',est:0,precio:65000000,hab:0,ban:0,patio:0,garaje:0,area:15,parq:false,amob:false,masc:false,f:1,img:'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=280&fit=crop&q=80'}
+  {id:1,ciudad:'cali',zona:'sur',tipo:'arriendo',cat:'apartamento',nom:'Apartamento ejecutivo',barrio:'Ciudad Jardín',est:6,precio:2800000,hab:3,ban:2,patio:0,garaje:1,area:95,parq:true,amob:false,masc:true,f:15,
+   img:'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=280&fit=crop&q=80',
+   desc:'Elegante apartamento ejecutivo en uno de los sectores más exclusivos del sur de Cali. Amplias zonas sociales con cocina integral y desayunador, habitación principal con walking closet y baño privado. Edificio con portería 24 horas, CCTV perimetral, gimnasio equipado y salón comunal. Fácil acceso a centros comerciales, vías principales y colegios de alto nivel.',
+   extras:{Piso:'5 de 12',Año:'2018',Administración:'$350.000/mes',Disponible:'Inmediato',Estrato:'6'}},
+
+  {id:2,ciudad:'cali',zona:'sur',tipo:'venta',cat:'casa',nom:'Casa familiar amplia',barrio:'El Ingenio',est:5,precio:680000000,hab:4,ban:3,patio:1,garaje:2,area:280,parq:true,amob:false,masc:false,f:14,
+   img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=280&fit=crop&q=80',
+   desc:'Espaciosa casa familiar en urbanización cerrada del sur de Cali. Sala-comedor dobles con pisos en mármol, cocina tipo americano con isla central, cuarto de servicio independiente y amplio patio-jardín con zona de BBQ. Doble garaje cubierto y sistemas de seguridad. Ideal para familia numerosa.',
+   extras:{Antigüedad:'8 años',Piso:'1 nivel',Administración:'$280.000/mes',Disponible:'60 días',Estrato:'5'}},
+
+  {id:3,ciudad:'cali',zona:'occidente',tipo:'arriendo',cat:'oficina',nom:'Oficina corporativa',barrio:'San Fernando',est:5,precio:3500000,hab:0,ban:2,patio:0,garaje:2,area:120,parq:true,amob:true,masc:false,f:13,
+   img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=280&fit=crop&q=80',
+   desc:'Espacio corporativo de alto nivel en edificio clase A del sector financiero de Cali. Planta abierta con 8 puestos de trabajo, sala de juntas para 10 personas, recepción, kitchenette y dos baños. Completamente amoblada con mobiliario ejecutivo, internet fibra óptica incluido y acceso 24/7. Certificación contra incendios y plan de evacuación.',
+   extras:{Piso:'8 de 15',Año:'2020',Administración:'$480.000/mes',Disponible:'15 días',Internet:'Fibra incluida'}},
+
+  {id:4,ciudad:'cali',zona:'sur',tipo:'venta',cat:'casa',nom:'Casa con jardín privado',barrio:'Pance',est:6,precio:1200000000,hab:5,ban:4,patio:2,garaje:3,area:450,parq:true,amob:false,masc:true,f:12,
+   img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=280&fit=crop&q=80',
+   desc:'Imponente residencia en el exclusivo sector de Pance, rodeada de naturaleza y a minutos de los mejores centros comerciales del sur. Arquitectura contemporánea con materiales de lujo: mármol importado, madera de roble y ventanería de piso a techo. Piscina temperada, jacuzzi, zona de BBQ, cuarto de servicio y depósito independiente.',
+   extras:{Antigüedad:'5 años',Piso:'2 niveles',Administración:'$650.000/mes',Disponible:'90 días',Estrato:'6'}},
+
+  {id:5,ciudad:'cali',zona:'norte',tipo:'arriendo',cat:'apartamento',nom:'Apartamento moderno',barrio:'Granada',est:5,precio:2200000,hab:2,ban:1,patio:0,garaje:0,area:75,parq:false,amob:false,masc:false,f:11,
+   img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=280&fit=crop&q=80',
+   desc:'Moderno apartamento en el corazón de Granada, el sector más dinámico del norte de Cali. Diseño minimalista con acabados contemporáneos, cocina abierta con muebles en lacado blanco, balcón con vista al sector. Edificio con portería, cuarto de basuras y zona de lavandería comunal. Excelente para jóvenes profesionales o parejas.',
+   extras:{Piso:'3 de 8',Año:'2021',Administración:'$220.000/mes',Disponible:'Inmediato',Estrato:'5'}},
+
+  {id:6,ciudad:'cali',zona:'oriente',tipo:'arriendo',cat:'local',nom:'Local comercial',barrio:'Centro Histórico',est:3,precio:1800000,hab:0,ban:1,patio:0,garaje:0,area:65,parq:false,amob:false,masc:false,f:10,
+   img:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=280&fit=crop&q=80',
+   desc:'Estratégico local comercial en zona de alto tráfico peatonal y vehicular del Centro Histórico de Cali. Fachada en vidrio templado con excelente visibilidad, área de bodega en parte posterior, baño privado y punto de gas. Ideal para restaurante, tienda de moda, servicios o franquicia. Área de cargue y descargue disponible.',
+   extras:{Uso:'Comercial',Fachada:'7 metros',Disponible:'Inmediato',Contrato:'Mín. 1 año',Estrato:'3'}},
+
+  {id:7,ciudad:'cali',zona:'norte',tipo:'venta',cat:'apartamento',nom:'Apartamento en piso alto',barrio:'Unicentro',est:5,precio:380000000,hab:3,ban:2,patio:0,garaje:1,area:110,parq:true,amob:false,masc:false,f:9,
+   img:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=280&fit=crop&q=80',
+   desc:'Exclusivo apartamento en piso 12 con vista panorámica al norte de Cali. Acabados de lujo: mármol travertino, cocina con cubierta en granito y electrodomésticos empotrados Mabe. Habitación principal con walk-in closet y baño en porcelanato italiano. Edificio con lobby de doble altura, salón de eventos y terraza comunal.',
+   extras:{Piso:'12 de 18',Año:'2019',Administración:'$380.000/mes',Disponible:'30 días',Estrato:'5'}},
+
+  {id:8,ciudad:'cali',zona:'norte',tipo:'arriendo',cat:'apartamento',nom:'Apartamento amoblado',barrio:'Santa Teresita',est:5,precio:1900000,hab:2,ban:2,patio:0,garaje:0,area:80,parq:false,amob:true,masc:true,f:8,
+   img:'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=400&h=280&fit=crop&q=80',
+   desc:'Acogedor apartamento completamente amoblado y equipado, listo para entrar a vivir. Incluye sala con sofá y TV, comedor, cocina con nevera, lavadora, camas, closets y ropa de cama. Decoración contemporánea cálida. Ubicado a 5 minutos caminando de restaurantes, cafés y transporte público. Acepta mascotas medianas.',
+   extras:{Piso:'4 de 7',Año:'2016',Administración:'$200.000/mes',Disponible:'Inmediato',Amoblado:'Completo'}},
+
+  {id:9,ciudad:'cali',zona:'oriente',tipo:'venta',cat:'casa',nom:'Casa con piscina',barrio:'El Caney',est:4,precio:420000000,hab:4,ban:3,patio:1,garaje:2,area:220,parq:true,amob:false,masc:true,f:7,
+   img:'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&h=280&fit=crop&q=80',
+   desc:'Hermosa casa con piscina semiolímpica en sector residencial tranquilo de El Caney. Amplio jardín con zona de BBQ y kiosco, sala de juegos, cuarto de lavado independiente. Cocina abierta con granito y muebles enchapados. Doble garaje techado. Vigilancia privada en el conjunto residencial.',
+   extras:{Antigüedad:'12 años',Piso:'2 niveles',Administración:'$350.000/mes',Disponible:'60 días',Estrato:'4'}},
+
+  {id:10,ciudad:'cali',zona:'norte',tipo:'venta',cat:'apartamento',nom:'Apartamento nuevo',barrio:'Chipichape',est:5,precio:295000000,hab:2,ban:2,patio:0,garaje:1,area:85,parq:true,amob:false,masc:false,f:6,
+   img:'https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&h=280&fit=crop&q=80',
+   desc:'Apartamento de estreno en proyecto entregado en 2024, a pasos del centro comercial Chipichape. Acabados de primera con porcelanato 60x60, cocina integral con granito negro, baños con ducha italiana. Ventanas panorámicas y sistema de calentamiento de agua a gas. Excelente rentabilidad para inversión.',
+   extras:{Piso:'6 de 10',Año:'2024',Administración:'$280.000/mes',Disponible:'Inmediato',Estrato:'5'}},
+
+  {id:11,ciudad:'cali',zona:'sur',tipo:'arriendo',cat:'casa',nom:'Casa con patio',barrio:'Villacolombia',est:3,precio:1500000,hab:3,ban:2,patio:1,garaje:1,area:150,parq:true,amob:false,masc:true,f:5,
+   img:'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=280&fit=crop&q=80',
+   desc:'Casa familiar con amplio patio trasero ideal para quienes tienen mascotas o niños. Sala independiente, comedor, tres habitaciones con closets empotrados y dos baños completos. Patio con lavadero techado y zona verde. Garaje cubierto para un vehículo. Barrio tranquilo con parque cercano y buena movilidad.',
+   extras:{Piso:'1 nivel',Antigüedad:'20 años',Administración:'No aplica',Disponible:'Inmediato',Estrato:'3'}},
+
+  {id:12,ciudad:'cali',zona:'oriente',tipo:'venta',cat:'apartamento',nom:'Apartamento estrenar',barrio:'Calipso',est:4,precio:185000000,hab:2,ban:1,patio:0,garaje:0,area:60,parq:false,amob:false,masc:false,f:4,
+   img:'https://images.unsplash.com/photo-1585128919879-3b6b29936248?w=400&h=280&fit=crop&q=80',
+   desc:'Excelente oportunidad de inversión: apartamento de estreno en proyecto VIS del oriente de Cali. Acabados modernos, cocina abierta con muebles incluidos, baño con ducha en vidrio templado. Edificio de 5 pisos sin ascensor con zona de parqueo comunal y portería. Subsidio de vivienda disponible para compradores que cumplan requisitos.',
+   extras:{Piso:'3 de 5',Año:'2024',Administración:'$120.000/mes',Disponible:'Inmediato',Subsidio:'Aplica VIS'}},
+
+  {id:13,ciudad:'cali',zona:'occidente',tipo:'arriendo',cat:'cabana',nom:'Cabaña en Lago Calima',barrio:'Lago Calima',est:0,precio:850000,hab:3,ban:2,patio:1,garaje:1,area:90,parq:true,amob:true,masc:true,f:3,
+   img:'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=400&h=280&fit=crop&q=80',
+   desc:'Romántica cabaña de madera a orillas del Lago Calima, completamente amoblada y equipada. Sala con chimenea, comedor, cocina con nevera y estufa, habitación principal con cama doble y dos habitaciones secundarias. Terraza con hamacas y acceso privado al lago. Zona de BBQ y parqueadero cubierto. Ideal para vacaciones y fines de semana.',
+   extras:{Tipo:'Vacacional',Acceso:'Privado lago',Amoblado:'Completo',Disponible:'Inmediato',Mín:'2 noches'}},
+
+  {id:14,ciudad:'cali',zona:'sur',tipo:'venta',cat:'finca',nom:'Finca productiva Rozo',barrio:'Rozo',est:0,precio:450000000,hab:4,ban:3,patio:2,garaje:2,area:5000,parq:true,amob:false,masc:true,f:2,
+   img:'https://images.unsplash.com/photo-1500076656116-558758c991c1?w=400&h=280&fit=crop&q=80',
+   desc:'Finca productiva de 5.000 m² en zona agrícola del municipio de Rozo. Casa principal de 4 habitaciones, bodega de herramientas, pozo profundo y sistema de riego instalado. Cultivos actuales de caña panelera y plátano. Acceso por vía pavimentada, energía eléctrica y acueducto rural. Escritura libre de gravámenes y sin litigios.',
+   extras:{Área:'5.000 m²',Agua:'Pozo propio',Cultivo:'Caña / Plátano',Disponible:'60 días',Escritura:'Libre gravamen'}},
+
+  {id:15,ciudad:'cali',zona:'oriente',tipo:'venta',cat:'parqueadero',nom:'Parqueadero cubierto centro',barrio:'Centro',est:0,precio:65000000,hab:0,ban:0,patio:0,garaje:0,area:15,parq:false,amob:false,masc:false,f:1,
+   img:'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=280&fit=crop&q=80',
+   desc:'Parqueadero cubierto en edificio de uso mixto en el centro de Cali. Acceso por rampa vehicular, iluminación LED 24 horas, CCTV y vigilancia permanente. Altura libre de 2,20 m apto para camionetas. Escritura individual. Excelente inversión: alta demanda de parqueo en la zona y potencial de arriendo mensual de $300.000.',
+   extras:{Área:'15 m²',Altura:'2,20 m libre',Seguridad:'CCTV 24h','Renta est.':'$300.000/mes',Escritura:'Individual'}}
 ];
 
 const S={tab:'todos',ciudad:'',zona:'',tipo:'',prec:'',hab:null,ban:null,est:null,parq:false,masc:false,amob:false,srt:'rec'};
@@ -1186,29 +1372,80 @@ function specItem(val,label,hide){
 function card(p){
   const bop=p.tipo==='arriendo'?'b-arr':'b-ven';
   const lop=p.tipo==='arriendo'?'Arriendo':'Venta';
-  return`<div class="pcard" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+  const row=[];
+  if(p.hab>0)row.push(`${p.hab} hab.`);
+  if(p.ban>0)row.push(`${p.ban} baños`);
+  if(p.area>0)row.push(`${n(p.area)} m²`);
+  if(p.garaje>0)row.push(`${p.garaje} garaje`);
+  return`<div class="pcard" onclick="openProp(${p.id})">
     <div class="pimg">
       <img src="${p.img}" alt="${p.nom}" loading="lazy"/>
-      <div class="pimg-overlay"><button class="pimg-overlay-btn">Consultar</button></div>
       <div class="pbadges"><span class="badge ${bop}">${lop}</span><span class="badge b-typ">${cap(p.cat)}</span></div>
     </div>
     <div class="pbody">
       <div class="pprice">${price(p)}</div>
       <div class="pname">${p.nom}</div>
-      <div class="ploc">${p.barrio}${p.est>0?' · Estrato '+p.est:''} · ${cap(p.zona||'')}</div>
-      <div class="pspecs-grid">
-        ${p.hab>0?specItem(p.hab,'Hab.'):''}
-        ${p.ban>0?specItem(p.ban,'Baños'):''}
-        ${p.patio>0?specItem(p.patio,'Patios'):''}
-        ${specItem(n(p.area)+' m²','Área')}
-        ${p.garaje>0?specItem(p.garaje,'Garaje'):''}
-        ${p.est>0?specItem(p.est,'Estrato'):''}
-        <div class="spec-item${!p.masc?' spec-na':''}"><span class="spec-item-val">${p.masc?'✓':'✗'}</span><span class="spec-item-lbl">Mascotas</span></div>
-        <div class="spec-item${!p.parq?' spec-na':''}"><span class="spec-item-val">${p.parq?'✓':'✗'}</span><span class="spec-item-lbl">Parqueadero</span></div>
-      </div>
+      <div class="ploc">${p.barrio}${p.est>0?' · Est. '+p.est:''}</div>
+      ${row.length?`<div class="pspecs-row">${row.join(' &nbsp;·&nbsp; ')}</div>`:''}
+      <button class="pcard-btn" onclick="event.stopPropagation();openProp(${p.id})">Ver detalles →</button>
     </div>
   </div>`;
 }
+
+function openProp(id){
+  const p=P.find(x=>x.id===id);
+  if(!p)return;
+  /* ── Gallery ── */
+  const imgs=getGallery(p);
+  window.__pmImgs=imgs;
+  const mainImg=document.getElementById('pm-main-img');
+  mainImg.src=imgs[0];mainImg.alt=p.nom;
+  const thumbsEl=document.getElementById('pm-thumbs');
+  thumbsEl.innerHTML=imgs.map((src,i)=>`<div class="pm-thumb${i===0?' active':''}" onclick="switchPmImg(${i})"><img src="${src}" alt="foto ${i+1}" loading="lazy"/></div>`).join('');
+  /* ── Badges ── */
+  document.getElementById('pm-badges-modal').innerHTML=`<span class="badge ${p.tipo==='arriendo'?'b-arr':'b-ven'}">${p.tipo==='arriendo'?'Arriendo':'Venta'}</span><span class="badge b-typ">${cap(p.cat)}</span>`;
+  /* ── Header ── */
+  document.getElementById('pm-price').innerHTML=price(p);
+  document.getElementById('pm-name').textContent=p.nom;
+  document.getElementById('pm-loc').textContent=`📍 ${p.barrio}${p.est>0?' · Estrato '+p.est:''} · ${cap(p.zona||'')} · Cali`;
+  /* ── Specs ── */
+  const specs=[
+    {v:p.hab,l:'Habitaciones',ic:'🛏'},{v:p.ban,l:'Baños',ic:'🚿'},
+    {v:p.patio||0,l:'Patios',ic:'🌿'},{v:p.garaje||0,l:'Garajes',ic:'🚗'},
+    {v:n(p.area)+' m²',l:'Área',ic:'📐'},{v:p.est||'—',l:'Estrato',ic:'⭐'},
+    {v:p.masc?'Sí':'No',l:'Mascotas',ic:'🐾'},{v:p.parq?'Sí':'No',l:'Parqueadero',ic:'🅿'},
+    {v:p.amob?'Sí':'No',l:'Amoblado',ic:'🛋'}
+  ];
+  document.getElementById('pm-specs-grid').innerHTML=specs.map(s=>`<div class="pm-spec-item"><span class="pm-spec-val">${s.ic} ${s.v}</span><span class="pm-spec-lbl">${s.l}</span></div>`).join('');
+  /* ── Description ── */
+  document.getElementById('pm-desc').textContent=p.desc||'';
+  /* ── Conditions ── */
+  const conds=p.tipo==='arriendo'?CONDS_ARRIENDO:CONDS_VENTA;
+  document.getElementById('pm-conds').innerHTML=conds.map(c=>`<div class="pm-cond-item">${c}</div>`).join('');
+  /* ── Extras ── */
+  const ext=p.extras||{};
+  document.getElementById('pm-extras').innerHTML=Object.entries(ext).map(([k,v])=>`<div class="pm-extra-item"><span class="pm-extra-lbl">${k}</span><span class="pm-extra-val">${v}</span></div>`).join('');
+  /* ── WhatsApp ── */
+  const pr=p.tipo==='arriendo'?`$${n(p.precio)}/mes`:`$${n(Math.round(p.precio/1000000))} M`;
+  const waMsg=`Hola, encontré la propiedad *${p.nom}* en DSE Inmobiliaria y me gustaría recibir más información.\n\n📍 ${p.barrio}, ${cap(p.zona||'')}, Cali\n💰 ${pr}\n🏠 ${cap(p.cat)} en ${p.tipo}\n\n¿Está disponible para visita?`;
+  const waBtn=document.getElementById('pm-wa-btn');
+  waBtn.onclick=()=>window.open(`https://wa.me/573217467970?text=${encodeURIComponent(waMsg)}`,'_blank','noopener');
+  /* ── Open ── */
+  document.getElementById('prop-detail-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function switchPmImg(i){
+  const imgs=window.__pmImgs;
+  const mainImg=document.getElementById('pm-main-img');
+  mainImg.classList.add('fading');
+  setTimeout(()=>{mainImg.src=imgs[i];mainImg.classList.remove('fading');},280);
+  document.querySelectorAll('.pm-thumb').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+}
+function closePropModal(){
+  document.getElementById('prop-detail-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePropModal()});
 
 function render(){
   let r=P.filter(p=>{
@@ -1235,9 +1472,14 @@ function render(){
     :`<div class="no-res"><p>Sin resultados</p><small>Ajuste los filtros</small></div>`;
 }
 
-/* Mostrar portafolio desde subcategoría */
+/* Mostrar portafolio desde subcategoría con filtro aplicado */
 function mostrarPortafolio(tipo){
   resetFiltros();
+  if(tipo){
+    S.tipo=tipo;
+    const sel=document.getElementById('stipo');
+    if(sel)sel.value=tipo;
+  }
   render();
   const sec=document.getElementById('propiedades');
   setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),80);
