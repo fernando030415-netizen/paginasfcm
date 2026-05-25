@@ -400,12 +400,12 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .rc-specs{display:flex;gap:1rem;margin-bottom:.8rem;flex-wrap:wrap}
 .rc-spec{font-size:.74rem;font-weight:300;color:var(--sd)}
 .rc-spec strong{color:var(--nv);font-weight:600}
-.rc-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.rc-step{background:rgba(255,255,255,.04);border:1.5px solid rgba(196,150,42,.13);border-radius:18px;padding:1.8rem;text-align:center;transition:all .3s}
-.rc-step:hover{background:rgba(196,150,42,.08);border-color:rgba(196,150,42,.35)}
-.rc-step-num{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--gold);margin-bottom:.6rem;opacity:.6}
-.rc-step-title{font-family:var(--serif);font-size:1.12rem;font-weight:500;color:#fff;margin-bottom:.5rem}
-.rc-step-desc{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75}
+.rc-steps{display:flex;align-items:center;gap:0;margin:0 auto;max-width:680px}
+.rc-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.rc-step:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:22px;font-size:1rem;color:var(--gold);z-index:1}
+.rc-step-num{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--nv);font-family:var(--sans);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;flex-shrink:0}
+.rc-step-title{font-size:.78rem;font-weight:600;color:var(--nv);margin-bottom:.25rem;letter-spacing:.01em}
+.rc-step-desc{font-size:.7rem;font-weight:300;color:var(--sd);line-height:1.55;padding:0 .4rem}
 
 /* ── SECCIÓN PROPIEDADES (fondo blanco) ────────────────────── */
 #propiedades{background:var(--w);padding:5rem 5rem;border-top:1px solid var(--sm)}
@@ -553,7 +553,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   .pspecs-grid{grid-template-columns:repeat(4,1fr)}
   .rc-search{grid-template-columns:1fr 1fr}
   .rc-grid{grid-template-columns:repeat(2,1fr)}
-  .rc-steps{grid-template-columns:1fr}
+  .rc-steps{flex-direction:column;gap:1.2rem}
 }
 @media(max-width:600px){
   .sec{padding:3.5rem 1.25rem}
@@ -580,7 +580,7 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
   .hero-brand{font-size:clamp(1.2rem,5vw,1.8rem);padding:.4rem 1rem}
   .rc-search{grid-template-columns:1fr}
   .rc-grid{grid-template-columns:1fr}
-  .rc-steps{grid-template-columns:1fr}
+  .rc-steps{flex-direction:column;gap:1.2rem}
 }
 </style>
 </head>
@@ -1072,29 +1072,29 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
     </div>
 
     <!-- Cómo funciona -->
-    <div style="margin-top:3.5rem;margin-bottom:2rem">
-      <div style="font-family:var(--serif);font-size:clamp(1.3rem,2vw,1.7rem);font-weight:400;color:#fff;margin-bottom:1.8rem;text-align:center">¿Cómo <span style="color:var(--gold)">funciona?</span></div>
-      <div class="rc-steps">
+    <div style="margin-top:3rem;padding-top:2.4rem;border-top:1px solid var(--sm);text-align:center">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.5rem">¿Cómo funciona?</div>
+      <div class="rc-steps" style="margin-top:1.6rem;margin-bottom:2.2rem">
         <div class="rc-step">
           <div class="rc-step-num">01</div>
-          <div class="rc-step-title">Elige tu propiedad</div>
-          <div class="rc-step-desc">Navega nuestro portafolio, filtra por destino, fechas y número de huéspedes. Encuentra el espacio ideal para tu estadía.</div>
+          <div class="rc-step-title">Elige</div>
+          <div class="rc-step-desc">Selecciona destino, fechas y huéspedes</div>
         </div>
         <div class="rc-step">
           <div class="rc-step-num">02</div>
-          <div class="rc-step-title">Contacta al asesor</div>
-          <div class="rc-step-desc">Escríbenos por WhatsApp o llena el formulario. Confirmamos disponibilidad y condiciones en menos de 2 horas hábiles.</div>
+          <div class="rc-step-title">Consulta</div>
+          <div class="rc-step-desc">Te confirmamos disponibilidad en 2 h</div>
         </div>
         <div class="rc-step">
           <div class="rc-step-num">03</div>
-          <div class="rc-step-title">Disfruta tu estadía</div>
-          <div class="rc-step-desc">Contrato de arrendamiento corto, entrega de llaves y atención personalizada durante toda tu estadía. Sin sorpresas.</div>
+          <div class="rc-step-title">Disfruta</div>
+          <div class="rc-step-desc">Entrega de llaves y atención durante tu estadía</div>
         </div>
       </div>
-    </div>
-
-    <div style="text-align:center;margin-top:2rem">
-      <button class="ley-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <button onclick="consultarRC()" style="display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 2.2rem;background:#25D366;color:#fff;border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 28px rgba(37,211,102,.3);transition:all .2s">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.857L.054 23.45a.5.5 0 00.613.612l5.652-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.92 0-3.722-.51-5.271-1.399l-.379-.222-3.927 1.026 1.048-3.826-.244-.394A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Consultar disponibilidad
+      </button>
     </div>
   </div>
 </section>
