@@ -1397,8 +1397,7 @@ function n(v){return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
 function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
 function price(p){
   if(p.tipo==='arriendo')return`$${n(p.precio)} <span>/mes</span>`;
-  const m=Math.round(p.precio/1000000);
-  return m>=1000?`$${(m/1000).toFixed(1).replace('.',',')} B`:`$${n(m)} M`;
+  return`$${n(p.precio)}`;
 }
 function matchP(p){
   if(!S.prec)return true;
@@ -1672,9 +1671,9 @@ function openNegDetail(id){
   document.getElementById('ndm-name').textContent=b.nom;
   document.getElementById('ndm-sector').textContent=`${b.sector} · ${b.ciudad}`;
   document.getElementById('ndm-metrics').innerHTML=[
-    {v:b.precio,l:'Precio pedido'},{v:b.roi+' anual',l:'ROI proyectado'},
-    {v:b.ventas,l:'Ventas'},{v:b.empleados+' personas',l:'Empleados'}
-  ].map(m=>`<div class="ndm-metric"><span class="ndm-mv">${m.v}</span><span class="ndm-ml">${m.l}</span></div>`).join('');
+    {v:b.precio,l:'Precio pedido',c:'#60a5fa'},{v:b.roi+' anual',l:'ROI proyectado',c:'#4ade80'},
+    {v:b.ventas,l:'Ventas',c:null},{v:b.empleados+' personas',l:'Empleados',c:null}
+  ].map(m=>{const s=m.c?' style="color:'+m.c+'"':'';return'<div class="ndm-metric"><span class="ndm-mv"'+s+'>'+m.v+'</span><span class="ndm-ml">'+m.l+'</span></div>';}).join('');
   document.getElementById('ndm-desc').textContent=b.desc;
   document.getElementById('ndm-conds').innerHTML=b.conds.map(c=>`<div class="ndm-cond">${c}</div>`).join('');
   const waMsg=`Hola, vi la oportunidad de inversión *${b.nom}* en DSE Inmobiliaria.\n\n💼 ${labels[b.tipo]} · ${b.sector}\n📍 ${b.ciudad}\n💰 ${b.precio} · ROI ${b.roi}\n\n¿Podría enviarme más información y coordinar una reunión?`;
