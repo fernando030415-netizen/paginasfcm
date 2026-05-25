@@ -266,6 +266,61 @@ nav.scrolled{background:rgba(247,245,240,.95);box-shadow:0 8px 40px rgba(12,27,4
 .nif-btn{margin-top:.5rem;padding:.7rem 1.8rem;background:var(--gold);color:var(--nv);border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s}
 .nif-btn:hover{background:#d4a830}
 
+/* ── MARKETPLACE NEGOCIOS ─────────────────────────────────────── */
+#neg-market-modal{position:fixed;inset:0;z-index:600;background:rgba(8,14,26,.92);backdrop-filter:blur(14px);display:none;flex-direction:column;overflow:hidden}
+#neg-market-modal.open{display:flex;animation:fU .3s ease}
+.nmk-topbar{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2.2rem 1rem;border-bottom:1px solid rgba(196,150,42,.18);flex-shrink:0}
+.nmk-logo{font-family:var(--serif);font-size:1.2rem;color:var(--gold-l);letter-spacing:.04em}
+.nmk-logo span{color:rgba(255,255,255,.4);font-weight:300;font-size:.9rem;margin-left:.6rem}
+.nmk-close{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:none;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.nmk-close:hover{background:rgba(255,255,255,.1);color:#fff}
+.nmk-tabs{display:flex;gap:.5rem;padding:.9rem 2.2rem;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;flex-wrap:wrap}
+.nmk-tab{padding:.45rem 1.2rem;border-radius:var(--rpill);border:1.5px solid rgba(196,150,42,.22);background:none;color:rgba(255,255,255,.5);font-family:var(--sans);font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .22s}
+.nmk-tab:hover{border-color:rgba(196,150,42,.55);color:#fff}
+.nmk-tab.on{background:var(--gold);border-color:var(--gold);color:var(--nv);font-weight:700}
+.nmk-body{flex:1;overflow-y:auto;padding:1.8rem 2.2rem 2.4rem}
+.nmk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.nmk-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(196,150,42,.14);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .28s,box-shadow .28s,border-color .22s}
+.nmk-card:hover{transform:translateY(-5px);border-color:rgba(196,150,42,.5);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.nmk-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.nmk-body2{padding:1.3rem 1.4rem 1.5rem}
+.nmk-type{font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.nmk-name{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:#fff;margin-bottom:.25rem}
+.nmk-sector{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:1rem}
+.nmk-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.1rem}
+.nmk-metric{background:rgba(0,0,0,.25);border-radius:10px;padding:.55rem .7rem;border:1px solid rgba(196,150,42,.1)}
+.nmk-mv{font-size:.9rem;font-weight:700;color:var(--gold-l);display:block}
+.nmk-ml{font-size:.48rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-top:.1rem}
+.nmk-pitch{font-size:.76rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.2rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.nmk-btn{display:block;width:100%;padding:.6rem;background:transparent;border:1.5px solid rgba(196,150,42,.35);border-radius:var(--rsm);font-family:var(--sans);font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);cursor:pointer;transition:all .22s;text-align:center}
+.nmk-btn:hover{background:var(--gold);color:var(--nv);border-color:var(--gold)}
+.nmk-empty{text-align:center;padding:4rem 2rem;color:rgba(255,255,255,.3);font-size:.9rem}
+/* ── DETALLE NEGOCIO ────── */
+#neg-detail-modal{position:fixed;inset:0;z-index:650;background:rgba(8,14,26,.78);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:1rem}
+#neg-detail-modal.open{display:flex;animation:fU .28s ease}
+.ndm-wrap{background:#0f1d30;border:1.5px solid rgba(196,150,42,.22);border-radius:24px;width:100%;max-width:760px;max-height:93vh;overflow-y:auto;position:relative;box-shadow:0 48px 100px rgba(0,0,0,.7)}
+.ndm-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;flex-shrink:0}
+.ndm-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:rgba(8,14,26,.7);color:rgba(255,255,255,.8);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10}
+.ndm-close:hover{background:rgba(255,255,255,.15);color:#fff}
+.ndm-body{padding:1.8rem 2rem 2.2rem}
+.ndm-type-badge{display:inline-block;padding:.28rem .9rem;border-radius:var(--rpill);border:1px solid rgba(196,150,42,.4);font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.ndm-name{font-family:var(--serif);font-size:1.8rem;font-weight:500;color:#fff;margin-bottom:.3rem}
+.ndm-sector{font-size:.82rem;color:rgba(255,255,255,.4);margin-bottom:1.4rem}
+.ndm-metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.5rem}
+.ndm-metric{background:rgba(196,150,42,.08);border:1px solid rgba(196,150,42,.18);border-radius:12px;padding:.8rem .7rem;text-align:center}
+.ndm-mv{font-size:1.05rem;font-weight:700;color:var(--gold-l);display:block}
+.ndm-ml{font-size:.46rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-top:.18rem}
+.ndm-sec-title{font-size:.56rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.7rem}
+.ndm-desc{font-size:.85rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:1.5rem}
+.ndm-conds{display:flex;flex-direction:column;gap:.42rem;margin-bottom:1.8rem}
+.ndm-cond{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.55}
+.ndm-cond::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.48rem}
+.ndm-wa-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;padding:1rem 2rem;background:#25D366;color:#fff;border:none;border-radius:var(--rpill);font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;box-shadow:0 8px 28px rgba(37,211,102,.3);width:100%}
+.ndm-wa-btn:hover{background:#1ea355;transform:translateY(-2px)}
+.ndm-divider{border:none;border-top:1px solid rgba(255,255,255,.07);margin:1.2rem 0}
+@media(max-width:900px){.nmk-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nmk-grid{grid-template-columns:1fr}.nmk-topbar,.nmk-body{padding-left:1.2rem;padding-right:1.2rem}.nmk-tabs{padding-left:1.2rem}.ndm-metrics-row{grid-template-columns:repeat(2,1fr)}.ndm-body{padding:1.2rem}}
+
 /* ── PANEL PROPIEDAD HORIZONTAL ───────────────────────────────── */
 .ph-tabs{display:flex;gap:.6rem;margin-bottom:2.5rem;flex-wrap:wrap}
 .ph-tab{padding:.6rem 1.6rem;border-radius:var(--rpill);border:1.5px solid rgba(196,150,42,.28);background:rgba(255,255,255,.04);color:rgba(255,255,255,.65);font-family:var(--sans);font-size:.78rem;font-weight:300;letter-spacing:.08em;cursor:pointer;transition:all .25s}
@@ -649,8 +704,8 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
         <div class="neg-sub-icon">🏛️</div>
         <div class="neg-sub-title">Sociedades Constituidas</div>
         <div class="neg-sub-desc">Empresas legalmente constituidas con personería jurídica, estados financieros auditados y operación activa. SAS, Ltda, SA y más.</div>
-        <button class="neg-form-toggle" onclick="toggleNegForm('form-soc')">Consultar disponibilidad ↓</button>
-        <div class="neg-inline-form" id="form-soc">
+        <button class="neg-form-toggle" onclick="openNegMarket('soc')">Ver oportunidades →</button>
+        <div class="neg-inline-form" id="form-soc" style="display:none">
           <div class="nif-2col">
             <div class="nif-row"><label class="nif-label">Nombre completo</label><input class="nif-input" type="text" placeholder="Su nombre"/></div>
             <div class="nif-row"><label class="nif-label">Teléfono</label><input class="nif-input" type="tel" placeholder="3XX XXX XXXX"/></div>
@@ -678,8 +733,8 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
         <div class="neg-sub-icon">🏪</div>
         <div class="neg-sub-title">Establecimientos de Comercio</div>
         <div class="neg-sub-desc">Locales y puntos de venta en operación con clientela fidelizada, inventario incluido y flujo de caja positivo y verificado.</div>
-        <button class="neg-form-toggle" onclick="toggleNegForm('form-est')">Consultar disponibilidad ↓</button>
-        <div class="neg-inline-form" id="form-est">
+        <button class="neg-form-toggle" onclick="openNegMarket('est')">Ver oportunidades →</button>
+        <div class="neg-inline-form" id="form-est" style="display:none">
           <div class="nif-2col">
             <div class="nif-row"><label class="nif-label">Nombre completo</label><input class="nif-input" type="text" placeholder="Su nombre"/></div>
             <div class="nif-row"><label class="nif-label">Teléfono</label><input class="nif-input" type="tel" placeholder="3XX XXX XXXX"/></div>
@@ -706,8 +761,8 @@ footer{background:var(--nv);padding:2.2rem 5rem;display:flex;align-items:center;
         <div class="neg-sub-icon">👤</div>
         <div class="neg-sub-title">Personas Naturales</div>
         <div class="neg-sub-desc">Negocios unipersonales con marca establecida, cartera activa de clientes y modelo de negocio rentable y documentado.</div>
-        <button class="neg-form-toggle" onclick="toggleNegForm('form-pn')">Consultar disponibilidad ↓</button>
-        <div class="neg-inline-form" id="form-pn">
+        <button class="neg-form-toggle" onclick="openNegMarket('pn')">Ver oportunidades →</button>
+        <div class="neg-inline-form" id="form-pn" style="display:none">
           <div class="nif-2col">
             <div class="nif-row"><label class="nif-label">Nombre completo</label><input class="nif-input" type="text" placeholder="Su nombre"/></div>
             <div class="nif-row"><label class="nif-label">Teléfono</label><input class="nif-input" type="tel" placeholder="3XX XXX XXXX"/></div>
@@ -1519,6 +1574,120 @@ function showPH(id,btn){
   document.getElementById('ph-'+id).classList.add('on');
 }
 
+/* ── MARKETPLACE DE NEGOCIOS ──────────────────────────────────── */
+const NB=[
+  {id:101,tipo:'soc',nom:'Grupo Gastronómico La Palma SAS',sector:'Gastronomía y alimentos',ciudad:'Cali · Sur',
+   img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&h=500&fit=crop&q=82',
+   precio:'$480.000.000',roi:'22%',ventas:'$1.200.000.000/año',empleados:'18',antiguedad:'9 años',
+   pitch:'SAS con 3 puntos de venta activos en Cali. Marca consolidada en el sector gastronómico con cocina de autor, clientela fidelizada y modelo de franquicia en desarrollo. Estados financieros auditados y operación sin interrupciones.',
+   desc:'Grupo gastronómico conformado por tres restaurantes en el sur y norte de Cali. La empresa opera bajo marca propia registrada ante la SIC con más de nueve años de trayectoria. Cuenta con 18 empleados directos, sistema POS integrado, contrato de arrendamiento de locales vigente a 5 años y proveedor homologado de materias primas. El modelo es replicable: la sociedad incluye el manual de operaciones, el recetario estandarizado y los contratos marco con proveedores. Ideal para inversionista que busque rendimiento inmediato con negocio probado.',
+   conds:['Traspaso mediante cesión de cuotas sociales ante notaría','Auditoría de estados financieros de 3 años incluida en due diligence','Propietario permanece 6 meses de acompañamiento post-venta','Contratos laborales vigentes se subrogan al nuevo propietario','Precio sujeto a valoración final por perito independiente','Confidencialidad estricta durante proceso de negociación']},
+
+  {id:102,tipo:'soc',nom:'Constructora Mirador Andino SAS',sector:'Construcción y obras civiles',ciudad:'Cali · Valle del Cauca',
+   img:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=500&fit=crop&q=82',
+   precio:'$1.250.000.000',roi:'28%',ventas:'$4.800.000.000/año',empleados:'34',antiguedad:'12 años',
+   pitch:'Constructora con RUC activo, experiencia calificada y cartera de contratos públicos y privados vigentes. Capacidad de contratación en niveles superiores. Ideal para expansión en el sector inmobiliario del Pacífico colombiano.',
+   desc:'Empresa constructora legalmente constituida con 12 años de operación continua. Cuenta con RUP activo ante Colombia Compra Eficiente, experiencia calificada en obras civiles y edificaciones, tres contratos de obra civil vigentes por valor total de $4.800 millones y maquinaria propia valorada en $380 millones. La sociedad tiene 34 empleados directos, sistema de gestión ISO 9001 en proceso de renovación y alianzas estratégicas con proveedores de materiales. La valoración incluye contratos vigentes, maquinaria y fondo de comercio.',
+   conds:['Cesión de cuotas ante notaría con estudio jurídico previo','Revisión de pasivos laborales y tributarios incluida','Transferencia de contratos de obra sujeta a aprobación de contratantes','Maquinaria valorada por perito inscrito ante la SIC','Acompañamiento del socio fundador por 12 meses','Pacto de no competencia por 3 años en el Valle del Cauca']},
+
+  {id:103,tipo:'est',nom:'Clínica Estética Lumina',sector:'Salud y bienestar',ciudad:'Cali · Norte',
+   img:'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&h=500&fit=crop&q=82',
+   precio:'$220.000.000',roi:'31%',ventas:'$540.000.000/año',empleados:'8',antiguedad:'6 años',
+   pitch:'Centro de medicina estética en funcionamiento con 6 años de operación. Cartera de 850 pacientes activos, equipo médico certificado incluido, agenda llena con 3 meses de anticipación. Uno de los centros mejor calificados en Google de Cali norte.',
+   desc:'Establecimiento de salud estética ubicado en local propio arrendado en Cali norte con contrato vigente a 4 años. Cuenta con habilitación del INVIMA y registro ante la Secretaría de Salud de Cali. Los equipos de tecnología láser, RF y ultrasonido están valorados en $95 millones y tienen mantenimiento al día. La clínica atiende en promedio 180 procedimientos mensuales con ticket promedio de $250.000. El traspaso incluye la base de datos de pacientes, el software médico, los insumos en inventario y el equipo de trabajo completo.',
+   conds:['Traspaso incluye habilitación vigente y RUT del establecimiento','Inventario de insumos valorado a precio de costo al momento del cierre','Equipo médico con mantenimiento al día certificado','Paciente base se subroga con consentimiento de los titulares','Arriendo del local requiere aval del propietario del inmueble','Acompañamiento del actual administrador por 3 meses']},
+
+  {id:104,tipo:'est',nom:'Distribuidora El Depósito del Hogar',sector:'Retail y ferretería',ciudad:'Cali · Oriente',
+   img:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&h=500&fit=crop&q=82',
+   precio:'$185.000.000',roi:'19%',ventas:'$720.000.000/año',empleados:'5',antiguedad:'11 años',
+   pitch:'Distribuidora de productos para el hogar y ferretería en el oriente de Cali. Once años de operación, clientela industrial y constructoras como clientes frecuentes, inventario superior a $80 millones incluido.',
+   desc:'Establecimiento de comercio con 11 años de operación continua especializado en distribución de materiales de construcción ligera, ferretería y productos para el hogar. Ubicado en vía principal del oriente de Cali con estacionamiento propio para cargue y descargue. Clientes frecuentes incluyen constructoras, conjuntos residenciales y ferreteros minoristas. El negocio cuenta con sistema de inventarios, crédito aprobado con 4 proveedores mayoristas y flota de reparto propia (camioneta y moto). Precio incluye inventario valorado en $82 millones, equipos y fondo de comercio.',
+   conds:['Precio incluye inventario verificado por ambas partes al cierre','Crédito con proveedores requiere aval del nuevo propietario','Contrato de arriendo del local vigente a 2 años prorrogable','Vehículos de reparto incluidos con mantenimiento al día','Sistemas y software de inventario licenciados incluidos','Capacitación al nuevo propietario por 30 días hábiles']},
+
+  {id:105,tipo:'pn',nom:'Estudio de Diseño y Branding Forma & Co.',sector:'Diseño gráfico y comunicación',ciudad:'Cali · Centro-Norte',
+   img:'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&h=500&fit=crop&q=82',
+   precio:'$95.000.000',roi:'42%',ventas:'$280.000.000/año',empleados:'3',antiguedad:'7 años',
+   pitch:'Estudio creativo con marca propia establecida, 40 clientes corporativos recurrentes y contratos anuales vigentes. Bajo costo operativo y altísimo margen. Modelo 100% exportable a cualquier ciudad.',
+   desc:'Negocio unipersonal de diseño gráfico, branding e identidad visual fundado hace 7 años. Opera con equipo de 3 personas (1 director creativo, 2 diseñadores), modelo 80% remoto y 20% presencial. Cuenta con 40 clientes corporativos que contratan servicios en forma recurrente mensual. Los contratos vigentes representan ingresos asegurados de $15 millones mensuales. El traspaso incluye el portafolio de marca, el software licenciado (Adobe CC, Figma), los contratos de clientes y la metodología de trabajo documentada. Ideal para diseñador senior o agencia en crecimiento.',
+   conds:['Cesión de derechos de marca registrada ante la SIC incluida','Clientes actuales notificados y receptivos al cambio de propietario','Software y licencias traspasadas a nombre del adquirente','Propietario actual acompaña 60 días para presentación de clientes','Contratos de servicio requieren firma de otrosí por los clientes','Pasivos tributarios al día con paz y salvo incluido']},
+
+  {id:106,tipo:'pn',nom:'Servicio Técnico Multimarca TechFix',sector:'Servicio técnico y electrónica',ciudad:'Cali · Sur',
+   img:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&h=500&fit=crop&q=82',
+   precio:'$68.000.000',roi:'38%',ventas:'$192.000.000/año',empleados:'2',antiguedad:'5 años',
+   pitch:'Taller de reparación de equipos electrónicos con autorización de servicio de dos marcas reconocidas. Cinco años en el mismo local, cartera de clientes corporativos estables y flujo de caja mensual constante.',
+   desc:'Servicio técnico especializado en reparación de computadores, impresoras y equipos de audio con autorización de servicio para dos marcas reconocidas del mercado. Ubicado en local estratégico del sur de Cali con contrato de arriendo a 3 años. Clientes corporativos incluyen colegios, consultorios y oficinas del sector. Facturación promedio mensual de $16 millones con margen neto del 38%. El precio incluye herramientas certificadas valoradas en $18 millones, insumos en inventario, contratos de autorización de servicio y base de datos de 380 clientes registrados.',
+   conds:['Contratos de autorización de servicio requieren validación de las marcas','Herramientas y equipos valorados por inventario conjunto al cierre','Arriendo del local requiere aval previo del propietario','Base de datos de clientes transferida bajo reserva de privacidad','Capacitación técnica incluida por 20 días hábiles','Paz y salvo tributario y de seguridad social incluido']}
+];
+
+let __nmkFilter='todos';
+
+function openNegMarket(tipo){
+  __nmkFilter=tipo||'todos';
+  renderNegMarket();
+  // activate correct tab
+  document.querySelectorAll('.nmk-tab').forEach(t=>{
+    t.classList.toggle('on', t.dataset.nf===__nmkFilter||(tipo==='todos'&&t.dataset.nf==='todos'));
+  });
+  document.getElementById('neg-market-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeNegMarket(){
+  document.getElementById('neg-market-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function filterNegMarket(f, btn){
+  __nmkFilter=f;
+  document.querySelectorAll('.nmk-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  renderNegMarket();
+}
+function renderNegMarket(){
+  const list=__nmkFilter==='todos'?NB:NB.filter(b=>b.tipo===__nmkFilter);
+  const grid=document.getElementById('nmk-grid');
+  if(!list.length){grid.innerHTML='<div class="nmk-empty">Sin oportunidades disponibles en esta categoría por el momento.</div>';return;}
+  const labels={soc:'Sociedad Constituida',est:'Establecimiento de Comercio',pn:'Persona Natural'};
+  grid.innerHTML=list.map(b=>`
+    <div class="nmk-card" onclick="openNegDetail(${b.id})">
+      <img class="nmk-img" src="${b.img}" alt="${b.nom}" loading="lazy"/>
+      <div class="nmk-body2">
+        <div class="nmk-type">${labels[b.tipo]||b.tipo}</div>
+        <div class="nmk-name">${b.nom}</div>
+        <div class="nmk-sector">📍 ${b.ciudad} &nbsp;·&nbsp; ${b.sector}</div>
+        <div class="nmk-metrics">
+          <div class="nmk-metric"><span class="nmk-mv">${b.precio}</span><span class="nmk-ml">Precio</span></div>
+          <div class="nmk-metric"><span class="nmk-mv" style="color:#4ade80">${b.roi}</span><span class="nmk-ml">ROI anual</span></div>
+        </div>
+        <div class="nmk-pitch">${b.pitch}</div>
+        <button class="nmk-btn">Ver oportunidad →</button>
+      </div>
+    </div>`).join('');
+}
+function openNegDetail(id){
+  const b=NB.find(x=>x.id===id);
+  if(!b)return;
+  const labels={soc:'Sociedad Constituida',est:'Establecimiento de Comercio',pn:'Persona Natural'};
+  document.getElementById('ndm-img').src=b.img;
+  document.getElementById('ndm-img').alt=b.nom;
+  document.getElementById('ndm-badge').textContent=labels[b.tipo]||b.tipo;
+  document.getElementById('ndm-name').textContent=b.nom;
+  document.getElementById('ndm-sector').textContent=`${b.sector} · ${b.ciudad}`;
+  document.getElementById('ndm-metrics').innerHTML=[
+    {v:b.precio,l:'Precio pedido'},{v:b.roi+' anual',l:'ROI proyectado'},
+    {v:b.ventas,l:'Ventas'},{v:b.empleados+' personas',l:'Empleados'}
+  ].map(m=>`<div class="ndm-metric"><span class="ndm-mv">${m.v}</span><span class="ndm-ml">${m.l}</span></div>`).join('');
+  document.getElementById('ndm-desc').textContent=b.desc;
+  document.getElementById('ndm-conds').innerHTML=b.conds.map(c=>`<div class="ndm-cond">${c}</div>`).join('');
+  const waMsg=`Hola, vi la oportunidad de inversión *${b.nom}* en DSE Inmobiliaria.\n\n💼 ${labels[b.tipo]} · ${b.sector}\n📍 ${b.ciudad}\n💰 ${b.precio} · ROI ${b.roi}\n\n¿Podría enviarme más información y coordinar una reunión?`;
+  document.getElementById('ndm-wa-btn').onclick=()=>window.open(`https://wa.me/573217467970?text=${encodeURIComponent(waMsg)}`,'_blank','noopener');
+  document.getElementById('neg-detail-modal').classList.add('open');
+}
+function closeNegDetail(){
+  document.getElementById('neg-detail-modal').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeNegDetail();closeNegMarket();}
+});
+
 /* Negocios forms */
 function toggleNegForm(id){
   const el=document.getElementById(id);
@@ -1655,5 +1824,45 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+<!-- ══════════════ MARKETPLACE NEGOCIOS ══════════════ -->
+<div id="neg-market-modal">
+  <div class="nmk-topbar">
+    <div class="nmk-logo">DSE <span>· Mercado de Inversión</span></div>
+    <button class="nmk-close" onclick="closeNegMarket()">✕</button>
+  </div>
+  <div class="nmk-tabs">
+    <button class="nmk-tab on" data-nf="todos" onclick="filterNegMarket('todos',this)">Todos</button>
+    <button class="nmk-tab" data-nf="soc" onclick="filterNegMarket('soc',this)">🏛 Sociedades</button>
+    <button class="nmk-tab" data-nf="est" onclick="filterNegMarket('est',this)">🏪 Establecimientos</button>
+    <button class="nmk-tab" data-nf="pn" onclick="filterNegMarket('pn',this)">👤 Personas Naturales</button>
+  </div>
+  <div class="nmk-body">
+    <div class="nmk-grid" id="nmk-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════════ DETALLE NEGOCIO ══════════════ -->
+<div id="neg-detail-modal" onclick="if(event.target===this)closeNegDetail()">
+  <div class="ndm-wrap">
+    <button class="ndm-close" onclick="closeNegDetail()">✕</button>
+    <img id="ndm-img" class="ndm-img" src="" alt=""/>
+    <div class="ndm-body">
+      <div class="ndm-type-badge" id="ndm-badge"></div>
+      <div class="ndm-name" id="ndm-name"></div>
+      <div class="ndm-sector" id="ndm-sector"></div>
+      <div class="ndm-metrics-row" id="ndm-metrics"></div>
+      <hr class="ndm-divider"/>
+      <div class="ndm-sec-title">Descripción del negocio</div>
+      <div class="ndm-desc" id="ndm-desc"></div>
+      <div class="ndm-sec-title">Condiciones de traspaso</div>
+      <div class="ndm-conds" id="ndm-conds"></div>
+      <button class="ndm-wa-btn" id="ndm-wa-btn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.857L.054 23.45a.5.5 0 00.613.612l5.652-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.92 0-3.722-.51-5.271-1.399l-.379-.222-3.927 1.026 1.048-3.826-.244-.394A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Solicitar información por WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
