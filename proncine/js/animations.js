@@ -21,6 +21,10 @@
         ).join('')}
       </nav>
 
+      <div class="cs-photo-3d">
+        <div class="cs-photo-inner" style="background-image:url('${c.photo}')"></div>
+      </div>
+
       <div class="cs-panel">
         <span class="cs-panel-quarter">${c.quarter}</span>
         <h2 class="cs-panel-name">${c.name}</h2>
@@ -76,10 +80,12 @@
 
       const bg    = sec.querySelector('.cs-bg');
       const ghost = sec.querySelector('.cs-ghost');
+      const photo = sec.querySelector('.cs-photo-3d');
       const centerOffset = rect.top + rect.height / 2 - vh / 2;
 
       if (bg)    bg.style.transform    = `translateY(${centerOffset * 0.35}px)`;
       if (ghost) ghost.style.transform = `translateX(${centerOffset * -0.18}px)`;
+      if (photo) photo.style.transform = `translateY(calc(-50% + ${centerOffset * 0.12}px)) perspective(1000px) rotateY(8deg) rotateX(-2deg)`;
     });
 
     ticking = false;

@@ -33,6 +33,17 @@
     track.appendChild(card);
   });
 
+  // ── 3D tilt on hover ─────────────────────────────────
+  track.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+      const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+      card.style.transform = `perspective(700px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px) scale(1.01)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
   // ── Horizontal scroll via mouse wheel ────────────────
   const wrap = document.querySelector('.catalog-track-wrap');
   if (!wrap) return;
