@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", ".", "--listen", "3000", "--no-clipboard"],
       "port": 3000
+    },
+    {
+      "name": "proncine-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "proncine", "--listen", "3001", "--no-clipboard"],
+      "port": 3001
     }
   ]
 }
