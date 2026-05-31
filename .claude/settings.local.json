@@ -33,7 +33,8 @@
       "Bash(curl -s 'https://primary-production-be6ac.up.railway.app/api/v1/executions/89?includeData=true' -H 'X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYjhmNGJkOC05ZDY1LTRkYWEtYTBlMi1iOGY4NDA4NWQxYWUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZmE2YTYwY2MtN2UzNi00NDhiLWJlNWMtY2IxOWU3M2JiOWY4IiwiaWF0IjoxNzc2NjQ5MjQ4fQ.4Bq9um5koYCSkbRl4KMn3PPtDG35-PIez19Sr0YMF6w')",
       "mcp__mcp-registry__search_mcp_registry",
       "mcp__bb6ff251-4c42-404b-b541-5488917b689a__create_event",
-      "PowerShell(Get-Item \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse.png\", \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse-alt.png\", \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse-dark.png\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})"
+      "PowerShell(Get-Item \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse.png\", \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse-alt.png\", \"D:\\\\USER\\\\Nueva carpeta \\(4\\)\\\\#1 claude\\\\logo-dse-dark.png\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }
