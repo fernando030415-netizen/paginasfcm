@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 625">
+  <defs>
+    <radialGradient id="bg-m" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#181818"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </radialGradient>
+    <filter id="blur-m"><feGaussianBlur stdDeviation="20"/></filter>
+  </defs>
+  <rect width="500" height="625" fill="url(#bg-m)"/>
+  <ellipse cx="250" cy="290" rx="155" ry="190" fill="#222" filter="url(#blur-m)" opacity="0.45"/>
+
+  <!-- T-shirt body — back view (no collar visible, neck label prominent) -->
+  <path d="M 145 150 L 355 150 L 380 430 L 120 430 Z" fill="#090909"/>
+  <path d="M 145 150 L 90 130 L 60 190 L 105 210 L 145 180 Z" fill="#090909"/>
+  <path d="M 355 150 L 410 130 L 440 190 L 395 210 L 355 180 Z" fill="#090909"/>
+  <path d="M 145 150 Q 175 145 250 148 Q 325 145 355 150" fill="#090909" stroke="#181818" stroke-width="1"/>
+  <path d="M 145 150 L 90 130 L 60 190 L 105 210 L 145 180 L 120 430 L 380 430 L 355 180 L 395 210 L 440 190 L 410 130 L 355 150 Q 325 145 250 148 Q 175 145 145 150 Z" fill="none" stroke="#1c1c1c" stroke-width="1.5"/>
+
+  <!-- Neck label — large, prominent (back view) -->
+  <rect x="210" y="148" width="80" height="16" rx="2" fill="#111" stroke="#333" stroke-width="0.8"/>
+  <text x="250" y="159" font-family="Arial Narrow, sans-serif" font-size="7" font-weight="700" fill="#888" text-anchor="middle" letter-spacing="1.5">PRONCINE®</text>
+
+  <!-- Silicone patch left shoulder -->
+  <rect x="148" y="175" width="50" height="16" rx="2" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="0.8"/>
+  <text x="173" y="186" font-family="Arial Narrow, sans-serif" font-size="5.5" fill="#555" text-anchor="middle" letter-spacing="1">PRONCINE</text>
+
+  <!-- Main back print — bold DEL MADINA -->
+  <text x="250" y="258" font-family="'Space Grotesk', Arial Black, sans-serif" font-size="52" font-weight="900" fill="#d8d8d8" fill-opacity="0.85" text-anchor="middle" letter-spacing="-1">DEL</text>
+  <text x="250" y="318" font-family="'Space Grotesk', Arial Black, sans-serif" font-size="52" font-weight="900" fill="#d8d8d8" fill-opacity="0.85" text-anchor="middle" letter-spacing="-1">MADINA</text>
+
+  <!-- Silicone appliqué effect — text has raised look -->
+  <text x="250" y="257" font-family="'Space Grotesk', Arial Black, sans-serif" font-size="52" font-weight="900" fill="none" stroke="#fff" stroke-width="0.5" stroke-opacity="0.2" text-anchor="middle" letter-spacing="-1">DEL</text>
+  <text x="250" y="317" font-family="'Space Grotesk', Arial Black, sans-serif" font-size="52" font-weight="900" fill="none" stroke="#fff" stroke-width="0.5" stroke-opacity="0.2" text-anchor="middle" letter-spacing="-1">MADINA</text>
+
+  <!-- Underline bar motif -->
+  <line x1="148" y1="330" x2="352" y2="330" stroke="#fff" stroke-opacity="0.12" stroke-width="1.5"/>
+
+  <!-- ® bottom right -->
+  <text x="352" y="326" font-family="Arial, sans-serif" font-size="12" fill="#888" fill-opacity="0.5">®</text>
+
+  <!-- Sub text -->
+  <text x="250" y="350" font-family="'Space Grotesk', Arial, sans-serif" font-size="9" fill="#555" text-anchor="middle" letter-spacing="5">CALI — CO</text>
+
+  <!-- Product label -->
+  <text x="40" y="484" font-family="'Space Grotesk', Arial, sans-serif" font-size="17" font-weight="700" fill="#e0e0e0" letter-spacing="1">DEL MADINA</text>
+  <text x="40" y="504" font-family="'Space Grotesk', Arial, sans-serif" font-size="10.5" fill="#606060" letter-spacing="3">BACK PRINT · APLIQUE SILICÓN · 260G</text>
+  <line x1="40" y1="520" x2="460" y2="520" stroke="#fff" stroke-opacity="0.06" stroke-width="1"/>
+  <text x="40" y="545" font-family="'Space Grotesk', Arial, sans-serif" font-size="14" font-weight="600" fill="#909090" letter-spacing="1">$195.000</text>
+  <text x="460" y="545" font-family="'Space Grotesk', Arial, sans-serif" font-size="10" fill="#404040" text-anchor="end" letter-spacing="3">Q2 2025</text>
+</svg>

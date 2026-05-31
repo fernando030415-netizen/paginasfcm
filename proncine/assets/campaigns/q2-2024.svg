@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <radialGradient id="bg-q2" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#161616"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <radialGradient id="church-light" cx="50%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#4a4a4a" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur-q2"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="blur-arch"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg-q2)"/>
+  <!-- Church ambient light from above -->
+  <rect width="600" height="800" fill="url(#church-light)"/>
+  <ellipse cx="300" cy="120" rx="180" ry="100" fill="#333" filter="url(#blur-q2)" opacity="0.3"/>
+
+  <!-- Cage grid -->
+  <line x1="150" y1="0" x2="150" y2="800" stroke="#fff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="800" stroke="#fff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="450" y1="0" x2="450" y2="800" stroke="#fff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="0" y1="200" x2="600" y2="200" stroke="#fff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="0" y1="400" x2="600" y2="400" stroke="#fff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="0" y1="600" x2="600" y2="600" stroke="#fff" stroke-opacity="0.02" stroke-width="1"/>
+
+  <!-- Church architecture background — arches -->
+  <!-- Far arch -->
+  <path d="M 180 660 L 180 300 Q 180 180 300 180 Q 420 180 420 300 L 420 660 Z" fill="none" stroke="#fff" stroke-opacity="0.04" stroke-width="1.5"/>
+  <!-- Middle depth pillars -->
+  <rect x="120" y="300" width="20" height="360" fill="#0f0f0f" stroke="#1a1a1a" stroke-width="0.5"/>
+  <rect x="460" y="300" width="20" height="360" fill="#0f0f0f" stroke="#1a1a1a" stroke-width="0.5"/>
+  <!-- Arch tops on pillars -->
+  <path d="M 120 300 Q 130 260 140 300" fill="none" stroke="#222" stroke-width="1"/>
+  <path d="M 460 300 Q 470 260 480 300" fill="none" stroke="#222" stroke-width="1"/>
+  <!-- Window glow (stained glass hint) -->
+  <ellipse cx="300" cy="200" rx="50" ry="70" fill="#1e1e1e" stroke="#2a2a2a" stroke-width="1"/>
+  <ellipse cx="300" cy="200" rx="35" ry="50" fill="#151515"/>
+  <line x1="300" y1="150" x2="300" y2="250" stroke="#333" stroke-width="1"/>
+  <line x1="265" y1="200" x2="335" y2="200" stroke="#333" stroke-width="1"/>
+
+  <!-- Church pews suggestion -->
+  <rect x="80" y="580" width="185" height="8" rx="2" fill="#141414" stroke="#222" stroke-width="0.5"/>
+  <rect x="80" y="610" width="185" height="8" rx="2" fill="#141414" stroke="#222" stroke-width="0.5"/>
+  <rect x="335" y="580" width="185" height="8" rx="2" fill="#141414" stroke="#222" stroke-width="0.5"/>
+  <rect x="335" y="610" width="185" height="8" rx="2" fill="#141414" stroke="#222" stroke-width="0.5"/>
+  <!-- Aisle -->
+  <rect x="265" y="560" width="70" height="80" fill="#0a0a0a"/>
+
+  <!-- Person (back of head + shirt) in aisle -->
+  <!-- Head/cap -->
+  <ellipse cx="300" cy="430" rx="42" ry="38" fill="#0d0d0d"/>
+  <ellipse cx="300" cy="415" rx="44" ry="22" fill="#111"/>
+  <!-- Cap brim -->
+  <path d="M 256 415 Q 300 405 344 415" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Neck -->
+  <rect x="285" y="465" width="30" height="25" fill="#0d0d0d"/>
+  <!-- Shirt back (large, takes up most of frame) -->
+  <path d="M 165 490 L 435 490 L 455 720 L 145 720 Z" fill="#080808"/>
+  <path d="M 165 490 L 110 468 L 82 548 L 132 565 L 165 535 Z" fill="#080808"/>
+  <path d="M 435 490 L 490 468 L 518 548 L 468 565 L 435 535 Z" fill="#080808"/>
+  <path d="M 165 490 L 110 468 L 82 548 L 132 565 L 165 535 L 145 720 L 455 720 L 435 535 L 468 565 L 518 548 L 490 468 L 435 490 Q 400 474 300 472 Q 200 474 165 490 Z" fill="none" stroke="#161616" stroke-width="1.5"/>
+
+  <!-- Coin medallion graphic on back of shirt -->
+  <circle cx="300" cy="600" r="75" fill="none" stroke="#b0b0b0" stroke-width="2.5" stroke-opacity="0.65"/>
+  <circle cx="300" cy="600" r="65" fill="#0c0c0c" stroke="#555" stroke-width="0.8" stroke-opacity="0.3"/>
+  <!-- Cross in coin -->
+  <line x1="300" y1="540" x2="300" y2="660" stroke="#c8c8c8" stroke-width="12" stroke-opacity="0.5"/>
+  <line x1="240" y1="600" x2="360" y2="600" stroke="#c8c8c8" stroke-width="12" stroke-opacity="0.5"/>
+  <!-- PRONCINE inside coin -->
+  <text x="300" y="584" font-family="Arial Narrow, sans-serif" font-size="9" font-weight="700" fill="#bbb" fill-opacity="0.75" text-anchor="middle" letter-spacing="1.5">PRONCINE®</text>
+  <text x="300" y="622" font-family="Georgia, serif" font-size="9" font-style="italic" fill="#888" fill-opacity="0.6" text-anchor="middle">"it's me"</text>
+
+  <!-- PRONCINE® neck label -->
+  <rect x="272" y="470" width="56" height="12" rx="1" fill="#111" stroke="#2a2a2a" stroke-width="0.5"/>
+  <text x="300" y="479" font-family="Arial Narrow, sans-serif" font-size="6" font-weight="700" fill="#555" text-anchor="middle" letter-spacing="1">PRONCINE®</text>
+
+  <!-- Quarter label -->
+  <text x="50" y="68" font-family="'Space Grotesk', Arial, sans-serif" font-size="11" fill="#fff" fill-opacity="0.4" letter-spacing="5">Q2 2024</text>
+  <line x1="50" y1="75" x2="175" y2="75" stroke="#fff" stroke-opacity="0.15" stroke-width="1"/>
+
+  <line x1="50" y1="752" x2="550" y2="752" stroke="#fff" stroke-opacity="0.07" stroke-width="1"/>
+  <text x="300" y="776" font-family="'Space Grotesk', Arial, sans-serif" font-size="10" fill="#fff" fill-opacity="0.18" text-anchor="middle" letter-spacing="8">PRONCINE®</text>
+</svg>

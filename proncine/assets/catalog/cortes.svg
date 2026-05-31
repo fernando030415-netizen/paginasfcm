@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 625">
+  <defs>
+    <radialGradient id="bg-cr" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#161616"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <filter id="blur-cr"><feGaussianBlur stdDeviation="20"/></filter>
+    <filter id="noise-cr" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="b"/>
+      <feComposite in="b" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <linearGradient id="wash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="30%" stop-color="#111"/>
+      <stop offset="60%" stop-color="#222"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="625" fill="url(#bg-cr)"/>
+  <ellipse cx="250" cy="290" rx="155" ry="190" fill="#202020" filter="url(#blur-cr)" opacity="0.5"/>
+
+  <!-- T-shirt body — acid wash gray -->
+  <path d="M 145 150 L 355 150 L 380 430 L 120 430 Z" fill="url(#wash)"/>
+  <path d="M 145 150 L 90 130 L 60 190 L 105 210 L 145 180 Z" fill="url(#wash)"/>
+  <path d="M 355 150 L 410 130 L 440 190 L 395 210 L 355 180 Z" fill="url(#wash)"/>
+  <path d="M 145 150 Q 170 130 200 125 Q 225 148 250 150 Q 275 148 300 125 Q 330 130 355 150" fill="url(#wash)" stroke="#222" stroke-width="1"/>
+  <path d="M 145 150 L 90 130 L 60 190 L 105 210 L 145 180 L 120 430 L 380 430 L 355 180 L 395 210 L 440 190 L 410 130 L 355 150 L 300 125 Q 275 148 250 150 Q 225 148 200 125 Z" fill="none" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Acid wash texture — diagonal slashes -->
+  <g stroke="#404040" stroke-opacity="0.3" stroke-width="1.5" fill="none">
+    <line x1="130" y1="165" x2="190" y2="250"/><line x1="150" y1="165" x2="210" y2="250"/>
+    <line x1="180" y1="165" x2="240" y2="250"/><line x1="210" y1="165" x2="270" y2="260"/>
+    <line x1="240" y1="165" x2="300" y2="260"/><line x1="270" y1="165" x2="330" y2="260"/>
+    <line x1="300" y1="165" x2="360" y2="255"/><line x1="330" y1="165" x2="375" y2="230"/>
+    <line x1="130" y1="260" x2="175" y2="340"/><line x1="155" y1="260" x2="205" y2="350"/>
+    <line x1="185" y1="258" x2="240" y2="355"/><line x1="215" y1="257" x2="275" y2="360"/>
+    <line x1="245" y1="258" x2="305" y2="360"/><line x1="275" y1="258" x2="335" y2="358"/>
+    <line x1="305" y1="260" x2="360" y2="350"/><line x1="335" y1="262" x2="375" y2="330"/>
+    <line x1="130" y1="355" x2="165" y2="420"/><line x1="158" y1="355" x2="198" y2="424"/>
+    <line x1="188" y1="355" x2="230" y2="425"/><line x1="218" y1="355" x2="262" y2="428"/>
+    <line x1="248" y1="355" x2="292" y2="428"/><line x1="278" y1="355" x2="320" y2="425"/>
+    <line x1="308" y1="355" x2="348" y2="422"/><line x1="335" y1="358" x2="370" y2="418"/>
+  </g>
+
+  <!-- Silicone appliqué sparkle clusters -->
+  <g fill="#d0d0d0" fill-opacity="0.55">
+    <circle cx="195" cy="230" r="3"/><circle cx="205" cy="222" r="2"/><circle cx="188" cy="218" r="1.5"/>
+    <circle cx="212" cy="238" r="1.5"/><circle cx="180" cy="236" r="2"/>
+    <circle cx="290" cy="340" r="3"/><circle cx="300" cy="332" r="2"/><circle cx="283" cy="328" r="1.5"/>
+    <circle cx="307" cy="348" r="1.5"/><circle cx="275" cy="346" r="2"/>
+    <circle cx="240" cy="285" r="3.5"/><circle cx="252" cy="276" r="2.5"/><circle cx="232" cy="272" r="2"/>
+    <circle cx="260" cy="294" r="2"/><circle cx="225" cy="292" r="2.5"/>
+    <!-- Diamond shapes (rhinestones) -->
+    <polygon points="320,210 324,216 320,222 316,216" fill="#e0e0e0" fill-opacity="0.6"/>
+    <polygon points="165,310 169,316 165,322 161,316" fill="#e0e0e0" fill-opacity="0.6"/>
+    <polygon points="250,380 254,386 250,392 246,386" fill="#e0e0e0" fill-opacity="0.6"/>
+  </g>
+
+  <!-- Neck label -->
+  <rect x="218" y="153" width="64" height="12" rx="1" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+  <text x="250" y="162" font-family="Arial Narrow, sans-serif" font-size="6" font-weight="700" fill="#666" text-anchor="middle" letter-spacing="1">PRONCINE®</text>
+
+  <!-- Product label -->
+  <text x="40" y="468" font-family="'Space Grotesk', Arial, sans-serif" font-size="13" font-weight="700" fill="#e0e0e0" letter-spacing="1">VOY A TIRARME LOS CORTES</text>
+  <text x="40" y="488" font-family="'Space Grotesk', Arial, sans-serif" font-size="10.5" fill="#606060" letter-spacing="3">ACID WASH · PIEDRERÍA · 260G</text>
+  <line x1="40" y1="504" x2="460" y2="504" stroke="#fff" stroke-opacity="0.06" stroke-width="1"/>
+  <text x="40" y="529" font-family="'Space Grotesk', Arial, sans-serif" font-size="14" font-weight="600" fill="#909090" letter-spacing="1">$210.000</text>
+  <text x="460" y="529" font-family="'Space Grotesk', Arial, sans-serif" font-size="10" fill="#404040" text-anchor="end" letter-spacing="3">Q2 2025</text>
+</svg>

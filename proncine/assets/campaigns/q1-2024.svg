@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <radialGradient id="bg-q1" cx="50%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#181818"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <radialGradient id="glow-q1" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#888" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur-q1"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="blur-soft"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg-q1)"/>
+  <rect width="600" height="800" fill="url(#glow-q1)"/>
+  <!-- Ambient light blob -->
+  <ellipse cx="300" cy="340" rx="200" ry="250" fill="#1e1e1e" filter="url(#blur-q1)" opacity="0.6"/>
+
+  <!-- Cage grid -->
+  <line x1="150" y1="0" x2="150" y2="800" stroke="#fff" stroke-opacity="0.025" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="800" stroke="#fff" stroke-opacity="0.025" stroke-width="1"/>
+  <line x1="450" y1="0" x2="450" y2="800" stroke="#fff" stroke-opacity="0.025" stroke-width="1"/>
+  <line x1="0" y1="200" x2="600" y2="200" stroke="#fff" stroke-opacity="0.025" stroke-width="1"/>
+  <line x1="0" y1="400" x2="600" y2="400" stroke="#fff" stroke-opacity="0.025" stroke-width="1"/>
+  <line x1="0" y1="600" x2="600" y2="600" stroke="#fff" stroke-opacity="0.025" stroke-width="1"/>
+
+  <!-- T-shirt silhouette (person wearing, zoomed/editorial feel) -->
+  <!-- Body of shirt large -->
+  <path d="M 170 280 L 430 280 L 460 620 L 140 620 Z" fill="#090909"/>
+  <path d="M 170 280 L 100 255 L 68 340 L 120 360 L 170 330 Z" fill="#090909"/>
+  <path d="M 430 280 L 500 255 L 532 340 L 480 360 L 430 330 Z" fill="#090909"/>
+  <path d="M 170 280 Q 200 258 230 252 Q 265 272 300 275 Q 335 272 370 252 Q 400 258 430 280" fill="#090909" stroke="#181818" stroke-width="1"/>
+  <path d="M 170 280 L 100 255 L 68 340 L 120 360 L 170 330 L 140 620 L 460 620 L 430 330 L 480 360 L 532 340 L 500 255 L 430 280 Q 400 258 370 252 Q 335 272 300 275 Q 265 272 230 252 Q 200 258 170 280 Z" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- PRONCINE® chest label -->
+  <text x="300" y="302" font-family="Arial Narrow, sans-serif" font-size="9" font-weight="700" fill="#fff" fill-opacity="0.4" text-anchor="middle" letter-spacing="2">PRONCINE®</text>
+
+  <!-- Face halftone + cross graphic — centered on chest -->
+  <!-- Cross -->
+  <line x1="300" y1="320" x2="300" y2="530" stroke="#d8d8d8" stroke-width="32" stroke-opacity="0.48"/>
+  <line x1="205" y1="415" x2="395" y2="415" stroke="#d8d8d8" stroke-width="32" stroke-opacity="0.48"/>
+  <line x1="300" y1="320" x2="300" y2="530" stroke="#f0f0f0" stroke-width="8" stroke-opacity="0.3"/>
+  <line x1="205" y1="415" x2="395" y2="415" stroke="#f0f0f0" stroke-width="8" stroke-opacity="0.3"/>
+
+  <!-- Face halftone dots -->
+  <g fill="#c0c0c0">
+    <!-- Eyes -->
+    <circle cx="268" cy="380" r="5" fill-opacity="0.8"/><circle cx="255" cy="382" r="3.5" fill-opacity="0.6"/>
+    <circle cx="278" cy="375" r="4" fill-opacity="0.7"/>
+    <circle cx="332" cy="380" r="5" fill-opacity="0.8"/><circle cx="345" cy="382" r="3.5" fill-opacity="0.6"/>
+    <circle cx="322" cy="375" r="4" fill-opacity="0.7"/>
+    <!-- Pupils -->
+    <circle cx="268" cy="382" r="8" fill="#080808"/><circle cx="332" cy="382" r="8" fill="#080808"/>
+    <circle cx="268" cy="381" r="5" fill-opacity="0.9"/><circle cx="332" cy="381" r="5" fill-opacity="0.9"/>
+    <!-- Cheek/face dots -->
+    <circle cx="242" cy="400" r="4" fill-opacity="0.4"/><circle cx="252" cy="396" r="5" fill-opacity="0.5"/>
+    <circle cx="263" cy="394" r="5.5" fill-opacity="0.55"/><circle cx="275" cy="393" r="5" fill-opacity="0.5"/>
+    <circle cx="300" cy="392" r="4" fill-opacity="0.4"/><circle cx="325" cy="393" r="5" fill-opacity="0.5"/>
+    <circle cx="337" cy="394" r="5.5" fill-opacity="0.55"/><circle cx="348" cy="396" r="5" fill-opacity="0.5"/>
+    <circle cx="358" cy="400" r="4" fill-opacity="0.4"/>
+    <!-- Mouth -->
+    <circle cx="274" cy="440" r="6" fill-opacity="0.6"/><circle cx="287" cy="446" r="7" fill-opacity="0.65"/>
+    <circle cx="300" cy="448" r="7.5" fill-opacity="0.7"/><circle cx="313" cy="446" r="7" fill-opacity="0.65"/>
+    <circle cx="326" cy="440" r="6" fill-opacity="0.6"/>
+    <!-- Forehead -->
+    <circle cx="280" cy="358" r="4" fill-opacity="0.4"/><circle cx="300" cy="354" r="4.5" fill-opacity="0.45"/>
+    <circle cx="320" cy="358" r="4" fill-opacity="0.4"/>
+  </g>
+
+  <!-- Quarter label -->
+  <text x="50" y="68" font-family="'Space Grotesk', Arial, sans-serif" font-size="11" fill="#fff" fill-opacity="0.4" letter-spacing="5">Q1 2024</text>
+  <line x1="50" y1="75" x2="175" y2="75" stroke="#fff" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Ghost text -->
+  <text x="300" y="760" font-family="'Space Grotesk', Arial Black, sans-serif" font-size="58" font-weight="900" fill="#fff" fill-opacity="0.035" text-anchor="middle" letter-spacing="-1">BASTANTE PELADITA</text>
+
+  <!-- Bar motif -->
+  <line x1="50" y1="722" x2="550" y2="722" stroke="#fff" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="300" y="748" font-family="'Space Grotesk', Arial, sans-serif" font-size="10" fill="#fff" fill-opacity="0.18" text-anchor="middle" letter-spacing="8">PRONCINE®</text>
+</svg>
